@@ -1,0 +1,59 @@
+.osx-sidebar {
+    height: 100vh;
+    position: relative;
+    z-index: 100;
+    width: 240px;
+    background-color: var(--sidebar-bg);
+    padding: 70px 0;
+
+    .sidebar-wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .osx-navbar {
+            width: 100%;
+            .osx-navbar-brand {
+                width: 240px;
+                height: 70px;
+                position: fixed;
+                top: 0;
+                padding: 0 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .osx-navbar-item {
+                    .button {
+                        display: inline-block;
+                        line-height: 0;
+                        border-radius: 0;
+
+                        .osx-logo {
+                            width: 120px;
+                            height: 40px;
+                            display: inline-block;
+                            background: var(--img-logo-osx) 50% / contain no-repeat;
+                        }
+                    }
+                }
+            }
+        }
+
+        .osx-navbar-main {
+            position: relative;
+            margin-bottom: 16px;
+        }
+        .osx-navbar-item {
+            a {
+                display: flex;
+                align-items: center;
+                font-size: 18px;
+                line-height: 20px;
+                font-weight: 600;
+                padding: 12px 50px;
+                color: var(--primary-color);
+            }
+        }
+    }
+}
