@@ -1,3 +1,5 @@
+import { AlbumIcon, ArtistIcon, PlaylistIcon, RecentIcon, SongIcon, UploadIcon } from '../../icons';
+
 function Sidebar() {
     return (
         <aside className="osx-sidebar">
@@ -14,17 +16,159 @@ function Sidebar() {
                 <nav className="osx-navbar osx-navbar-main">
                     <ul className="osx-navbar-menu">
                         <li className="osx-navbar-item">
-                            <a href="/">Library</a>
+                            <div className="osx-navbar-item-wrapper">
+                                <a className="osx-navbar-link" href="/">
+                                    Library
+                                </a>
+                            </div>
+                        </li>
+                        <li className="osx-navbar-item ">
+                            <div className="osx-navbar-item-wrapper">
+                                <a className="osx-navbar-link is-active" href="/">
+                                    Browse
+                                </a>
+                            </div>
                         </li>
                         <li className="osx-navbar-item">
-                            <a href="/">Browse</a>
+                            <div className="osx-navbar-item-wrapper">
+                                <a className="osx-navbar-link" href="/">
+                                    Radio
+                                </a>
+                            </div>
                         </li>
                         <li className="osx-navbar-item">
-                            <a href="/">Radio</a>
+                            <div className="osx-navbar-item-wrapper">
+                                <a className="osx-navbar-link" href="/">
+                                    Store
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <div className="sidebar-divide"></div>
+                <nav className="osx-navbar osx-navbar-main">
+                    <div className="osx-navbar-title">My Music</div>
+                    <ul className="osx-navbar-menu">
+                        <li className="osx-navbar-item">
+                            <div className="osx-navbar-item-wrapper">
+                                <a className="osx-navbar-type" href="/">
+                                    <i className="icon">
+                                        <SongIcon />
+                                    </i>
+                                    <span>Songs</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li className="osx-navbar-item ">
+                            <div className="osx-navbar-item-wrapper">
+                                <a className="osx-navbar-type" href="/">
+                                    <i className="icon">
+                                        <RecentIcon />
+                                    </i>
+                                    <span>Recent</span>
+                                </a>
+                            </div>
                         </li>
                         <li className="osx-navbar-item">
-                            <a href="/">Store</a>
+                            <div className="osx-navbar-item-wrapper">
+                                <a className="osx-navbar-type" href="/">
+                                    <i className="icon">
+                                        <UploadIcon />
+                                    </i>
+                                    <span>Local</span>
+                                </a>
+                            </div>
                         </li>
+                        <li className="osx-navbar-item">
+                            <div className="osx-navbar-item-wrapper">
+                                <a className="osx-navbar-type" href="/">
+                                    <i className="icon">
+                                        <AlbumIcon />
+                                    </i>
+                                    <span>Albums</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li className="osx-navbar-item">
+                            <div className="osx-navbar-item-wrapper">
+                                <a className="osx-navbar-type" href="/">
+                                    <i className="icon">
+                                        <ArtistIcon />
+                                    </i>
+                                    <span>Artists</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <nav className="osx-navbar osx-navbar-main">
+                    <div className="osx-navbar-title">
+                        <span>Playlists</span>
+                        <i className="icon ic-add-playlist"></i>
+                    </div>
+                    <ul className="osx-navbar-menu">
+                        <li className="osx-navbar-item">
+                            <div className="osx-navbar-item-wrapper">
+                                <a className="osx-navbar-type" href="/">
+                                    <i className="icon ic-star"></i>
+                                    <span>Starred</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li className="osx-navbar-item ">
+                            <div className="osx-navbar-item-wrapper">
+                                <a className="osx-navbar-type" href="/">
+                                    <i className="icon">
+                                        <PlaylistIcon />
+                                    </i>
+                                    <span>Discover</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li className="osx-navbar-item">
+                            <div className="osx-navbar-item-wrapper">
+                                <a className="osx-navbar-type" href="/">
+                                    <i className="icon">
+                                        <PlaylistIcon />
+                                    </i>
+                                    <span>Favourites</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li className="osx-navbar-item">
+                            <div className="osx-navbar-item-wrapper">
+                                <a className="osx-navbar-type" href="/">
+                                    <i className="icon">
+                                        <PlaylistIcon />
+                                    </i>
+                                    <span>Top Charts</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li className="osx-navbar-item">
+                            <div className="osx-navbar-item-wrapper">
+                                <a className="osx-navbar-type" href="/">
+                                    <i className="icon">
+                                        <PlaylistIcon />
+                                    </i>
+                                    <span>Station</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li className="osx-navbar-item">
+                            <div className="osx-navbar-item-wrapper">
+                                <a className="osx-navbar-type" href="/">
+                                    <i className="icon">
+                                        <PlaylistIcon />
+                                    </i>
+                                    <span>Genres</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul className="osx-navbar-playlists">
+                        <li className="playlist-item">Playlist 1</li>
+                        <li className="playlist-item">Playlist 2</li>
                     </ul>
                 </nav>
             </div>

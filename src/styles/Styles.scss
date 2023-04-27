@@ -21,6 +21,7 @@ body {
     -ms-scroll-chaining: none;
     overscroll-behavior: none;
     overflow: hidden;
+    color: var(--primary-color);
 }
 
 a {
@@ -42,7 +43,7 @@ a:hover {
     text-decoration: none;
 }
 
-a.zm-btn:hover {
+a.osx-btn:hover {
     color: inherit;
 }
 
@@ -187,6 +188,12 @@ ul {
     margin: 0;
     padding: 0;
 }
+
+// a {
+//     &:hover {
+//         filter: brightness(0.9);
+//     }
+// }
 
 ol,
 p,
