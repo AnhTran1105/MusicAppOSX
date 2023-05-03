@@ -103,33 +103,23 @@ export const AlbumIcon = ({ width = 18, height = 18 }) => {
     );
 };
 
-export const RecentIcon = ({ width = 24, height = 24 }) => {
+export const RecentIcon = ({ width = 16, height = 16 }) => {
     return (
         <svg
             fill="#4b4b51"
-            xmlns="http://www.w3.org/2000/svg"
             width={width}
             height={height}
-            viewBox="0 0 100 100"
-            xmlSpace="preserve"
+            viewBox="0 0 512.00 512.00"
+            xmlns="http://www.w3.org/2000/svg"
             stroke="#4b4b51"
+            strokeWidth="0.00512"
         >
             <g id="SVGRepo_bgCarrier" strokeWidth="0" />
 
             <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
 
             <g id="SVGRepo_iconCarrier">
-                <g>
-                    <path d="M28.1,48C28,48.7,28,49.3,28,50h-6c0-0.7,0-1.3,0.1-2H28.1z" />
-                </g>
-                <g>
-                    <g>
-                        <path d="M51.5,36h-3c-0.8,0-1.5,0.7-1.5,1.5v13.1c0,0.4,0.2,0.8,0.4,1.1l8.4,8.4c0.6,0.6,1.5,0.6,2.1,0l2.1-2.1 c0.6-0.6,0.6-1.5,0-2.1L53,48.8V37.5C53,36.7,52.3,36,51.5,36z" />
-                    </g>
-                    <g>
-                        <path d="M50,22c-14.8,0-26.9,11.5-27.9,26c0,0.3-0.1,0.7-0.1,1h-4.5c-1.3,0-2,1.5-1.2,2.4l7.5,9.1 c0.6,0.7,1.7,0.7,2.3,0l7.5-9.1c0.8-1,0.1-2.4-1.2-2.4H28c0-0.3,0-0.7,0-1c1-11.2,10.5-20,21.9-20c13,0,23.3,11.3,21.9,24.5 C70.8,62,61.8,71,52.2,71.9c-7.1,0.7-13.8-1.9-18.5-7c-0.6-0.7-1.4-1.1-2.2-0.1l-2.4,2.9c-0.5,0.6-0.1,1,0.4,1.5 c5.4,5.7,12.8,8.9,20.8,8.8c14.4-0.2,26.5-11.6,27.5-26C79.1,35.7,66.1,22,50,22z" />
-                    </g>
-                </g>
+                <path d="M256,8C119,8,8,119,8,256S119,504,256,504,504,393,504,256,393,8,256,8Zm92.49,313h0l-20,25a16,16,0,0,1-22.49,2.5h0l-67-49.72a40,40,0,0,1-15-31.23V112a16,16,0,0,1,16-16h32a16,16,0,0,1,16,16V256l58,42.5A16,16,0,0,1,348.49,321Z" />
             </g>
         </svg>
     );
@@ -152,6 +142,312 @@ export const PlaylistIcon = ({ width = 20, height = 20 }) => {
 
             <g id="SVGRepo_iconCarrier">
                 <path d="M32,128a8.00008,8.00008,0,0,1,8-8H160a8,8,0,0,1,0,16H40A8.00008,8.00008,0,0,1,32,128Zm8-56H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Zm202.29883,44.3374-40-12A7.99991,7.99991,0,0,0,192,112v52.30518A31.98859,31.98859,0,1,0,208,192V122.75244l29.70117,8.91016a8,8,0,1,0,4.59766-15.3252ZM112,184H40a8,8,0,0,0,0,16h72a8,8,0,0,0,0-16Z" />
+            </g>
+        </svg>
+    );
+};
+
+export const StarIcon = ({ width = 20, height = 20, color = '#4b4b51' }) => {
+    return (
+        <svg
+            fill={color}
+            width={width}
+            height={height}
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+            stroke={color}
+        >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+
+            <g id="SVGRepo_iconCarrier">
+                <path d="M16 4.588l2.833 8.719H28l-7.416 5.387 2.832 8.719L16 22.023l-7.417 5.389 2.833-8.719L4 13.307h9.167L16 4.588z" />
+            </g>
+        </svg>
+    );
+};
+
+export const AddIcon = ({ width = 14, height = 14 }) => {
+    return (
+        <svg
+            fill="#b4b4b4"
+            width={width}
+            height={height}
+            viewBox="0 0 1920 1920"
+            xmlns="http://www.w3.org/2000/svg"
+            stroke="#b4b4b4"
+            strokeWidth="76.8"
+        >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+
+            <g id="SVGRepo_iconCarrier">
+                <path
+                    d="M866.332 213v653.332H213v186.666h653.332v653.332h186.666v-653.332h653.332V866.332h-653.332V213z"
+                    fillRule="evenodd"
+                />
+            </g>
+        </svg>
+    );
+};
+
+export const VolumeDownIcon = ({ width = 20, height = 20 }) => {
+    return (
+        <svg
+            width={width}
+            height={height}
+            viewBox="0 0 48 48"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#999999"
+            stroke="#999999"
+            strokeWidth="0.00048000000000000007"
+        >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+
+            <g id="SVGRepo_iconCarrier">
+                <title>volume-down-solid</title>
+                <g id="Layer_2" dataname="Layer 2">
+                    <g id="invisible_box" dataname="invisible box">
+                        <rect width={width} height={height} fill="none" />
+                    </g>
+                    <g id="icons_Q2" dataname="icons Q2">
+                        <path d="M29,4a.9.9,0,0,0-.7.3L16.7,15H8a2,2,0,0,0-2,2V31a2,2,0,0,0,2,2h8.7L28.3,43.7a.9.9,0,0,0,.7.3,1,1,0,0,0,1-1V5a1,1,0,0,0-1-1Z" />
+                        <path d="M34,15.5v17a.5.5,0,0,0,.9.3,14,14,0,0,0,0-17.6A.5.5,0,0,0,34,15.5Z" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+    );
+};
+
+export const VolumeOffIcon = ({ width = 20, height = 20 }) => {
+    return (
+        <svg
+            width={width}
+            height={height}
+            viewBox="0 0 48 48"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#999999"
+            stroke="#999999"
+            strokeWidth="0.00048000000000000007"
+        >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+
+            <g id="SVGRepo_iconCarrier">
+                <title>volume-off-solid</title>
+                <g id="Layer_2" dataname="Layer 2">
+                    <g id="invisible_box" dataname="invisible box">
+                        <rect width={width} height={height} fill="none" />
+                    </g>
+                    <g id="icons_Q2" dataname="icons Q2">
+                        <g>
+                            <path d="M30,22.2V5a1,1,0,0,0-1-1,1.1,1.1,0,0,0-.7.3l-8.4,7.8Z" />
+                            <path d="M40.4,38.6l-32-32A2,2,0,0,0,5.6,9.4L11.2,15H8a2,2,0,0,0-2,2V31a2,2,0,0,0,2,2h8.7L28.3,43.7a1.1,1.1,0,0,0,.7.3,1,1,0,0,0,1-1V33.8l7.6,7.6a1.9,1.9,0,0,0,2.8,0A1.9,1.9,0,0,0,40.4,38.6Z" />
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+    );
+};
+
+export const KaraokeIcon = ({ width = 16, height = 16 }) => {
+    return (
+        <svg
+            height={height}
+            width={width}
+            version="1.1"
+            id="_x32_"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 512 512"
+            xmlSpace="preserve"
+            fill="#000000"
+        >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+
+            <g id="SVGRepo_iconCarrier">
+                <style type="text/css"></style>
+                <g>
+                    <polygon
+                        fill="#999999"
+                        className="st0"
+                        points="0.001,437.167 74.823,512 354.337,254.387 257.614,157.664 "
+                    />
+                    <path
+                        fill="#999999"
+                        className="st0"
+                        d="M269.9,143.663l98.428,98.417c34.239,6.143,70.52-2.472,98.869-25.709L295.63,44.804 C272.393,73.153,263.757,109.412,269.9,143.663z"
+                    />
+                    <path
+                        fill="#999999"
+                        className="st0"
+                        d="M476.317,35.674c-45.989-45.98-119.466-47.463-167.392-4.734l172.135,172.135 C523.789,155.15,522.306,81.663,476.317,35.674z"
+                    />
+                </g>
+            </g>
+        </svg>
+    );
+};
+
+export const ShuffleIcon = ({ width = 26, height = 26 }) => {
+    return (
+        <svg
+            width={width}
+            height={height}
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            stroke="#999999"
+            strokeWidth="0.00024000000000000003"
+        >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+
+            <g id="SVGRepo_iconCarrier">
+                <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M10.7663 9.52375L6.23375 5L5 6.23375L9.52375 10.7575L10.7663 9.52375ZM14.1875 5L15.9725 6.785L5 17.7663L6.23375 19L17.215 8.0275L19 9.8125V5H14.1875ZM13.2425 14.4675L14.4763 13.2337L17.215 15.9725L19 14.1875V19H14.1875L15.9813 17.2062L13.2425 14.4675Z"
+                    fill="#999999"
+                />
+            </g>
+        </svg>
+    );
+};
+
+export const RepeatIcon = ({ width = 24, height = 24 }) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#999999"
+            width={width}
+            height={height}
+            viewBox="0 0 24 24"
+            stroke="#999999"
+            strokeWidth="0.00024000000000000003"
+        >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+
+            <g id="SVGRepo_iconCarrier">
+                <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z" />
+            </g>
+        </svg>
+    );
+};
+
+export const PauseIcon = ({ width = 48, height = 48 }) => {
+    return (
+        <svg
+            id="SvgjsSvg1138"
+            width={width}
+            height={height}
+            xmlns="http://www.w3.org/2000/svg"
+            version="1.1"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            xmlnssvgjs="http://svgjs.com/svgjs"
+        >
+            <defs id="SvgjsDefs1139"></defs>
+            <g id="SvgjsG1140">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width={width} height={height}>
+                    <path
+                        style={{ transform: 'scale(1.143)', transformOrigin: 'center' }}
+                        d="M16 2C8.269 2 2 8.269 2 16s6.269 14 14 14 14-6.269 14-14S23.731 2 16 2zm0 26C9.383 28 4 22.617 4 16S9.383 4 16 4s12 5.383 12 12-5.383 12-12 12z"
+                        fill="#999999"
+                    ></path>
+                    <path
+                        style={{ transform: 'scale(0.85)', transformOrigin: 'center' }}
+                        d="M11 11h4v10h-4zm6 0h4v10h-4z"
+                        fill="#999999"
+                    ></path>
+                </svg>
+            </g>
+        </svg>
+    );
+};
+
+export const PlayIcon = ({ width = 48, height = 48 }) => {
+    return (
+        <svg
+            id="SvgjsSvg1060"
+            width={width}
+            height={height}
+            xmlns="http://www.w3.org/2000/svg"
+            version="1.1"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            xmlnssvgjs="http://svgjs.com/svgjs"
+        >
+            <defs id="SvgjsDefs1061"></defs>
+            <g id="SvgjsG1062">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width={width} height={height}>
+                    <path
+                        strokeWidth={0.1}
+                        stroke="#999999"
+                        fill="#999999"
+                        d="M8 1c3.9 0 7 3.1 7 7s-3.1 7-7 7-7-3.1-7-7 3.1-7 7-7zm0-1C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z"
+                        className="color444 svgShape"
+                    ></path>
+                    <path
+                        style={{ transform: 'scale(0.6)', transformOrigin: 'center' }}
+                        fill="#999999"
+                        d="M6 4v8l6-4z"
+                        className="color444 svgShape"
+                    ></path>
+                </svg>
+            </g>
+        </svg>
+    );
+};
+
+export const PreviousIcon = ({ width = 24, height = 24 }) => {
+    return (
+        <svg
+            fill="#999999"
+            width={width}
+            height={height}
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            stroke="#999999"
+        >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+
+            <g id="SVGRepo_iconCarrier">
+                <path d="m16 7-7 5 7 5zm-7 5V7H7v10h2z" />
+            </g>
+        </svg>
+    );
+};
+
+export const NextIcon = ({ width = 24, height = 24 }) => {
+    return (
+        <svg
+            style={{ transform: 'scale(-1, 1)' }} // Flip the icon horizontally
+            fill="#999999"
+            width={width}
+            height={height}
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            stroke="#999999"
+        >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+
+            <g id="SVGRepo_iconCarrier">
+                <path d="m16 7-7 5 7 5zm-7 5V7H7v10h2z" />
             </g>
         </svg>
     );

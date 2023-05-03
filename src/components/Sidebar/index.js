@@ -1,5 +1,5 @@
-import { AlbumIcon, ArtistIcon, PlaylistIcon, RecentIcon, SongIcon, UploadIcon } from '../../icons';
-
+import { AddIcon, AlbumIcon, ArtistIcon, PlaylistIcon, RecentIcon, SongIcon, StarIcon, UploadIcon } from '../../icons';
+import ToolTip from '@tippyjs/react';
 function Sidebar() {
     return (
         <aside className="osx-sidebar">
@@ -104,13 +104,21 @@ function Sidebar() {
                 <nav className="osx-navbar osx-navbar-main">
                     <div className="osx-navbar-title">
                         <span>Playlists</span>
-                        <i className="icon ic-add-playlist"></i>
+                        <ToolTip content="Create new playlist">
+                            <button className="osx-btn is-hover-circle">
+                                <i className="icon">
+                                    <AddIcon />
+                                </i>
+                            </button>
+                        </ToolTip>
                     </div>
                     <ul className="osx-navbar-menu">
                         <li className="osx-navbar-item">
                             <div className="osx-navbar-item-wrapper">
                                 <a className="osx-navbar-type" href="/">
-                                    <i className="icon ic-star"></i>
+                                    <i className="icon">
+                                        <StarIcon />
+                                    </i>
                                     <span>Starred</span>
                                 </a>
                             </div>

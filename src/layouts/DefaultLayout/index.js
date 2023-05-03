@@ -1,3 +1,4 @@
+import NowPlayingBar from '../../components/NowPlayingBar';
 import Sidebar from '../../components/Sidebar';
 
 function DefaultLayout({ children }) {
@@ -5,6 +6,7 @@ function DefaultLayout({ children }) {
         <div className="osx-layout">
             <Sidebar />
             {children}
+            <NowPlayingBar />
         </div>
     );
 }

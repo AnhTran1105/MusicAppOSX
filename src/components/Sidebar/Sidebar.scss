@@ -17,7 +17,7 @@
             .osx-navbar-title {
                 font-size: 14px;
                 text-transform: uppercase;
-                color: var(--secondary-text-color);
+                color: var(--text-secondary);
                 font-weight: 700;
                 padding: 0px 40px;
                 margin-bottom: 16px;
@@ -25,8 +25,14 @@
                 justify-content: space-between;
                 align-items: center;
 
-                .icon {
-                    font-size: 20px;
+                .osx-btn {
+                    display: flex;
+                    align-items: center;
+                    padding: 5px;
+
+                    .icon {
+                        font-size: 20px;
+                    }
                 }
             }
 
@@ -99,9 +105,9 @@
         }
 
         .is-active {
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.2);
             background-color: var(--hover-bg);
-            color: var(--primary-text-color) !important;
+            color: var(--text-primary) !important;
         }
     }
 }
@@ -113,7 +119,7 @@
 
     &::after {
         content: '';
-        border-top: 1px solid var(--secondary-text-color);
+        border-top: 1px solid var(--text-secondary);
         position: absolute;
         left: 25px;
         right: 25px;
@@ -125,6 +131,7 @@
     overflow-y: scroll;
 
     .playlist-item {
+        font-size: 13px;
         padding: 6px 40px;
     }
 }
