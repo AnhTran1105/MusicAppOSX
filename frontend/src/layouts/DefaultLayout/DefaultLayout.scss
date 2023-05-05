@@ -1,0 +1,12 @@
+.osx-layout.has-player {
+    height: calc(100vh - 90px);
+}
+
+.osx-layout {
+    display: -moz-flex;
+    display: flex;
+    width: 100%;
+    min-width: 768px;
+    height: 100vh;
+    background-color: var(--bg);
+}

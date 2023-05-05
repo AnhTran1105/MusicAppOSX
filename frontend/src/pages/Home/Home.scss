@@ -1,0 +1,22 @@
+.osx-mainpage {
+    -moz-flex-grow: 1;
+    flex-grow: 1;
+    -ms-flex-positive: 1;
+    position: relative;
+    width: calc(100% - 570px);
+    min-height: 100%;
+    transition: margin-right 0.4s;
+}
+.osx-box {
+    display: block;
+}
+
+main.osx-section {
+    padding: 0 var(--padding-section);
+    margin: 0 auto;
+}
+
+main.osx-section > .container {
+    min-height: calc(100% - 158px);
+    margin-top: 70px;
+}
