@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Playlist from '../../sections/Playlist';
 
 const Home = () => {
     const [data, setData] = useState(null);
@@ -10,13 +11,7 @@ const Home = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('https://spotify23.p.rapidapi.com/tracks/', {
-                params: { ids: '4WNcduiCmDNfmTEz7JvmLv' },
-                headers: {
-                    'X-RapidAPI-Key': '669b3a58ddmsh6c08f304c816a2fp1be6dbjsn6a0d15230b08',
-                    'X-RapidAPI-Host': 'spotify23.p.rapidapi.com',
-                },
-            });
+            const response = await axios.get('http://localhost:8000/playlist_tracks/');
             setData(response.data);
         } catch (error) {
             console.error(error);
@@ -38,7 +33,8 @@ const Home = () => {
                     }}
                 >
                     <div className="container">
-                        {data ? (
+                        <Playlist />
+                        {/* {data ? (
                             <ul>
                                 {data.tracks.map((track) => (
                                     <li key={track.id}>{track.name}</li>
@@ -46,7 +42,7 @@ const Home = () => {
                             </ul>
                         ) : (
                             <p>Loading...</p>
-                        )}
+                        )} */}
                     </div>
                 </main>
             </div>

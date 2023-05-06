@@ -2,6 +2,8 @@
 @import '../components/NowPlayingBar/NowPlayingBar.scss';
 @import '../pages/Home/Home.scss';
 @import '../layouts/DefaultLayout/DefaultLayout.scss';
+@import '../components/Header/Header.scss';
+@import '../sections/Playlist/Playlist.scss';
 
 * {
     text-rendering: optimizeLegibility;
@@ -148,9 +150,9 @@ body ::-webkit-scrollbar-thumb {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
-// figure {
-//     // background-color: var(--loading-bg);
-// }
+figure {
+    background-color: var(--loading-bg);
+}
 
 button,
 input,
@@ -218,6 +220,87 @@ li {
             }
         }
     }
+}
+
+*:focus {
+    outline: none;
+}
+
+.osx-section-title.title {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.osx-carousel,
+.osx-carousel-wrapper {
+    position: relative;
+}
+
+.osx-carousel {
+    display: flex;
+    margin: 0 -15px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: hidden;
+}
+
+.osx-carousel__container {
+    display: flex;
+    z-index: 3;
+    width: 100%;
+}
+
+.osx-carousel-item {
+    position: relative;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.osx-carousel-animation-active,
+.osx-carousel-item {
+    transition: transform 0.3s ease 0.1s;
+}
+
+.osx-carousel-item {
+    .osx-card {
+        width: 100%;
+    }
+}
+
+.osx-card {
+    max-width: 100%;
+    position: relative;
+}
+
+.osx-card-image {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 13px 15px;
+
+    figure {
+        line-height: 0;
+        height: 0;
+        padding-bottom: 100%;
+        overflow: hidden;
+    }
+
+    img {
+        transition: transform 0.7s;
+    }
+}
+
+.channel-section {
+    margin-top: 48px;
+}
+
+.title.is-2 {
+    font-size: 20px;
 }
 
 .container {
