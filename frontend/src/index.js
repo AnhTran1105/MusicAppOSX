@@ -4,14 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Styles from './styles';
+import { SongProvider } from './store/SongContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <Styles>
-            {' '}
-            <App />
-        </Styles>
+        <SongProvider>
+            <Styles>
+                {' '}
+                <App />
+            </Styles>
+        </SongProvider>
     </React.StrictMode>,
 );
 

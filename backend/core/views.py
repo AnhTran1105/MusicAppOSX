@@ -1,33 +1,76 @@
-import requests
-from django.http import JsonResponse
+from api.controller import zing_controller
 
 
-def getTrack(request):
-    url = "https://spotify23.p.rapidapi.com/tracks/"
-    querystring = {"ids": "4WNcduiCmDNfmTEz7JvmLv"}
-    headers = {
-        "X-RapidAPI-Key": "669b3a58ddmsh6c08f304c816a2fp1be6dbjsn6a0d15230b08",
-        "X-RapidAPI-Host": "spotify23.p.rapidapi.com"
-    }
-    response = requests.get(url, headers=headers, params=querystring)
-    data = response.json()
-
-    return JsonResponse(data, safe=False)
+def get_song(request):
+    data = zing_controller.getSong(request)
+    return data
 
 
-def getPlaylistTracks(request):
-    url = "https://spotify23.p.rapidapi.com/playlist_tracks/"
+def get_detail_playlist(request):
+    data = zing_controller.getDetailPlaylist(request)
+    return data
 
-    querystring = {"id": "37i9dQZF1DX4Wsb4d7NKfP",
-                   "offset": "0", "limit": "100"}
 
-    headers = {
-        "X-RapidAPI-Key": "669b3a58ddmsh6c08f304c816a2fp1be6dbjsn6a0d15230b08",
-        "X-RapidAPI-Host": "spotify23.p.rapidapi.com"
-    }
+def get_home(request):
+    data = zing_controller.getHome(request)
+    return data
 
-    response = requests.get(url, headers=headers, params=querystring)
 
-    data = response.json()
+def get_top100(request):
+    data = zing_controller.getTop100(request)
+    return data
 
-    return JsonResponse(data, safe=False)
+
+def get_chart_home(request):
+    data = zing_controller.getChartHome(request)
+    return data
+
+
+def get_new_release_chart(request):
+    data = zing_controller.getNewReleaseChart(request)
+    return data
+
+
+def get_info_song(request):
+    data = zing_controller.getInfoSong(request)
+    return data
+
+
+def get_artist(request):
+    data = zing_controller.getArtist(request)
+    return data
+
+
+def get_artist_song(request):
+    data = zing_controller.getArtistSong(request)
+    return data
+
+
+def get_lyric(request):
+    data = zing_controller.getLyric(request)
+    return data
+
+
+def get_lyric(request):
+    data = zing_controller.getLyric(request)
+    return data
+
+
+def search(request):
+    data = zing_controller.search(request)
+    return data
+
+
+def get_list_mv(request):
+    data = zing_controller.getListMV(request)
+    return data
+
+
+def get_category_mv(request):
+    data = zing_controller.getCategoryMV(request)
+    return data
+
+
+def get_video(request):
+    data = zing_controller.getVideo(request)
+    return data

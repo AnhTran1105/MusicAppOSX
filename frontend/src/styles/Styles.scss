@@ -4,6 +4,8 @@
 @import '../layouts/DefaultLayout/DefaultLayout.scss';
 @import '../components/Header/Header.scss';
 @import '../sections/Playlist/Playlist.scss';
+@import '../sections/Banner/Banner.scss';
+@import '../sections/NewRelease/NewRelease.scss';
 
 * {
     text-rendering: optimizeLegibility;
@@ -200,6 +202,11 @@ ul {
 //     }
 // }
 
+a.active,
+a:hover {
+    color: var(--link-text-hover);
+}
+
 ol,
 p,
 ul {
@@ -226,11 +233,209 @@ li {
     outline: none;
 }
 
+.osx-card-image.active .opacity,
+.osx-card-image.active .osx-actions,
+.osx-card-image:hover .opacity,
+.osx-card-image:hover .osx-actions {
+    visibility: visible;
+}
+
+.opacity {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--dark-alpha-50);
+    visibility: hidden;
+}
+
+.osx-card-image.active .opacity,
+.osx-card-image.active .osx-actions,
+.osx-card-image:hover .opacity,
+.osx-card-image:hover .osx-actions {
+    visibility: visible;
+}
+
+.media-item.active,
+.media-item.focus,
+.media-item:hover {
+    background-color: var(--alpha-bg);
+}
+
+.media-item.active .opacity,
+.media-item.active .osx-actions,
+.media-item.focus .opacity,
+.media-item.focus .osx-actions,
+.media-item:hover .opacity,
+.media-item:hover .osx-actions {
+    visibility: visible;
+}
+
+.playlist-wrapper .osx-actions {
+    height: 50px;
+}
+.playlist-actions {
+    width: 100%;
+    justify-content: space-evenly;
+}
+.osx-actions {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    z-index: 98;
+    transform: translateX(-50%) translateY(-50%);
+    display: -moz-flex;
+    display: flex;
+    -moz-justify-content: space-around;
+    -ms-justify-content: space-around;
+    -o-justify-content: space-around;
+    justify-content: space-around;
+    -ms-flex-pack: distribute;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+    -ms-flex-align: center;
+    visibility: hidden;
+    width: 80%;
+    z-index: 97;
+}
+
+.osx-actions-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.playlist-wrapper .osx-btn {
+    line-height: 0;
+}
+
+.playlist-wrapper .osx-tooltip-btn .icon {
+    font-size: 20px;
+}
+.osx-tooltip-btn .icon {
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 50%;
+}
+.osx-actions .icon {
+    color: var(--white);
+}
+
+.animation-like.active .icon:last-child {
+    opacity: 0;
+    visibility: visible;
+    transform: translateY(-80px);
+    pointer-events: none;
+}
+.playlist-wrapper .osx-tooltip-btn .icon {
+    font-size: 20px;
+}
+.animation-like .icon:last-child {
+    transition: all 0.5s;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    opacity: 1;
+}
+.icon.ic-20-Bookmarked,
+.icon.ic-like-full {
+    color: var(--purple-primary) !important;
+}
+
+.osx-actions .osx-tooltip-btn {
+    font-size: 20px;
+}
+
+.osx-carousel-control-next,
+.osx-carousel-control-prev {
+    border: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 0;
+    text-align: center;
+    padding: 0;
+    position: absolute;
+    left: auto;
+    top: -38px;
+    cursor: pointer;
+}
+
+.osx-actions.artist-actions .icon.action-play,
+.osx-actions.playlist-actions .icon.action-play,
+.osx-actions.video-actions .icon.action-play {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fff;
+    border-radius: 50%;
+}
+.icon.ic-svg-play-circle {
+    background-image: url(https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.9.31/static/media/play.81e7696e.svg);
+}
+
+.icon.ic-my-upload,
+.icon.ic-svg-checked,
+.icon.ic-svg-close,
+.icon.ic-svg-close-white,
+.icon.ic-svg-dics-music-icon,
+.icon.ic-svg-music-icon,
+.icon.ic-svg-pause-outline,
+.icon.ic-svg-play,
+.icon.ic-svg-play-block,
+.icon.ic-svg-play-circle,
+.icon.ic-svg-play-outline,
+.icon.ic-svg-video-icon,
+.icon.ic-svg-vip-account,
+.icon.ic-svg-zing-choice {
+    shape-rendering: optimizeSpeed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+}
+
 .osx-section-title.title {
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.title .icon.ic-go-right {
+    position: relative;
+    top: 2px;
+    font-size: 18px;
+    color: inherit;
+}
+
+.osx-section .discovery-btn {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+
+    .icon {
+        font-size: 16px;
+        top: 0;
+        margin-left: 6px;
+    }
+}
+
+.osx-section .discovery-btn:hover {
+    color: var(--link-text-hover);
 }
 
 .osx-carousel,
@@ -276,12 +481,182 @@ li {
     position: relative;
 }
 
+.osx-actions .osx-tooltip-btn:hover {
+    background-color: var(--hover-tooltip-opacity);
+}
+.osx-btn.active:hover,
+.osx-btn:hover {
+    -webkit-filter: brightness(0.9);
+    filter: brightness(0.9);
+}
+
+.osx-new-release-section .columns {
+    min-height: 190px;
+}
+
+.osx-new-release-section .columns {
+    height: 321px;
+}
+
+.media-item {
+    border-radius: 4px;
+}
+
+.media-item.full-left .media-left {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.media-item .media-left .song-thumb .osx-btn {
+    font-size: 18px;
+    line-height: 0;
+    height: 18px;
+}
+
+.media-left .song-thumb + .card-info {
+    overflow: hidden;
+}
+
+.media-item .media-left .title-wrapper .title {
+    display: flex;
+    align-items: center;
+    flex: 1 1;
+}
+
+.media-item .media-left .subtitle {
+    line-height: 1.33;
+}
+
+.osx-new-release-section .media-left .time-release {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-top: 3px;
+    white-space: nowrap;
+}
+
+.osx-new-release-section .media-item .media-right .hover-items .level-item {
+    display: none;
+}
+
+.media-item .media-right .is-hover-circle {
+    line-height: 0;
+    padding: 6px;
+    margin: 0 4px;
+}
+
+.media-item .media-right .icon {
+    color: var(--song-item-action);
+}
+
+.media-item.hide-right .media-right .action-items .ic-like,
+.media-item.hide-right .media-right .hover-items {
+    display: none;
+}
+
+.media-item.hide-right:hover .hover-items {
+    display: block;
+}
+
+.media-item .media-left {
+    display: flex;
+    width: 50%;
+}
+
+.title-wrapper .icon {
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+
+.media .title {
+    font-weight: 500;
+    vertical-align: top;
+}
+
+.media-item.is-vip .album-info,
+.media-item.is-vip .media-left .subtitle,
+.media-item.is-vip .media-left .title,
+.media-item.pre-release .album-info,
+.media-item.pre-release .media-left .subtitle,
+.media-item.pre-release .media-left .title,
+.media-item.ww-blocked .album-info,
+.media-item.ww-blocked .media-left .subtitle,
+.media-item.ww-blocked .media-left .title {
+    opacity: 0.5;
+}
+
+.media-item .media-left .title-wrapper {
+    max-width: 100%;
+}
+
+.media .card-info {
+    display: -moz-flex;
+    display: flex;
+    -moz-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+}
+
+.media-item .media-left .song-thumb {
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+.media-left .song-thumb {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.column {
+    display: block;
+    flex-shrink: 1;
+    padding: 0 15px;
+}
+
+.columns {
+    display: -moz-flex;
+    display: flex;
+    -webkit-box-lines: multiple;
+    -moz-box-lines: multiple;
+    box-lines: multiple;
+    flex-wrap: wrap;
+    position: relative;
+    margin: 0 -15px;
+}
+
+.osx-new-release-section .media-item .media-right .action-items {
+    display: none;
+}
+
+.media-item .media-right .duration {
+    font-size: 12px;
+    width: 46px;
+    color: var(--song-item-action);
+}
+
+.osx-new-release-section .duration {
+    visibility: hidden;
+}
+
 .osx-card-image {
     display: block;
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 13px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 15px;
+
+    &:hover {
+        cursor: pointer;
+
+        img {
+            transform: scale(1.1) translateZ(0);
+        }
+    }
 
     figure {
         line-height: 0;
@@ -437,14 +812,6 @@ li {
     .title {
         line-height: 1.3;
         text-transform: none;
-    }
-}
-
-.osx-tooltip-btn {
-    .icon {
-        font-size: 16px;
-        padding: 5px;
-        border-radius: 50%;
     }
 }
 
@@ -625,7 +992,7 @@ li {
     padding: 3px;
 
     &:hover {
-        background-color: var(--hover-bg-ic);
+        background-color: var(--alpha-bg);
     }
 }
 

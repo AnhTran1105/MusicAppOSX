@@ -62,7 +62,7 @@ function NowPlayingBar() {
                                     <div className="level-item">
                                         <ToolTip content="Add to favourites">
                                             <button
-                                                className="osx-btn osx-tooltip-btn animation-like osx-disable-transition active is-hover-circle button"
+                                                className="osx-btn osx-tooltip-btn osx-disable-transition active is-hover-circle button"
                                                 tabIndex="0"
                                             >
                                                 <i className="icon">
