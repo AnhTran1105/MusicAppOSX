@@ -74,10 +74,3 @@ def get_category_mv(request):
 def get_video(request):
     data = zing_controller.getVideo(request)
     return data
-
-class Notes(models.Model):
-    title = models.CharField(max_length=60)
-    content = models.CharField(max_length=120)
-
-    def __str__(self):
-        return self.title
