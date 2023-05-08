@@ -1,12 +1,14 @@
 /* eslint-disable react/jsx-no-target-blank */
 // import { handlePlay } from '~/components/Controls/handlePlay';
-import { Fragment, useContext } from 'react';
-import { SongContext } from '../../store/SongContext';
+import { Fragment } from 'react';
+import { useStore, actions } from '../../store';
 import usePortal from 'react-cool-portal';
 import ToolTip from '@tippyjs/react';
 
 function SongThumb({ imgSize, src, alt, songId, isVip }) {
-    const context = useContext(SongContext);
+    // eslint-disable-next-line no-unused-vars
+    const [state, dispatch] = useStore();
+
     const { Portal, show, hide } = usePortal({
         defaultShow: false, // The default visibility of portal, default is true
     });
@@ -16,13 +18,13 @@ function SongThumb({ imgSize, src, alt, songId, isVip }) {
             <div
                 onClick={() => {
                     if (!isVip) {
-                        context.setSongId(songId);
+                        dispatch(actions.setSongId(songId));
                     } else {
                         show();
                     }
                 }}
                 className="song-thumb"
-                style={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 8px 15px' }}
+                style={{ boxShadow: 'rgba(0, 0, 0, 0.45) 0px 8px 15px' }}
             >
                 <figure className={`image is-${imgSize}`}>
                     <img src={src} alt={alt} />

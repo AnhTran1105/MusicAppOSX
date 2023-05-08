@@ -3,6 +3,7 @@ import { publicRoutes } from './routes';
 import { DefaultLayout } from './layouts';
 import { Fragment } from 'react';
 import './App.css';
+import Player from './components/Player';
 
 function App() {
     return (
@@ -32,6 +33,10 @@ function App() {
                         );
                     })}
                 </Routes>
+                <Player />
+                <Player />
+                <ul id="osx-notify-list"></ul>
+                <div id="osx_Popup"></div>
             </div>
         </Router>
     );

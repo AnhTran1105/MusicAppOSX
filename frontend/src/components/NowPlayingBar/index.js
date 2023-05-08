@@ -1,17 +1,98 @@
-import {
-    KaraokeIcon,
-    NextIcon,
-    // PauseIcon,
-    PlayIcon,
-    PreviousIcon,
-    RepeatIcon,
-    ShuffleIcon,
-    StarIcon,
-    VolumeDownIcon,
-} from '../../icons';
+import { KaraokeIcon, StarIcon, VolumeDownIcon } from '../../icons';
+import { useState, useEffect } from 'react';
 import ToolTip from '@tippyjs/react';
+import SongController from '../SongController';
+import { useStore, actions } from '../../store';
+import axios from '../../utils/axios';
+import Skeleton from 'react-loading-skeleton';
+import { Fragment } from 'react';
 
+let audio;
 function NowPlayingBar() {
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [currentTime, setCurrentTime] = useState(0);
+    const [duration, setDuration] = useState(240);
+    const [songData, setSongData] = useState(null);
+    const [songSrc, setSongSrc] = useState(null);
+
+    const [state, dispatch] = useStore();
+    const songId = state.songId;
+
+    useEffect(() => {
+        if (songId) {
+            (async () => {
+                try {
+                    audio = document.querySelector('.--z--player audio');
+                    const data = await getInfoSong(songId);
+                    const src = await getSong(songId);
+                    audio.setAttribute('src', src[128]);
+                    audio.play();
+                    setSongData(data);
+                    setSongSrc(src);
+                } catch (error) {
+                    console.error('Error fetching song info and song source:', error);
+                }
+            })();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [songId]);
+
+    const getSong = async (songId) => {
+        try {
+            const response = await axios.get(`get-song/?id=${songId}`);
+            return response;
+            // Xử lý dữ liệu nhận được từ server ở đây
+        } catch (error) {
+            // Xử lý lỗi nếu có
+            console.error(error);
+        }
+    };
+
+    const getInfoSong = async (songId) => {
+        try {
+            const response = await axios.get('get-info-song/', {
+                params: {
+                    id: songId,
+                },
+            });
+            return response;
+            // Xử lý dữ liệu nhận được từ server ở đây
+        } catch (error) {
+            // Xử lý lỗi nếu có
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        if (audio) {
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                audio.play();
+            }
+        }
+    }, [isPlaying]);
+
+    const handlePlayPause = () => {
+        setIsPlaying(!isPlaying);
+    };
+
+    // Xử lý sự kiện khi nhấn nút Next
+    const handleNext = () => {
+        // Thực hiện logic chuyển bài hát kế tiếp
+    };
+
+    // Xử lý sự kiện khi nhấn nút Previous
+    const handlePrevious = () => {
+        // Thực hiện logic chuyển bài hát trước đó
+    };
+
+    // Xử lý sự kiện khi tua bài hát
+    const handleSeek = (seekTime) => {
+        setCurrentTime(seekTime);
+        // Thực hiện logic tua bài hát tới thời gian seekTime
+    };
+
     return (
         <div className="now-playing-bar">
             <div className="player-controls clickable">
@@ -23,10 +104,7 @@ function NowPlayingBar() {
                                     <div className="thumbnail-wrapper">
                                         <div className="thumbnail">
                                             <figure className="image">
-                                                <img
-                                                    src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/7/2/c/1/72c11a35e2237178c7eaf4f5ce079a31.jpg"
-                                                    alt=""
-                                                />
+                                                {songData ? <img src={songData.thumbnailM} alt="" /> : <Skeleton />}
                                             </figure>
                                         </div>
                                     </div>
@@ -36,25 +114,35 @@ function NowPlayingBar() {
                                 <div className="is-mark level-left">
                                     <div className="song-info-wrapper">
                                         <span className="song-title-item">
-                                            <a
-                                                className=""
-                                                href="/bai-hat/dua-em-ve-nhaa-GREY-D-Chillies/Z69FIDW9.html"
-                                            >
+                                            <a className="" href={songData ? songData.link : ''}>
                                                 <div className="title-wrapper">
-                                                    <span className="item-title title">đưa em về nhàa</span>
+                                                    <span className="item-title title">
+                                                        {songData ? songData.title : <Skeleton />}
+                                                    </span>
                                                 </div>
                                             </a>
                                         </span>
                                     </div>
                                 </div>
                                 <h3 className="is-one-line is-truncate subtitle">
-                                    <a className="is-ghost" href="/GREY-D-Doan-The-Lan">
-                                        GREY D
-                                    </a>
-                                    ,{' '}
-                                    <a className="is-ghost" href="/Chillies-IW6ZF687">
-                                        Chillies
-                                    </a>
+                                    {songData ? (
+                                        songData.artists.map((artist, i) =>
+                                            i === songData.artists.length - 1 ? (
+                                                <a key={i} className="is-ghost" href={artist.link}>
+                                                    {artist.name}
+                                                </a>
+                                            ) : (
+                                                <Fragment key={i}>
+                                                    <a className="is-ghost" href={artist.link}>
+                                                        {artist.name}
+                                                    </a>
+                                                    ,{' '}
+                                                </Fragment>
+                                            ),
+                                        )
+                                    ) : (
+                                        <Skeleton />
+                                    )}
                                 </h3>
                             </div>
                             <div className="media-right">
@@ -85,83 +173,15 @@ function NowPlayingBar() {
                             </div>
                         </div>
                     </div>
-                    <div className="player-controls__player-bar level-center">
-                        <div className="level-item">
-                            <div className="actions">
-                                <ToolTip content="Shuffle playlist">
-                                    <button
-                                        className="osx-btn osx-tooltip-btn btn-shuffle is-hover-circle button"
-                                        tabIndex="0"
-                                        style={{ margin: '0 24px' }}
-                                    >
-                                        <i className="icon">
-                                            <ShuffleIcon />
-                                        </i>
-                                    </button>
-                                </ToolTip>
-                                <ToolTip content="Previous song">
-                                    <button
-                                        className="osx-btn osx-tooltip-btn btn-pre is-hover-circle button"
-                                        tabIndex="0"
-                                    >
-                                        <i className="icon">
-                                            <PreviousIcon />
-                                        </i>
-                                    </button>
-                                </ToolTip>
-                                <button className="osx-btn osx-tooltip-btn btn-play button" tabIndex="0">
-                                    <i className="icon">
-                                        {/* <PauseIcon /> */}
-                                        <PlayIcon />
-                                    </i>
-                                </button>
-                                <button
-                                    className="osx-btn osx-tooltip-btn btn-next is-hover-circle button"
-                                    tabIndex="0"
-                                >
-                                    <i className="icon">
-                                        <NextIcon />
-                                    </i>
-                                </button>
-                                <ToolTip content="Put song on repeat">
-                                    <button
-                                        className="osx-btn osx-tooltip-btn btn-repeat is-hover-circle button"
-                                        tabIndex="0"
-                                        style={{ margin: '0 26px' }}
-                                    >
-                                        <i className="icon">
-                                            <RepeatIcon />
-                                        </i>
-                                    </button>
-                                </ToolTip>
-                            </div>
-                        </div>
-                        <div className="level-item">
-                            <span className="time left">01:07</span>
-                            <div className="osx-duration-bar">
-                                <div
-                                    className="osx-slider-bar"
-                                    style={{
-                                        background:
-                                            'linear-gradient(to right, var(--progressbar-active-bg) 0%, var(--progressbar-active-bg) 28.0354%, var(--progressbar-player-bg) 28.0354%, var(--progressbar-player-bg) 100%)',
-                                        alignSelf: 'center',
-                                    }}
-                                >
-                                    <div
-                                        tabIndex="0"
-                                        aria-valuemax="240.039184"
-                                        aria-valuemin="0"
-                                        aria-valuenow="67.295891"
-                                        draggable="false"
-                                        role="slider"
-                                        className="osx-slider-handle"
-                                        // style="border-radius: 50%; background-color: var(--progressbar-active-bg); transform: translate(131.927px, -3.5px);"
-                                    ></div>
-                                </div>
-                            </div>
-                            <span className="time right">04:00</span>
-                        </div>
-                    </div>
+                    <SongController
+                        isPlaying={isPlaying}
+                        onPlayPause={handlePlayPause}
+                        onNext={handleNext}
+                        onPrevious={handlePrevious}
+                        onSeek={handleSeek}
+                        currentTime={currentTime}
+                        duration={duration}
+                    />
                     <div className="player-controls-right level-right">
                         <div className="level-item is-narrow">
                             <ToolTip content="Watch MV">

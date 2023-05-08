@@ -298,7 +298,7 @@ export const KaraokeIcon = ({ width = 16, height = 16 }) => {
     );
 };
 
-export const ShuffleIcon = ({ width = 26, height = 26 }) => {
+export const ShuffleIcon = ({ width = 26, height = 26, color = '#999999' }) => {
     return (
         <svg
             width={width}
@@ -318,22 +318,22 @@ export const ShuffleIcon = ({ width = 26, height = 26 }) => {
                     fillRule="evenodd"
                     clipRule="evenodd"
                     d="M10.7663 9.52375L6.23375 5L5 6.23375L9.52375 10.7575L10.7663 9.52375ZM14.1875 5L15.9725 6.785L5 17.7663L6.23375 19L17.215 8.0275L19 9.8125V5H14.1875ZM13.2425 14.4675L14.4763 13.2337L17.215 15.9725L19 14.1875V19H14.1875L15.9813 17.2062L13.2425 14.4675Z"
-                    fill="#999999"
+                    fill={color}
                 />
             </g>
         </svg>
     );
 };
 
-export const RepeatIcon = ({ width = 24, height = 24 }) => {
+export const RepeatIcon = ({ width = 24, height = 24, color = '#999999' }) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill="#999999"
+            fill={color}
             width={width}
             height={height}
             viewBox="0 0 24 24"
-            stroke="#999999"
+            stroke={color}
             strokeWidth="0.00024000000000000003"
         >
             <g id="SVGRepo_bgCarrier" strokeWidth="0" />
