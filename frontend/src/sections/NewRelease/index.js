@@ -56,7 +56,7 @@ function NewRelease({ songData, songSrc, typeLength }) {
             <h3 className="osx-section-title title is-2">
                 Mới phát hành
                 <a className="discovery-btn" href="/new-release/song?filter=all">
-                    Tất cả <i className="icon ic-go-right"></i>
+                    Show all <i className="icon ic-go-right"></i>
                 </a>
             </h3>
             <div className="genre-select">

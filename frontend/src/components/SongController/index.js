@@ -1,23 +1,59 @@
 import ToolTip from '@tippyjs/react';
 import { NextIcon, PauseIcon, PlayIcon, PreviousIcon, RepeatIcon, ShuffleIcon } from '../../icons';
+import { FormatTime } from '../../utils/FormatTime';
+import { useEffect, useRef, useState } from 'react';
 
-function SongController({
-    isPlaying,
-    onPlayPause,
-    onNext,
-    onPrevious,
-    onSeek,
-    onShuffle,
-    onRepeat,
-    currentTime,
-    duration,
-}) {
-    const handleSeek = (event) => {
-        const seekTime = parseFloat(event.target.value);
-        onSeek(seekTime);
+let audio;
+function SongController({ isPlaying, onPlayPause, onNext, onPrevious, onSeek, currentTime, onShuffle, duration }) {
+    const [progress, setProgress] = useState(0);
+    const [isDragging, setIsDragging] = useState(false);
+    const progressBarRef = useRef(null);
+    const [isRepeating, setRepeating] = useState(false);
+    const [isShuffling, setShuffling] = useState(false);
+
+    const handleDragStart = () => {
+        setIsDragging(true);
     };
 
-    const progress = (currentTime / duration) * 100;
+    const handleDragEnd = () => {
+        setIsDragging(false);
+    };
+
+    const handleSeek = (event) => {
+        // Lấy vị trí x của sự kiện tua bài hát trong thanh duration bar
+        const seekPositionX = event.clientX;
+
+        // Lấy vị trí x của thanh duration bar
+        const progressBarX = event.target.getBoundingClientRect().left;
+
+        // Tính toán phần trăm tiến độ mới dựa trên vị trí tua bài hát
+        const newProgress = ((seekPositionX - progressBarX) / event.target.offsetWidth) * 100;
+
+        // Cập nhật giá trị progress và currentTime
+        setProgress(newProgress);
+        currentTime = (duration / 100) * newProgress;
+        audio.currentTime = currentTime;
+    };
+
+    useEffect(() => {
+        audio = document.querySelector('.--z--player audio');
+    }, []);
+
+    useEffect(() => {
+        setProgress((currentTime / duration) * 100);
+    }, [currentTime, duration]);
+
+    useEffect(() => {
+        if (audio) {
+            audio.onended = () => {
+                if (isRepeating) {
+                    audio.currentTime = 0;
+                    audio.play();
+                }
+            };
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isRepeating, isShuffling]);
 
     return (
         <div className="player-controls__player-bar level-center">
@@ -28,10 +64,10 @@ function SongController({
                             className="osx-btn osx-tooltip-btn btn-shuffle is-hover-circle button"
                             tabIndex="0"
                             style={{ margin: '0 24px' }}
-                            onClick={onShuffle}
+                            onClick={() => setShuffling(!isShuffling)}
                         >
                             <i className="icon">
-                                <ShuffleIcon color={onShuffle ? '#f55874' : '#999999'} />
+                                <ShuffleIcon color={isShuffling ? '#f55874' : '#999999'} />
                             </i>
                         </button>
                     </ToolTip>
@@ -51,7 +87,7 @@ function SongController({
                         onClick={onPlayPause}
                         tabIndex="0"
                     >
-                        <i className="icon">{isPlaying ? <PlayIcon /> : <PauseIcon />}</i>
+                        <i className="icon">{isPlaying ? <PauseIcon /> : <PlayIcon />}</i>
                     </button>
                     <button
                         className="osx-btn osx-tooltip-btn btn-next is-hover-circle button"
@@ -67,42 +103,40 @@ function SongController({
                             className="osx-btn osx-tooltip-btn btn-repeat is-hover-circle button"
                             tabIndex="0"
                             style={{ margin: '0 26px' }}
-                            onClick={onRepeat}
+                            onClick={() => setRepeating(!isRepeating)}
                         >
                             <i className="icon">
-                                <RepeatIcon color={onRepeat ? '#f55874' : '#999999'} />
+                                <RepeatIcon color={isRepeating ? '#f55874' : '#999999'} />
                             </i>
                         </button>
                     </ToolTip>
                 </div>
             </div>
             <div className="level-item">
-                <span className="time left">01:07</span>
-                <div className="osx-duration-bar">
+                <span className="time left">{FormatTime(currentTime)}</span>
+                <div className="osx-duration-bar" onClick={handleSeek} onMouseDown={(e) => e.preventDefault()}>
                     <div
                         className="osx-slider-bar"
                         style={{
                             background: `linear-gradient(to right, var(--progressbar-active-bg) 0%, var(--progressbar-active-bg) ${progress}%, var(--progressbar-player-bg) ${progress}%, var(--progressbar-player-bg) 100%)`,
                             alignSelf: 'center',
                         }}
+                        ref={progressBarRef}
                     >
                         <div
-                            tabIndex="0"
-                            aria-valuemax={duration}
-                            aria-valuemin="0"
-                            aria-valuenow={currentTime}
-                            draggable="false"
-                            role="slider"
                             className="osx-slider-handle"
+                            onMouseDown={handleDragStart}
+                            onMouseUp={handleDragEnd}
                             style={{
+                                transform: `translate(${(progress * 483.5) / 100}px, -3.5px)`,
                                 borderRadius: '50%',
                                 backgroundColor: 'var(--progressbar-active-bg)',
-                                transform: `translateX(${progress}%)`,
                             }}
                         ></div>
                     </div>
                 </div>
-                <span className="time right">04:00</span>
+
+                <span className="time right">{FormatTime(duration)}</span>
             </div>
         </div>
     );

@@ -4,7 +4,7 @@ import Header from '../../components/Header';
 
 function DefaultLayout({ children }) {
     return (
-        <div className="osx-layout has-player">
+        <div className="osx-layout">
             <Header />
             <Sidebar />
             {children}

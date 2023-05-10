@@ -235,8 +235,454 @@ li {
     }
 }
 
+.osx-btn[disabled] {
+    box-shadow: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 *:focus {
     outline: none;
+}
+
+.is-idle .fs-header .action-group,
+.is-idle .fs-header .tabs,
+.is-idle .fs-media-list .arrow-btn,
+.is-idle .fs-media-list .osx-card:not(.active),
+.is-idle .player-controls,
+.is-idle .osx-text-transition {
+    // opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.fs-background {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    .video-blur-image {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+    }
+}
+
+.fs-nowplaying {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+
+    .fs-bottom {
+        .osx-text-transition-item {
+            .artist {
+                color: hsla(0, 0%, 100%, 0.5);
+            }
+        }
+    }
+
+    .fs-content {
+        display: flex;
+        flex-direction: column;
+        height: calc(100% - 90px);
+        position: relative;
+        top: 0;
+        z-index: 1;
+
+        .fs-body {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1;
+            overflow: hidden;
+        }
+    }
+}
+
+.fs-lyric {
+    height: 100%;
+    position: relative;
+    margin-bottom: 20px;
+
+    .scroll-content {
+        max-height: 500px;
+        overflow: hidden auto;
+        text-align: center;
+        position: relative;
+        mask-image: linear-gradient(
+            180deg,
+            hsla(0, 0%, 100%, 0),
+            hsla(0, 0%, 100%, 0.8) 10%,
+            #fff 25%,
+            #fff 75%,
+            hsla(0, 0%, 100%, 0.8) 90%,
+            hsla(0, 0%, 100%, 0)
+        );
+
+        .item.is-over {
+            color: hsla(0, 0%, 100%, 0.5);
+        }
+
+        .item {
+            color: var(--white);
+            font-weight: 700;
+            font-size: inherit;
+            line-height: inherit;
+            line-height: 1.2;
+            padding: 15px 0;
+        }
+    }
+
+    .is-size-M {
+        .scroll-content {
+            font-size: 42px;
+
+            .item {
+                padding: 20px 0;
+                letter-spacing: -1px;
+            }
+
+            .item.is-active {
+                color: #ffed00;
+            }
+        }
+    }
+
+    .song-item {
+        width: 500px;
+        max-width: 80%;
+        margin-right: 50px;
+
+        .cover {
+            border-radius: 4px;
+            overflow: hidden;
+            width: 100%;
+            margin-bottom: 16px;
+            position: relative;
+
+            .image {
+                width: 100%;
+                line-height: 0;
+            }
+        }
+    }
+
+    .columns {
+        height: 100%;
+        flex-direction: column;
+    }
+
+    .is-fullhd-7 {
+        flex: 1 1;
+        height: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.fs-background {
+    overflow: hidden;
+    background-color: var(--primary-bg);
+
+    .image-effect {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        opacity: 0.5;
+    }
+
+    .video-blur-image {
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+
+    .overlay {
+        height: 100%;
+        width: 100%;
+        background-color: var(--alpha-layout-bg);
+        position: absolute;
+    }
+}
+
+.image-effect {
+    overflow: hidden;
+    height: 500px;
+    position: relative;
+
+    li {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        transform: scale(1.1);
+
+        img {
+            object-fit: cover;
+            object-position: center center;
+            height: 100%;
+        }
+    }
+
+    li.exit {
+        z-index: 1;
+        opacity: 0;
+        -webkit-animation: animateExit 5s linear;
+        animation: animateExit 5s linear;
+        -webkit-animation-play-state: paused;
+        animation-play-state: paused;
+    }
+
+    li.enter {
+        -webkit-animation: animateEnter 10s linear;
+        animation: animateEnter 10s linear;
+        -webkit-animation-play-state: paused;
+        animation-play-state: paused;
+    }
+}
+
+.image-effect.is-play {
+    li.enter,
+    li.exit {
+        -webkit-animation-play-state: running;
+        animation-play-state: running;
+    }
+}
+
+.fs-header {
+    padding: 20px;
+    position: relative;
+
+    .action-group {
+        position: absolute;
+        right: 10px;
+        top: 17px;
+
+        .setting-btn {
+            .menu {
+                position: absolute;
+                top: 70px;
+                right: -20px;
+                z-index: 1;
+
+                .menu-list {
+                    width: 270px;
+                    background-color: #292929;
+                    padding: 15px 0;
+                    border-radius: 8px;
+
+                    li {
+                        font-weight: 500;
+                        text-align: right;
+
+                        .size-btn {
+                            justify-content: space-between;
+
+                            .sizes {
+                                display: flex;
+                                align-items: center;
+
+                                .osx-btn:first-child {
+                                    font-size: 10px;
+                                }
+
+                                .osx-btn:last-child {
+                                    font-size: 14px;
+                                }
+
+                                .osx-btn.active {
+                                    background-color: var(--purple-primary);
+                                    color: var(--white);
+                                }
+
+                                .osx-btn {
+                                    height: 25px;
+                                    width: 25px;
+                                    padding: 4px;
+                                    margin: 0 0 0 10px;
+                                    font-weight: 500;
+                                    font-size: 12px;
+                                    justify-content: center;
+                                    background-color: var(--alpha-bg);
+                                }
+                            }
+                        }
+
+                        .osx-tg-btn {
+                            justify-content: space-between;
+
+                            .icon {
+                                margin: 0 0 0 10px;
+                            }
+                        }
+
+                        > .osx-btn {
+                            height: 40px;
+                            align-items: center;
+                            padding-right: 15px;
+                            color: var(--white);
+                        }
+                    }
+                }
+            }
+        }
+
+        > .level-item {
+            margin-right: 15px !important;
+
+            .setting-btn > .osx-btn,
+            > .osx-btn {
+                padding: 8px;
+                background-color: var(--kara-btn-bg);
+                line-height: 0;
+                color: var(--white);
+
+                .icon {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+
+    .tabs {
+        background-color: hsla(0, 0%, 100%, 0.1);
+        border-radius: 999px;
+
+        .tab-item {
+            font-size: 16px;
+            color: hsla(0, 0%, 100%, 0.5);
+            padding: 7px 50px;
+            font-weight: 700;
+        }
+
+        .tab-item.is-active {
+            background-color: hsla(0, 0%, 100%, 0.1);
+            border-radius: 999px;
+            color: var(--white);
+        }
+    }
+
+    .zmp3-logo {
+        width: 45px;
+        height: 45px;
+        background-image: url(https://zjs.zmdcdn.me/zmp3-desktop/dev/119956/static/media/icon_zing_mp3_60.f6b51045.svg);
+        flex: 1 1;
+    }
+
+    .left {
+        opacity: 0;
+        position: absolute;
+        top: 15px;
+        display: flex;
+        font-size: 12px;
+        align-items: center;
+        max-width: 50%;
+    }
+}
+
+.tabs {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    background-color: var(--alpha-bg);
+    border-radius: 15px;
+    padding: 3px;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    margin: auto;
+    position: relative;
+
+    .tab-item.is-active {
+        border-radius: 15px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+        background-color: var(--white);
+    }
+
+    .tab-item.is-active,
+    .tab-item:hover {
+        color: var(--text-item-hover);
+    }
+
+    .tab-item {
+        padding: 5px 20px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1;
+    }
+}
+
+.is-idle {
+    .fs-header {
+        .left {
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+    }
+}
+
+.osx-text-transition {
+    width: 400px;
+    margin: auto;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    color: var(--white);
+}
+
+.player-controls.opac {
+    --player-text: #fff;
+    background-color: transparent;
+    background-image: none;
+    cursor: default;
+}
+
+.player-controls.opac .player-controls__container {
+    background-color: transparent;
+    border-color: transparent;
+    background: none;
+    display: flex;
+    justify-content: center;
+}
+
+.player-controls.opac .player-controls__container .player-controls__player-bar {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.player-controls.opac .player-controls__container .player-controls-left,
+.player-controls.opac .player-controls__container .player-controls-right {
+    display: none;
+}
+
+.osx-text-transition {
+    width: 400px;
+    margin: auto;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    color: var(--white);
+}
+
+.osx-text-transition-item {
+    padding: 0 5px;
 }
 
 .osx-portal {

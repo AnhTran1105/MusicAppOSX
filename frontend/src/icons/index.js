@@ -350,7 +350,7 @@ export const RepeatIcon = ({ width = 24, height = 24, color = '#999999' }) => {
 export const PauseIcon = ({ width = 48, height = 48 }) => {
     return (
         <svg
-            id="SvgjsSvg1138"
+            id="SvgjsSvg1060"
             width={width}
             height={height}
             xmlns="http://www.w3.org/2000/svg"
@@ -358,16 +358,18 @@ export const PauseIcon = ({ width = 48, height = 48 }) => {
             xmlnsXlink="http://www.w3.org/1999/xlink"
             xmlnssvgjs="http://svgjs.com/svgjs"
         >
-            <defs id="SvgjsDefs1139"></defs>
-            <g id="SvgjsG1140">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width={width} height={height}>
+            <defs id="SvgjsDefs1061"></defs>
+            <g id="SvgjsG1062">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width={width} height={height}>
                     <path
-                        style={{ transform: 'scale(1.143)', transformOrigin: 'center' }}
-                        d="M16 2C8.269 2 2 8.269 2 16s6.269 14 14 14 14-6.269 14-14S23.731 2 16 2zm0 26C9.383 28 4 22.617 4 16S9.383 4 16 4s12 5.383 12 12-5.383 12-12 12z"
+                        strokeWidth={0.1}
+                        stroke="#999999"
                         fill="#999999"
+                        d="M8 1c3.9 0 7 3.1 7 7s-3.1 7-7 7-7-3.1-7-7 3.1-7 7-7zm0-1C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z"
+                        className="color444 svgShape"
                     ></path>
                     <path
-                        style={{ transform: 'scale(0.85)', transformOrigin: 'center' }}
+                        style={{ transform: 'scale(0.45) translate(-8px, -7.5px)', transformOrigin: 'center' }}
                         d="M11 11h4v10h-4zm6 0h4v10h-4z"
                         fill="#999999"
                     ></path>

@@ -43,7 +43,8 @@ class ZingController:
         return JsonResponse(data)
 
     def getLyric(self, req):
-        data = ZingMp3.getLyric(req.GET['id'])
+        song_id = req.GET.get('id')
+        data = ZingMp3.getLyric(song_id)
         return JsonResponse(data)
 
     def search(self, req):
