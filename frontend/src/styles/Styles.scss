@@ -6,6 +6,7 @@
 @import '../sections/Playlist/Playlist.scss';
 @import '../sections/Banner/Banner.scss';
 @import '../sections/NewRelease/NewRelease.scss';
+@import '../pages/AlbumDetail/AlbumDetail.scss';
 
 * {
     text-rendering: optimizeLegibility;
@@ -243,6 +244,88 @@ li {
 
 *:focus {
     outline: none;
+}
+
+.checkbox,
+.checkbox input {
+    cursor: pointer;
+    position: relative;
+}
+.checkbox {
+    line-height: 1.25;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+.osx-btn.is-outlined.active {
+    background-color: var(--purple-primary);
+    border-color: var(--purple-primary);
+    color: var(--white);
+}
+
+.osx-btn.is-medium {
+    font-size: 14px;
+    padding: 9px 24px;
+
+    .icon {
+        font-size: 16px;
+        margin-right: 5px;
+    }
+}
+
+.osx-dropdown {
+    position: relative;
+
+    .osx-dropdown-content {
+        opacity: 0;
+        visibility: hidden;
+        padding: 5px;
+        border-radius: 8px;
+        background-color: var(--primary-bg);
+        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+        width: -webkit-max-content;
+        width: -moz-max-content;
+        width: max-content;
+        min-width: 100%;
+        position: absolute;
+        z-index: 99;
+        top: calc(100% + 10px);
+        left: 0;
+
+        &:before {
+            content: '';
+            clear: both;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid var(--primary-bg);
+            position: absolute;
+            left: 15px;
+            top: -8px;
+        }
+    }
+}
+
+.osx-dropdown-list-item {
+    font-size: 12px;
+    border-radius: 4px;
+    line-height: 1;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.osx-btn.is-outlined {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    background-color: var(--alpha-bg);
+    border: 1px solid var(--border-primary);
+    color: var(--text-primary);
+    margin: 0 auto;
 }
 
 .is-idle .fs-header .action-group,
@@ -1651,6 +1734,10 @@ h3.title {
     }
 }
 
+.playlist-header {
+    padding: 0 0 30px;
+}
+
 .media-left {
     margin-right: 16px;
 }
@@ -1864,6 +1951,10 @@ h3.title {
     &:hover {
         background-color: var(--alpha-bg);
     }
+}
+
+.bor-b-1 {
+    border-bottom: 1px solid var(--border-secondary);
 }
 
 .is-oneline {

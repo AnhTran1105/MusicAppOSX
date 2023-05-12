@@ -116,6 +116,10 @@ function NowPlayingBar() {
         // Thực hiện logic tua bài hát tới thời gian seekTime
     };
 
+    const changeLyricsShowing = () => {
+        setLyricsShowing(false);
+    };
+
     if (isBusy) {
         return null;
     } else {
@@ -129,6 +133,9 @@ function NowPlayingBar() {
                         title={songData.title}
                         artists={songData.artists}
                         thumbnail={songData.thumbnailM}
+                        onLyricsShowing={changeLyricsShowing}
+                        nowplayingbarRef={nowplayingbarRef}
+                        playerControlsRef={playerControlsRef}
                     />
                 )}
                 <div ref={playerControlsRef} className="player-controls clickable">

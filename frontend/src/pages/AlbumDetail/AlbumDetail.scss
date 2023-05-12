@@ -1,0 +1,226 @@
+.clearfix:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.playlist-detail-container {
+    padding-top: 20px;
+
+    .description {
+        font-size: 14px;
+        margin-bottom: 10px;
+        color: var(--text-primary);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        white-space: normal;
+    }
+
+    .bottom-info {
+        .playlist-songs-info {
+            margin-top: 16px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 18px;
+
+            span {
+                &:first-child {
+                    margin-right: 8px;
+                }
+
+                &:last-child {
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+}
+
+.header-thumbnail {
+    .osx-card-image {
+        transition: border-radius 2s ease-out;
+        border-radius: 8px;
+        overflow: visible;
+        overflow: initial;
+
+        .z-thumb {
+            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border-radius: 8px;
+            overflow: hidden !important;
+        }
+    }
+
+    .opacity {
+        border-radius: 8px;
+    }
+
+    .opacity,
+    .osx-actions {
+        visibility: hidden !important;
+    }
+
+    .osx-actions {
+        .osx-btn {
+            display: flex;
+        }
+    }
+}
+
+.playlist-actions {
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.playlist-header {
+    .media-content {
+        display: flex;
+        flex-direction: column;
+        align-self: normal;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .content-top {
+            width: 100%;
+
+            .title {
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 1.5;
+                margin-bottom: 0;
+                text-transform: none;
+                width: 100%;
+            }
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+
+            .btn-play-all {
+                display: flex;
+                align-items: center;
+                margin-right: 10px;
+            }
+
+            .level {
+                justify-content: center;
+            }
+
+            .osx-tooltip-btn.osx-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 35px;
+                height: 35px;
+                background-color: var(--alpha-bg);
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.playlist-header .media-content .content-top .artists,
+.playlist-header .media-content .content-top .created-by,
+.playlist-header .media-content .content-top .like,
+.playlist-header .media-content .content-top .release {
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.75;
+}
+
+.header-thumbnail.active .opacity,
+.header-thumbnail.active .osx-actions,
+.header-thumbnail:hover .opacity,
+.header-thumbnail:hover .osx-actions {
+    visibility: visible !important;
+}
+
+.song-list-select {
+    .select-header {
+        border-bottom: 1px solid var(--border-secondary);
+        height: 46px;
+
+        .media-left {
+            width: 50%;
+        }
+
+        .media-content {
+            margin-left: -10px;
+        }
+
+        .sort-wrapper {
+            display: flex;
+            align-items: center;
+
+            .osx-dropdown-trigger-btn {
+                line-height: 1;
+            }
+
+            .osx-btn {
+                font-size: 16px;
+                color: var(--song-item-action);
+            }
+
+            .osx-dropdown-content {
+                &:before {
+                    left: 6px;
+                }
+            }
+        }
+
+        .column-text {
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+    }
+}
+
+.song-list-select {
+    .select-item {
+        display: flex;
+        position: relative;
+
+        .checkbox-wrapper {
+            cursor: pointer;
+            position: absolute;
+            width: 34px;
+            height: 34px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-50%);
+            top: 50%;
+        }
+
+        .checkbox {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .media-item {
+            max-width: 100%;
+            flex-grow: 1;
+
+            .song-prefix {
+                .icon {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .checkbox {
+        input {
+            border-color: var(--border-box);
+            border-radius: 3px;
+            margin: 0;
+            padding: 6px;
+        }
+    }
+}

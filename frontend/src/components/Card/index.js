@@ -1,10 +1,12 @@
 import ToolTip from '@tippyjs/react';
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
+
 function Card({ imgSize, imgSrc, title, href, sortDescription, cardTitle, artists }) {
     return (
         <div className="osx-card">
             <div>
-                <a className="" title={title} href={href}>
+                <Link className="" title={title} to={href}>
                     <div className="osx-card-image">
                         <figure className={`image is-${imgSize}`}>
                             <img src={imgSrc} alt="" />
@@ -32,7 +34,7 @@ function Card({ imgSize, imgSrc, title, href, sortDescription, cardTitle, artist
                             </div>
                         </div>
                     </div>
-                </a>
+                </Link>
             </div>
             <div className="osx-card-content">
                 {cardTitle ? (

@@ -4,7 +4,7 @@ import ToolTip from '@tippyjs/react';
 import Tippy from '@tippyjs/react/headless';
 import SwitchOff from '../../SwitchOff';
 
-function Lyrics({ lyrics, title, artists, thumbnail }) {
+function Lyrics({ lyrics, title, artists, thumbnail, nowplayingbarRef, playerControlsRef, onLyricsShowing }) {
     const sentences = lyrics.sentences;
     const audio = document.querySelector('.--z--player audio');
     const lyricsListRef = useRef(null);
@@ -181,7 +181,15 @@ function Lyrics({ lyrics, title, artists, thumbnail }) {
                         </div>
                         <div className="level-item">
                             <ToolTip content="Đóng">
-                                <button className="osx-btn osx-tooltip-btn is-hover-circle button" tabIndex="0">
+                                <button
+                                    className="osx-btn osx-tooltip-btn is-hover-circle button"
+                                    tabIndex="0"
+                                    onClick={() => {
+                                        nowplayingbarRef.current.classList.remove('is-idle');
+                                        playerControlsRef.current.classList.remove('opac');
+                                        onLyricsShowing(false);
+                                    }}
+                                >
                                     <i className="icon ic-go-down"></i>
                                 </button>
                             </ToolTip>
