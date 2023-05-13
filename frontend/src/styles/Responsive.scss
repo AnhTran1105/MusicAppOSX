@@ -148,6 +148,18 @@
     }
 }
 
+@media screen and (min-width: 1281px) {
+    .artist-home-content .top-section-container .latest-section {
+        flex: 0 0 33.33%;
+    }
+}
+
+@media screen and (min-width: 1281px) {
+    .artist-home-content .top-section-container .latest-section + .container {
+        width: 66.66%;
+    }
+}
+
 @media screen and (max-width: 1591px) {
     .player-queue {
         z-index: 2;

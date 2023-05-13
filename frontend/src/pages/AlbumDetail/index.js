@@ -3,8 +3,8 @@ import axios from '../../utils/axios';
 import { useState, useEffect } from 'react';
 import toDateString from '../../utils/toDateString';
 import ToolTip from '@tippyjs/react';
-import SongItem from './SongItem';
 import { Link } from 'react-router-dom';
+import SelectItem from './SelectItem';
 
 function AlbumDetail() {
     const [data, setData] = useState(null);
@@ -192,7 +192,7 @@ function AlbumDetail() {
                                         </div>
                                         <div>
                                             {data.song.items.map((item) => (
-                                                <SongItem key={item.encodeId} props={item} />
+                                                <SelectItem key={item.encodeId} props={item} />
                                             ))}
                                         </div>
                                     </div>

@@ -150,3 +150,142 @@
         color: #feffff;
     }
 }
+
+.artist-home-content {
+    .top-section-container {
+        display: flex;
+
+        .latest-section {
+            margin-right: 28px;
+
+            .media-blur {
+                overflow: hidden;
+                border-radius: 12px;
+
+                .cover-bg {
+                    background-repeat: no-repeat;
+                    background-position: 50%;
+                    background-size: cover;
+                    border-radius: 16px;
+                }
+
+                .gradient-layer {
+                    background: var(--gradient-latest-section-artist);
+                }
+
+                .blur-layer {
+                    background-color: var(--blur-layer-color);
+                    -webkit-backdrop-filter: blur(25px);
+                    backdrop-filter: blur(25px);
+                }
+            }
+
+            .media-blur,
+            .media-blur .blur-layer,
+            .media-blur .cover-bg,
+            .media-blur .gradient-layer {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 183px;
+            }
+
+            .playlist-wrapper {
+                border-radius: 12px;
+                padding: 16px;
+                position: relative;
+                z-index: 1;
+
+                .osx-card {
+                    display: flex;
+                }
+
+                .osx-card-image {
+                    width: 151px;
+                    height: 151px;
+                    border-radius: 6px;
+                }
+
+                .osx-card-content,
+                .osx-card-content {
+                    .title {
+                        margin-top: 12px;
+                        margin-bottom: 2px;
+                        font-size: 14px;
+                        font-weight: 600;
+                        color: var(--primary-text-color);
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        -webkit-box-orient: vertical;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        white-space: normal;
+                    }
+
+                    .subtitle {
+                        font-size: 12px;
+                        font-weight: 400;
+                        line-height: 18px;
+                        letter-spacing: 0.0025em;
+                        text-transform: capitalize;
+                        color: var(--secondary-text-color);
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        -webkit-box-orient: vertical;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        white-space: normal;
+                    }
+                }
+
+                .osx-card-content {
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: column;
+                    margin: 6px 0 6px 16px;
+
+                    span + span {
+                        margin-top: 2px;
+                    }
+
+                    .artist-name {
+                        .subtitle {
+                            margin-bottom: 12px;
+                        }
+                    }
+
+                    .subtitle a,
+                    a {
+                        display: inline;
+                        color: var(--secondary-text-color);
+                    }
+                }
+            }
+        }
+    }
+
+    .top-section-container:not(.show-album) > {
+        .container {
+            .media-item {
+                .media-left {
+                    width: calc(100% - 112px);
+                }
+
+                &:hover {
+                    .media-left {
+                        width: calc(100% - 158px);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.playlist-wrapper {
+    .osx-card-content {
+        .title {
+            text-transform: none;
+        }
+    }
+}
