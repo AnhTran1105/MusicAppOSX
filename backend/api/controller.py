@@ -34,7 +34,8 @@ class ZingController:
         return JsonResponse(data)
 
     def getArtist(self, req):
-        data = ZingMp3.getArtist(req.GET['name'])
+        artist_name = req.GET.get('name')
+        data = ZingMp3.getArtist(artist_name)
         return JsonResponse(data)
 
     def getArtistSong(self, req):

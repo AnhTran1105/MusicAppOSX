@@ -3,12 +3,13 @@ import axios from '../../utils/axios';
 import { useState, useEffect } from 'react';
 import toDateString from '../../utils/toDateString';
 import ToolTip from '@tippyjs/react';
+import SongItem from './SongItem';
+import { Link } from 'react-router-dom';
 
 function AlbumDetail() {
     const [data, setData] = useState(null);
     const { albumId } = useParams();
     const [isBusy, setBusy] = useState(true);
-    console.log('album');
 
     useEffect(() => {
         if (albumId) {
@@ -95,9 +96,9 @@ function AlbumDetail() {
                                                 Cập nhật: {toDateString(data.contentLastUpdate)}
                                             </div>
                                             <div className="artists">
-                                                <a className="is-ghost" href={data.link}>
+                                                <Link className="is-ghost" to={data.link}>
                                                     {data.artistsNames}
-                                                </a>
+                                                </Link>
                                             </div>
                                             <div className="like">
                                                 {data.like >= 1000 ? Math.floor(data.like / 1000) : data.like} người yêu
@@ -188,6 +189,11 @@ function AlbumDetail() {
                                             <div className="media-right">
                                                 <div className="column-text"> Thời gian</div>
                                             </div>
+                                        </div>
+                                        <div>
+                                            {data.song.items.map((item) => (
+                                                <SongItem key={item.encodeId} props={item} />
+                                            ))}
                                         </div>
                                     </div>
                                     <div className="bottom-info">

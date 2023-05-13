@@ -5,6 +5,7 @@ import { Fragment } from 'react';
 import './App.css';
 import Player from './components/Player';
 import AlbumDetail from './pages/AlbumDetail';
+import Artist from './pages/Artist';
 
 function App() {
     return (
@@ -38,6 +39,14 @@ function App() {
                         element={
                             <DefaultLayout>
                                 <AlbumDetail />
+                            </DefaultLayout>
+                        }
+                    />
+                    <Route
+                        path="/:alias"
+                        element={
+                            <DefaultLayout>
+                                <Artist />
                             </DefaultLayout>
                         }
                     />

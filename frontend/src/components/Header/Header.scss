@@ -140,3 +140,138 @@
 .osx-header.is-sticky:not(.hide-sticky):before {
     bottom: 0;
 }
+
+.osx-header.is-add-overlay:before {
+    transition: bottom 0.3s;
+}
+
+.osx-header.is-add-overlay.hide-sticky:after,
+.osx-header.is-add-overlay:not(.is-sticky):after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(0deg, rgba(14, 19, 26, 0), #0e131a);
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.osx-header.is-add-overlay.hide-sticky .search__container.is-collapse .osx-btn .icon,
+.osx-header.is-add-overlay:not(.is-sticky) .search__container.is-collapse .osx-btn .icon {
+    color: var(--text-placeholder);
+}
+
+.osx-header.is-add-overlay.hide-sticky .level-left .osx-btn .icon,
+.osx-header.is-add-overlay:not(.is-sticky) .level-left .osx-btn .icon {
+    color: #d8d8d8;
+}
+
+.osx-header.is-add-overlay.hide-sticky .level-right .setting-item > .osx-btn,
+.osx-header.is-add-overlay:not(.is-sticky) .level-right .setting-item > .osx-btn {
+    background-color: rgba(254, 255, 255, 0.1);
+}
+
+.osx-header.is-add-overlay.hide-sticky .level-right .setting-item > .osx-btn .icon,
+.osx-header.is-add-overlay:not(.is-sticky) .level-right .setting-item > .osx-btn .icon {
+    color: #d8d8d8;
+}
+
+.osx-header.is-add-overlay.hide-sticky .search .search__container,
+.osx-header.is-add-overlay:not(.is-sticky) .search .search__container {
+    background-color: hsla(0, 0%, 100%, 0.1);
+}
+
+.osx-header.is-add-overlay.hide-sticky .search .search__container.is-collapse,
+.osx-header.is-add-overlay:not(.is-sticky) .search .search__container.is-collapse {
+    background-color: var(--primary-bg);
+}
+
+.osx-header.is-add-overlay.hide-sticky .search .search__container:not(.is-collapse) input::-webkit-input-placeholder,
+.osx-header.is-add-overlay:not(.is-sticky)
+    .search
+    .search__container:not(.is-collapse)
+    input::-webkit-input-placeholder {
+    font-size: 14px;
+    text-align: left;
+    color: #dadada !important;
+    font-weight: 400;
+}
+
+.osx-header.is-add-overlay.hide-sticky .search .search__container:not(.is-collapse) input::-webkit-input-placeholder,
+.osx-header.is-add-overlay.hide-sticky .search .search__container:not(.is-collapse) input::placeholder,
+.osx-header.is-add-overlay:not(.is-sticky)
+    .search
+    .search__container:not(.is-collapse)
+    input::-webkit-input-placeholder,
+.osx-header.is-add-overlay:not(.is-sticky) .search .search__container:not(.is-collapse) input::placeholder {
+    font-size: 14px;
+    text-align: left;
+    color: #dadada !important;
+    font-weight: 400;
+}
+
+.osx-header.is-add-overlay.hide-sticky .search .search__container:not(.is-collapse) input:-ms-input-placeholder,
+.osx-header.is-add-overlay:not(.is-sticky) .search .search__container:not(.is-collapse) input:-ms-input-placeholder {
+    font-size: 14px;
+    text-align: left;
+    color: #dadada !important;
+    font-weight: 400;
+}
+
+.osx-header.is-add-overlay.hide-sticky .search .search__container:not(.is-collapse) input:-moz-input-placeholder,
+.osx-header.is-add-overlay:not(.is-sticky) .search .search__container:not(.is-collapse) input:-moz-input-placeholder {
+    font-size: 14px;
+    text-align: left;
+    color: #dadada !important;
+    font-weight: 400;
+}
+
+.osx-header.is-add-overlay.hide-sticky .search .search__container:not(.is-collapse) textarea::-webkit-input-placeholder,
+.osx-header.is-add-overlay:not(.is-sticky)
+    .search
+    .search__container:not(.is-collapse)
+    textarea::-webkit-input-placeholder {
+    font-size: 14px;
+    text-align: left;
+    color: #dadada !important;
+    font-weight: 400;
+}
+
+.osx-header.is-add-overlay.hide-sticky .search .search__container:not(.is-collapse) textarea::-webkit-input-placeholder,
+.osx-header.is-add-overlay.hide-sticky .search .search__container:not(.is-collapse) textarea::placeholder,
+.osx-header.is-add-overlay:not(.is-sticky)
+    .search
+    .search__container:not(.is-collapse)
+    textarea::-webkit-input-placeholder,
+.osx-header.is-add-overlay:not(.is-sticky) .search .search__container:not(.is-collapse) textarea::placeholder {
+    font-size: 14px;
+    text-align: left;
+    color: #dadada !important;
+    font-weight: 400;
+}
+
+.osx-header.is-add-overlay.hide-sticky .search .search__container:not(.is-collapse) textarea:-ms-input-placeholder,
+.osx-header.is-add-overlay:not(.is-sticky) .search .search__container:not(.is-collapse) textarea:-ms-input-placeholder {
+    font-size: 14px;
+    text-align: left;
+    color: #dadada !important;
+    font-weight: 400;
+}
+
+.osx-header.is-add-overlay.hide-sticky .search .search__container:not(.is-collapse) textarea:-moz-input-placeholder,
+.osx-header.is-add-overlay:not(.is-sticky)
+    .search
+    .search__container:not(.is-collapse)
+    textarea:-moz-input-placeholder {
+    font-size: 14px;
+    text-align: left;
+    color: #dadada !important;
+    font-weight: 400;
+}
+
+.osx-header.is-add-overlay.hide-sticky .search .search__container:not(.is-collapse) input,
+.osx-header.is-add-overlay:not(.is-sticky) .search .search__container:not(.is-collapse) input {
+    color: #eee;
+}

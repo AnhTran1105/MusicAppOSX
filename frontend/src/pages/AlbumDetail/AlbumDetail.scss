@@ -224,3 +224,29 @@
         }
     }
 }
+
+.song-list-select {
+    .select-item.is-selected {
+        .media-item {
+            .card-info .artist-names,
+            .card-info .sutitle,
+            .card-info .title,
+            .card-info a,
+            .media-right .icon,
+            .song-duration,
+            .title {
+                color: var(--text-primary);
+            }
+        }
+    }
+}
+
+.song-list-select .select-item.is-selected .checkbox-wrapper,
+.song-list-select .select-item:hover .checkbox-wrapper {
+    display: flex;
+}
+
+.song-list-select .select-item.is-selected .song-prefix,
+.song-list-select .select-item:hover .song-prefix {
+    visibility: hidden;
+}

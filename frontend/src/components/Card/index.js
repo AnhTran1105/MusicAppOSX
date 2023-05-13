@@ -58,14 +58,14 @@ function Card({ imgSize, imgSrc, title, href, sortDescription, cardTitle, artist
                                 <span>
                                     {artists.map((artist, i) =>
                                         i === artists.length - 1 ? (
-                                            <a key={i} className="is-ghost" href={artist.link}>
+                                            <Link key={i} className="is-ghost" to={artist.link}>
                                                 {artist.name}
-                                            </a>
+                                            </Link>
                                         ) : (
                                             <Fragment key={i}>
-                                                <a className="is-ghost" href={artist.link}>
+                                                <Link className="is-ghost" to={artist.link}>
                                                     {artist.name}
-                                                </a>
+                                                </Link>
                                                 ,{' '}
                                             </Fragment>
                                         ),

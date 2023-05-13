@@ -7,6 +7,7 @@ import ToolTip from '@tippyjs/react';
 import Tippy from '@tippyjs/react/headless';
 import SongThumb from '../../components/SongThumb';
 import { Moment } from '../../utils/Moment';
+import { Link } from 'react-router-dom';
 
 function NewRelease({ songData, songSrc, typeLength }) {
     const { Portal, show } = usePortal({
@@ -123,18 +124,18 @@ function NewRelease({ songData, songSrc, typeLength }) {
                                                           <h3 className="is-one-line is-truncate subtitle">
                                                               {item.artists.map((artist, i) =>
                                                                   i === item.artists.length - 1 ? (
-                                                                      <a
+                                                                      <Link
                                                                           key={i}
                                                                           className="is-ghost"
-                                                                          href={artist.link}
+                                                                          to={artist.link}
                                                                       >
                                                                           {artist.name}
-                                                                      </a>
+                                                                      </Link>
                                                                   ) : (
                                                                       <Fragment key={i}>
-                                                                          <a className="is-ghost" href={artist.link}>
+                                                                          <Link className="is-ghost" to={artist.link}>
                                                                               {artist.name}
-                                                                          </a>
+                                                                          </Link>
                                                                           ,{' '}
                                                                       </Fragment>
                                                                   ),
@@ -239,14 +240,14 @@ function NewRelease({ songData, songSrc, typeLength }) {
                                                         <div className="content">
                                                             {dataType[value].artists.map((artist, i) =>
                                                                 i === dataType[value].artists.length - 1 ? (
-                                                                    <a key={i} className="is-ghost" href={artist.link}>
+                                                                    <Link key={i} className="is-ghost" to={artist.link}>
                                                                         {artist.name}
-                                                                    </a>
+                                                                    </Link>
                                                                 ) : (
                                                                     <Fragment key={i}>
-                                                                        <a className="is-ghost" href={artist.link}>
+                                                                        <Link className="is-ghost" to={artist.link}>
                                                                             {artist.name}
-                                                                        </a>
+                                                                        </Link>
                                                                         ,{' '}
                                                                     </Fragment>
                                                                 ),

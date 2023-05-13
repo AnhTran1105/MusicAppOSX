@@ -2,6 +2,10 @@
     height: calc(100vh - 90px);
 }
 
+.osx-layout.hide-artist-image {
+    background-image: unset !important;
+}
+
 .osx-layout {
     display: -moz-flex;
     display: flex;

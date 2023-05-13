@@ -7,6 +7,7 @@
 @import '../sections/Banner/Banner.scss';
 @import '../sections/NewRelease/NewRelease.scss';
 @import '../pages/AlbumDetail/AlbumDetail.scss';
+@import '../pages/Artist/Artists.scss';
 
 * {
     text-rendering: optimizeLegibility;
@@ -251,6 +252,40 @@ li {
     cursor: pointer;
     position: relative;
 }
+
+.checkbox {
+    input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 999px;
+        border: 1px solid #a0a0a0;
+        padding: 8px;
+        margin-right: 6px;
+    }
+}
+
+.checkbox input:checked:after {
+    content: ' ';
+    border-left-color: #fff;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+    border-top-color: #fff;
+    height: 47%;
+    width: 20%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -63%) rotate(45deg);
+}
+
+.song-list-select .select-item.is-selected .checkbox input {
+    border-color: var(--white);
+}
+.song-list-select .checkbox input:checked {
+    background-color: var(--select-bg);
+}
+
 .checkbox {
     line-height: 1.25;
     display: flex;
@@ -1432,6 +1467,35 @@ li {
 
 .media-item {
     border-radius: 4px;
+
+    .album-info {
+        color: var(--song-item-action);
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 100%;
+
+        > span {
+            cursor: pointer;
+
+            &:hover {
+                color: var(--link-text-hover);
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .media-left {
+        .song-prefix {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            margin-right: 10px;
+            color: var(--song-item-action);
+            font-weight: 700;
+        }
+    }
 }
 
 .media-item.full-left .media-left {
@@ -1491,6 +1555,10 @@ li {
 
 .media-item.hide-right:hover .hover-items {
     display: block;
+}
+
+.media-item.hide-right:hover .action-items {
+    display: none;
 }
 
 .media-item .media-left {
