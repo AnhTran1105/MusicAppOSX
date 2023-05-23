@@ -1,0 +1,46 @@
+.osx-card--artist {
+    text-align: center;
+
+    .image-wrapper {
+        position: relative;
+    }
+
+    .osx-card-content {
+        min-height: 52px;
+
+        .title {
+            a {
+                margin-top: 15px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: block;
+                text-transform: none;
+            }
+        }
+
+        a {
+            text-align: center;
+        }
+    }
+
+    .opacity {
+        background-color: var(--dark-alpha-10);
+    }
+}
+
+.artist-home-content {
+    .artist-section {
+        .osx-card-footer {
+            .osx-btn {
+                margin-bottom: 0 !important;
+            }
+        }
+    }
+}
+
+.osx-actions.artist-actions {
+    .icon.action-play {
+        font-size: 24px;
+    }
+}

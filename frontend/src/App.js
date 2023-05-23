@@ -5,7 +5,7 @@ import { Fragment } from 'react';
 import './App.css';
 import Player from './components/Player';
 import AlbumDetail from './pages/AlbumDetail';
-import Artist from './pages/Artist';
+import ArtistDetail from './pages/ArtistDetail';
 
 function App() {
     return (
@@ -46,7 +46,7 @@ function App() {
                         path="/:alias"
                         element={
                             <DefaultLayout>
-                                <Artist />
+                                <ArtistDetail />
                             </DefaultLayout>
                         }
                     />

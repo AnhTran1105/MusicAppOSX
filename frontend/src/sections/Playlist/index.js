@@ -16,7 +16,7 @@ function Playlist({ props, sectionTitle, cardTitle, sectionLink }) {
                     {sectionTitle}
                     {sectionLink ? (
                         <a className="discovery-btn" href={sectionLink}>
-                            show all <i className="icon ic-go-right"></i>
+                            tất cả <i className="icon ic-go-right"></i>
                         </a>
                     ) : null}
                 </h3>

@@ -7,7 +7,8 @@
 @import '../sections/Banner/Banner.scss';
 @import '../sections/NewRelease/NewRelease.scss';
 @import '../pages/AlbumDetail/AlbumDetail.scss';
-@import '../pages/Artist/Artists.scss';
+@import '../pages/ArtistDetail/ArtistDetail.scss';
+@import '../sections/Artist/Artist.scss';
 
 * {
     text-rendering: optimizeLegibility;
@@ -305,6 +306,16 @@ li {
 
     .icon {
         font-size: 16px;
+        margin-right: 5px;
+    }
+}
+
+.osx-btn.is-small {
+    font-size: 12px;
+    padding: 6px 19px;
+
+    .icon {
+        font-size: 14px;
         margin-right: 5px;
     }
 }
@@ -1375,8 +1386,6 @@ li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: 600;
-    text-transform: capitalize;
 }
 
 .title .icon.ic-go-right {
