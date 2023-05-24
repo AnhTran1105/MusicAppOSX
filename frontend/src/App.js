@@ -50,6 +50,14 @@ function App() {
                             </DefaultLayout>
                         }
                     />
+                    <Route
+                        path="/nghe-si/:alias"
+                        element={
+                            <DefaultLayout>
+                                <ArtistDetail />
+                            </DefaultLayout>
+                        }
+                    />
                 </Routes>
                 <Player />
                 <Player />
