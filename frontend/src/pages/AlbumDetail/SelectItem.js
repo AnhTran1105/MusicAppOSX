@@ -1,6 +1,6 @@
 import SongItem from '../../components/SongItem/SongItem';
 
-function SelectItem() {
+function SelectItem({ props }) {
     return (
         <div className="select-item">
             <div className="checkbox-wrapper">
@@ -9,7 +9,7 @@ function SelectItem() {
                 </label>
             </div>
             <div className="list-item bor-b-1 media-item hide-right">
-                <SongItem />
+                <SongItem props={props} isContent={true} />
             </div>
         </div>
     );

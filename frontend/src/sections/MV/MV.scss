@@ -1,0 +1,25 @@
+.osx-card-image.video-image {
+    figure {
+        height: 0;
+        padding-bottom: 56.25%;
+    }
+}
+
+.video-item {
+    .osx-brand {
+        display: inline-block;
+        font-size: 12px;
+        line-height: normal;
+        color: #fff;
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        padding: 3px 5px;
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+}
+
+.osx-card-image + .media {
+    padding: 10px 0;
+}

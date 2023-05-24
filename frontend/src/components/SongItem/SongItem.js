@@ -16,7 +16,6 @@ function SongItem({ props, isSongPrefix = false, isContent = false }) {
                 ) : (
                     ''
                 )}
-
                 <div className="song-thumb">
                     <figure className="image is-40x40" title={props.title}>
                         <img src={props.thumbnail} alt="" />

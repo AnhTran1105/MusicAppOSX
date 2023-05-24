@@ -96,7 +96,7 @@ function AlbumDetail() {
                                                 Cập nhật: {toDateString(data.contentLastUpdate)}
                                             </div>
                                             <div className="artists">
-                                                <Link className="is-ghost" to={data.link}>
+                                                <Link className="is-ghost" to={data.artists[0].link}>
                                                     {data.artistsNames}
                                                 </Link>
                                             </div>

@@ -147,6 +147,7 @@ const Home = () => {
                             <p>Loading...</p>
                         )} */}
                     </div>
+                    <div id="osx_Player_Overlay" className="mar-b-30" style={{ bottom: '90px' }}></div>
                 </main>
             </div>
         </div>

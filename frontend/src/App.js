@@ -6,6 +6,7 @@ import './App.css';
 import Player from './components/Player';
 import AlbumDetail from './pages/AlbumDetail';
 import ArtistDetail from './pages/ArtistDetail';
+import ArtistSong from './pages/ArtistSong';
 
 function App() {
     return (
@@ -55,6 +56,22 @@ function App() {
                         element={
                             <DefaultLayout>
                                 <ArtistDetail />
+                            </DefaultLayout>
+                        }
+                    />
+                    <Route
+                        path="/:alias/bai-hat"
+                        element={
+                            <DefaultLayout>
+                                <ArtistSong />
+                            </DefaultLayout>
+                        }
+                    />
+                    <Route
+                        path="/nghe-si/:alias/bai-hat"
+                        element={
+                            <DefaultLayout>
+                                <ArtistSong />
                             </DefaultLayout>
                         }
                     />
