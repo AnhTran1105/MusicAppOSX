@@ -325,6 +325,34 @@ li {
 .osx-dropdown {
     position: relative;
 
+    .dropdown-button {
+        line-height: 1;
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+    }
+
+    .dropdown-name {
+        margin-right: 20px;
+    }
+
+    .osx-dropdown-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 999px;
+        background-color: var(--alpha-bg);
+        padding: 10px 15px;
+        line-height: 1;
+        font-size: 12px;
+        min-width: 120px;
+        color: var(--text-item-hover);
+
+        .icon {
+            font-size: 16px;
+        }
+    }
+
     .osx-dropdown-content {
         opacity: 0;
         visibility: hidden;
@@ -354,6 +382,11 @@ li {
             top: -8px;
         }
     }
+
+    .osx-dropdown-content.show {
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
 .osx-dropdown-list-item {
@@ -363,6 +396,11 @@ li {
     padding: 10px;
     text-align: left;
     cursor: pointer;
+
+    &:hover {
+        color: var(--text-item-hover);
+        background-color: var(--alpha-bg);
+    }
 }
 
 .osx-btn.is-outlined {
@@ -1359,6 +1397,7 @@ li {
     border: 1px solid #fff;
     border-radius: 50%;
 }
+
 .icon.ic-svg-play-circle {
     background-image: url(https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.9.31/static/media/play.81e7696e.svg);
 }
@@ -1711,6 +1750,23 @@ h3.title {
     margin: 0 auto;
     position: relative;
     width: 100%;
+}
+
+.artist-tab-title {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 70px;
+    margin-left: calc(var(--padding-section) * -1);
+    padding: 16px var(--padding-section);
+    width: calc(100% + var(--padding-section) * 2);
+}
+
+.artist-tab-title.is-sticky {
+    background-color: var(--layout-header-bg);
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 3px 5px var(--sticky-header-box-shadow);
+    z-index: 98;
 }
 
 .level {

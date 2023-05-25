@@ -22,7 +22,6 @@ function ArtistDetail() {
             (async () => {
                 try {
                     setData(await getArtist(alias));
-
                     setBusy(false);
                 } catch (error) {
                     console.error('Error fetching song info and song source:', error);

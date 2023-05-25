@@ -75,7 +75,9 @@ function SongItem({ props, isSongPrefix = false, isContent = false }) {
                     <div className="album-info">
                         <span>
                             <span>
-                                <span>{props.album ? props.album.title : ''}</span>
+                                <Link to={props.album ? props.album.link : ''}>
+                                    {props.album ? props.album.title : ''}
+                                </Link>
                             </span>
                             <span style={{ position: 'fixed', visibility: 'hidden', top: '0px', left: '0px' }}>…</span>
                         </span>
