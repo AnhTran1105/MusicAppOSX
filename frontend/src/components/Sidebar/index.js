@@ -8,7 +8,9 @@ function Sidebar() {
                     <div className="osx-navbar-brand">
                         <div className="osx-navbar-item">
                             <button className="osx-btn button">
-                                <div className="osx-logo"></div>
+                                <a href="/">
+                                    <div className="osx-logo"></div>
+                                </a>
                             </button>
                         </div>
                     </div>
@@ -25,7 +27,7 @@ function Sidebar() {
                         <li className="osx-navbar-item ">
                             <div className="osx-navbar-item-wrapper">
                                 <a className="osx-navbar-link is-active" href="/">
-                                    Browse
+                                    Discovery
                                 </a>
                             </div>
                         </li>
@@ -104,7 +106,7 @@ function Sidebar() {
                 <nav className="osx-navbar osx-navbar-main">
                     <div className="osx-navbar-title">
                         <span>Playlists</span>
-                        <ToolTip content="Create new playlist">
+                        <ToolTip content="Tạo playlist mới">
                             <button className="osx-btn is-hover-circle">
                                 <i className="icon">
                                     <AddIcon />

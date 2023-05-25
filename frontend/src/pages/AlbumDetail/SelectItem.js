@@ -1,6 +1,10 @@
 import SongItem from '../../components/SongItem/SongItem';
+import usePortal from 'react-cool-portal';
 
 function SelectItem({ props }) {
+    const { Portal, show } = usePortal({
+        defaultShow: false,
+    });
     return (
         <div className="select-item">
             <div className="checkbox-wrapper">
@@ -9,7 +13,7 @@ function SelectItem({ props }) {
                 </label>
             </div>
             <div className="list-item bor-b-1 media-item hide-right">
-                <SongItem props={props} isContent={true} />
+                <SongItem isSongPrefix={true} props={props} isContent={true} />
             </div>
         </div>
     );

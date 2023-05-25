@@ -192,7 +192,7 @@ function NowPlayingBar() {
                                 <div className="media-right">
                                     <div className="level">
                                         <div className="level-item">
-                                            <ToolTip content="Add to favourites">
+                                            <ToolTip content="Thêm vào thư viện">
                                                 <button
                                                     className="osx-btn osx-tooltip-btn osx-disable-transition active is-hover-circle button"
                                                     tabIndex="0"
@@ -672,7 +672,7 @@ function NowPlayingBar() {
                                                 )}
                                             >
                                                 <div className="level-item">
-                                                    <ToolTip content="More">
+                                                    <ToolTip content="Khác">
                                                         <button
                                                             onClick={() =>
                                                                 infoMenuVisible === 'hidden'
@@ -706,7 +706,7 @@ function NowPlayingBar() {
                         />
                         <div className="player-controls-right level-right">
                             <div className="level-item is-narrow">
-                                <ToolTip content="Watch MV">
+                                <ToolTip content="Xem MV">
                                     <button
                                         disabled={songData.mvlink ? false : true}
                                         className="osx-btn osx-tooltip-btn btn-mv is-hover-circle button"
@@ -717,7 +717,7 @@ function NowPlayingBar() {
                                 </ToolTip>
                             </div>
                             <div className="level-item is-narrow" style={{ padding: '2px' }}>
-                                <ToolTip content="View lyrics">
+                                <ToolTip content="Xem lời bài hát">
                                     <button
                                         className="osx-btn osx-tooltip-btn btn-mv is-hover-circle button"
                                         tabIndex="-1"

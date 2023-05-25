@@ -49,7 +49,9 @@ class ZingController:
         return JsonResponse(data)
 
     def search(self, req):
-        data = ZingMp3.search(req.GET['keyword'])
+        # Lấy tham số "keyword" hoặc trả về chuỗi rỗng nếu không tồn tại
+        keyword = req.GET.get('keyword')
+        data = ZingMp3.search(keyword)
         return JsonResponse(data)
 
     def getListMV(self, req):

@@ -5,6 +5,8 @@ import toDateString from '../../utils/toDateString';
 import ToolTip from '@tippyjs/react';
 import { Link } from 'react-router-dom';
 import SelectItem from './SelectItem';
+import { Fragment } from 'react';
+import PlaylistMenu from '../../components/PlaylistMenu';
 
 function AlbumDetail() {
     const [data, setData] = useState(null);
@@ -53,7 +55,7 @@ function AlbumDetail() {
                         marginBottom: '0px',
                     }}
                 >
-                    <div className="container pad-20">
+                    <div className="container pad-t-20">
                         <div className="container playlist-detail-container">
                             <div className="clearfix mar-b-30">
                                 <div className="media playlist-header sticky">
@@ -96,13 +98,24 @@ function AlbumDetail() {
                                                 Cập nhật: {toDateString(data.contentLastUpdate)}
                                             </div>
                                             <div className="artists">
-                                                <Link className="is-ghost" to={data.artists[0].link}>
-                                                    {data.artistsNames}
-                                                </Link>
+                                                {data.artists.map((artist, i) =>
+                                                    i === data.artists.length - 1 ? (
+                                                        <Link key={i} className="is-ghost" to={artist.link}>
+                                                            {artist.name}
+                                                        </Link>
+                                                    ) : (
+                                                        <Fragment key={i}>
+                                                            <Link className="is-ghost" to={artist.link}>
+                                                                {artist.name}
+                                                            </Link>
+                                                            ,{' '}
+                                                        </Fragment>
+                                                    ),
+                                                )}
                                             </div>
                                             <div className="like">
-                                                {data.like >= 1000 ? Math.floor(data.like / 1000) : data.like} người yêu
-                                                thích
+                                                {data.like >= 1000 ? Math.floor(data.like / 1000) + 'K' : data.like}{' '}
+                                                người yêu thích
                                             </div>
                                         </div>
                                         <div className="actions">
@@ -126,14 +139,7 @@ function AlbumDetail() {
                                                     </ToolTip>
                                                 </div>
                                                 <div className="level-item is-narrow">
-                                                    <ToolTip content="Khác">
-                                                        <button
-                                                            className="osx-btn osx-tooltip-btn is-hover-circle button"
-                                                            tabIndex="0"
-                                                        >
-                                                            <i className="icon ic-more"></i>
-                                                        </button>
-                                                    </ToolTip>
+                                                    <PlaylistMenu />
                                                 </div>
                                             </div>
                                         </div>

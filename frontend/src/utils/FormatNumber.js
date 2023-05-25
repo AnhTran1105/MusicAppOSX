@@ -2,6 +2,10 @@ function FormatNumber(number) {
     // Chuyển số thành chuỗi
     const strNumber = String(number);
 
+    if (strNumber.length <= 3) {
+        return strNumber; // Giữ nguyên số ban đầu
+    }
+
     // Tìm vị trí của dấu chấm phân cách hàng nghìn
     let dotIndex = strNumber.length - 3;
 

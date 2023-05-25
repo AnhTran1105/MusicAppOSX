@@ -55,7 +55,8 @@ function ArtistSong() {
         return null;
     }
 
-    document.querySelector('.osx-header').classList.remove('is-sticky');
+    const header = document.querySelector('.osx-header');
+    header.setAttribute('style', '--sticky-header-box-shadow: transparent');
 
     return (
         <div className="osx-box osx-mainpage">

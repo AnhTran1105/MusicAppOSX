@@ -2,9 +2,39 @@ import { FormatTime } from '../../utils/FormatTime';
 import { Fragment } from 'react';
 import ToolTip from '@tippyjs/react';
 import { Link } from 'react-router-dom';
+import axios from '../../utils/axios';
+import { useState, useEffect } from 'react';
+import MoreButton from '../SongMenu';
+import SongMenu from '../SongMenu';
 
 function SongItem({ props, isSongPrefix = false, isContent = false }) {
-    if (!props) return null;
+    const [songInfo, setSongInfo] = useState(null);
+    const [isBusy, setBusy] = useState(true);
+    const id = props.encodeId;
+
+    useEffect(() => {
+        (async () => {
+            try {
+                setSongInfo(await getSongInfo(id));
+                setBusy(false);
+            } catch (error) {
+                console.error('Error fetching song info and song source:', error);
+            }
+        })();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id]);
+    // if (!props) return null;
+
+    const getSongInfo = async (id) => {
+        try {
+            const response = await axios.get(`get-info-song/?id=${id}`);
+            return response;
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    if (isBusy) return null;
 
     return (
         <div className="media">
@@ -110,11 +140,7 @@ function SongItem({ props, isSongPrefix = false, isContent = false }) {
                             </ToolTip>
                         </div>
                         <div className="level-item">
-                            <ToolTip content="Khác">
-                                <button className="osx-btn osx-tooltip-btn is-hover-circle button" tabIndex="0">
-                                    <i className="icon ic-more"></i>
-                                </button>
-                            </ToolTip>
+                            <SongMenu props={songInfo} />
                         </div>
                     </div>
                 </div>

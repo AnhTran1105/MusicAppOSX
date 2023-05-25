@@ -57,7 +57,7 @@ function NewRelease({ songData, songSrc, typeLength }) {
             <h3 className="osx-section-title title is-2">
                 Mới phát hành
                 <a className="discovery-btn" href="/new-release/song?filter=all">
-                    Show all <i className="icon ic-go-right"></i>
+                    Tất cả <i className="icon ic-go-right"></i>
                 </a>
             </h3>
             <div className="genre-select">
@@ -175,7 +175,7 @@ function NewRelease({ songData, songSrc, typeLength }) {
                                                                   </button>
                                                               </div>
                                                               <div className="level-item">
-                                                                  <ToolTip content="More">
+                                                                  <ToolTip content="Khác">
                                                                       <button
                                                                           onClick={(e) => {
                                                                               setValue(e.target.getAttribute('value'));

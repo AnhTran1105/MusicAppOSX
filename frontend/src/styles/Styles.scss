@@ -414,6 +414,12 @@ li {
     margin: 0 auto;
 }
 
+.list-border {
+    .list-item {
+        border-bottom: 1px solid var(--border-secondary);
+    }
+}
+
 .is-idle .fs-header .action-group,
 .is-idle .fs-header .tabs,
 .is-idle .fs-media-list .arrow-btn,
@@ -1765,7 +1771,7 @@ h3.title {
     background-color: var(--layout-header-bg);
     -webkit-backdrop-filter: blur(50px);
     backdrop-filter: blur(50px);
-    box-shadow: 0 3px 5px var(--sticky-header-box-shadow);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.08);
     z-index: 98;
 }
 

@@ -59,7 +59,7 @@ function SongController({ isPlaying, onPlayPause, onNext, onPrevious, onSeek, cu
         <div className="player-controls__player-bar level-center">
             <div className="level-item">
                 <div className="actions">
-                    <ToolTip content="Shuffle playlist">
+                    <ToolTip content={isShuffling ? 'Tắt phát ngẫu nhiên' : 'Bật phát ngẫu nhiên'}>
                         <button
                             className="osx-btn osx-tooltip-btn btn-shuffle is-hover-circle button"
                             tabIndex="0"
@@ -71,7 +71,7 @@ function SongController({ isPlaying, onPlayPause, onNext, onPrevious, onSeek, cu
                             </i>
                         </button>
                     </ToolTip>
-                    <ToolTip content="Previous song">
+                    <ToolTip content="Bài trước">
                         <button
                             className="osx-btn osx-tooltip-btn btn-pre is-hover-circle button"
                             onClick={onPrevious}
@@ -98,7 +98,7 @@ function SongController({ isPlaying, onPlayPause, onNext, onPrevious, onSeek, cu
                             <NextIcon />
                         </i>
                     </button>
-                    <ToolTip content="Put song on repeat">
+                    <ToolTip content={isRepeating ? 'Tắt phát lại tất cả' : 'Bật phát lại tất cả'}>
                         <button
                             className="osx-btn osx-tooltip-btn btn-repeat is-hover-circle button"
                             tabIndex="0"
@@ -128,7 +128,7 @@ function SongController({ isPlaying, onPlayPause, onNext, onPrevious, onSeek, cu
                             onMouseDown={handleDragStart}
                             onMouseUp={handleDragEnd}
                             style={{
-                                transform: `translate(${(progress * 483.5) / 100}px, -3.5px)`,
+                                transform: `translate(${(progress * 483.5) / 100 - 1}px, -3.5px)`,
                                 borderRadius: '50%',
                                 backgroundColor: 'var(--progressbar-active-bg)',
                             }}
