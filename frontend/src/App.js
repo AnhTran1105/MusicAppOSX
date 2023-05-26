@@ -7,6 +7,7 @@ import Player from './components/Player';
 import AlbumDetail from './pages/AlbumDetail';
 import ArtistDetail from './pages/ArtistDetail';
 import ArtistSong from './pages/ArtistSong';
+import Search from './pages/Search';
 
 function App() {
     return (
@@ -72,6 +73,14 @@ function App() {
                         element={
                             <DefaultLayout>
                                 <ArtistSong />
+                            </DefaultLayout>
+                        }
+                    />
+                    <Route
+                        path="/tim-kiem/tat-ca?q=:alias"
+                        element={
+                            <DefaultLayout>
+                                <Search />
                             </DefaultLayout>
                         }
                     />

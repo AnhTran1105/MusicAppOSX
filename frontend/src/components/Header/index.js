@@ -1,3 +1,5 @@
+import SearchBar from '../SearchBar';
+
 function Header() {
     return (
         <header className="osx-header is-sticky">
@@ -9,20 +11,7 @@ function Header() {
                     <button className="osx-btn disabled button" tabIndex="0">
                         <i className="icon ic-forward"></i>
                     </button>
-                    <form className="search">
-                        <div className="search__container">
-                            <button className="osx-btn button" tabIndex="0">
-                                <i className="icon ic-search"></i>
-                            </button>
-                            <div className="input-wrapper">
-                                <input
-                                    type="text"
-                                    className="form-control z-input-placeholder"
-                                    placeholder="What do you want to listen?"
-                                />
-                            </div>
-                        </div>
-                    </form>
+                    <SearchBar />
                 </div>
                 <div className="level-right">
                     <div className="setting-item">
