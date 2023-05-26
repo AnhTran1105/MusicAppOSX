@@ -77,7 +77,23 @@ function App() {
                         }
                     />
                     <Route
-                        path="/tim-kiem/tat-ca?q=:alias"
+                        path="/tim-kiem/tat-ca"
+                        element={
+                            <DefaultLayout>
+                                <Search />
+                            </DefaultLayout>
+                        }
+                    />
+                    <Route
+                        path="/tim-kiem/playlist"
+                        element={
+                            <DefaultLayout>
+                                <Search />
+                            </DefaultLayout>
+                        }
+                    />
+                    <Route
+                        path="/tim-kiem/artist"
                         element={
                             <DefaultLayout>
                                 <Search />

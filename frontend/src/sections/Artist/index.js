@@ -1,10 +1,20 @@
+import { Link } from 'react-router-dom';
 import Card from '../../components/Card';
 
-function Artist({ props, cardTitle, artistSection }) {
+function Artist({ props, cardTitle, artistSection, sectionTitle, sectionLink }) {
     return (
         <div className="osx-section artist-section channel-section">
             <div className="container">
-                <h3 className="osx-section-title title is-2">Bạn Có Thể Thích</h3>
+                <h3 className="osx-section-title title is-2">
+                    {sectionTitle ? sectionTitle : 'Bạn Có Thể Thích'}
+                    {sectionLink ? (
+                        <Link className="discovery-btn" to={sectionLink}>
+                            Tất cả <i className="icon ic-go-right"></i>
+                        </Link>
+                    ) : (
+                        ''
+                    )}
+                </h3>
             </div>
             <div className="osx-carousel-wrapper">
                 <div className="osx-carousel">

@@ -18,7 +18,7 @@ function Card({
     MvSection = false,
     artistData,
     MvData,
-    ArtistImg,
+    artistImg,
 }) {
     const { Portal, show } = usePortal({
         defaultShow: false,
@@ -41,9 +41,9 @@ function Card({
                 <div className="subtitle">
                     <span className="followers">
                         {artistData.totalFollow > 1000
-                            ? Math.floor(artistData.totalFollow / 1000)
-                            : artistData.totalFollow}
-                        K quan tâm
+                            ? Math.floor(artistData.totalFollow / 1000) + 'K'
+                            : artistData.totalFollow}{' '}
+                        quan tâm
                     </span>
                 </div>
             </>
@@ -118,7 +118,7 @@ function Card({
                         <div className="media-left">
                             <a className="" title={MvData.title} href={MvData.link}>
                                 <figure className="image is-40x40 is-rounded">
-                                    <img src={ArtistImg} alt="" />
+                                    <img src={artistImg.replace('r16x9', 'r1x1')} alt="" />
                                 </figure>
                             </a>
                         </div>
@@ -150,7 +150,6 @@ function Card({
                         </div>
                     </div>
                 </div>
-                <div className="osx-card-content">{cardContent}</div>
             </div>
         );
     } else {

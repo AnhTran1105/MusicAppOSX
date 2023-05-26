@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Card from '../../components/Card';
+import { Link } from 'react-router-dom';
 
 function Playlist({ props, sectionTitle, cardTitle, sectionLink }) {
     const [isBusy, setBusy] = useState(true);
@@ -15,9 +16,9 @@ function Playlist({ props, sectionTitle, cardTitle, sectionLink }) {
                 <h3 className="osx-section-title title is-2">
                     {sectionTitle}
                     {sectionLink ? (
-                        <a className="discovery-btn" href={sectionLink}>
+                        <Link className="discovery-btn" to={sectionLink}>
                             tất cả <i className="icon ic-go-right"></i>
-                        </a>
+                        </Link>
                     ) : null}
                 </h3>
 

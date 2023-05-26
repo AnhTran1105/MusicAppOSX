@@ -1,14 +1,15 @@
+import { Link } from 'react-router-dom';
 import Card from '../../components/Card';
 
-function MV({ props, cardTitle, sectionLink, sectionTitle, MvSection = true, ArtistImg }) {
+function MV({ props, cardTitle, sectionLink, sectionTitle, MvSection = true, artistImg }) {
     return (
         <div className="osx-section">
             <div className="container mar-t-30 channel-section">
                 <h3 className="osx-section-title title is-2">
                     {sectionTitle}
-                    <a className="discovery-btn" href={sectionLink}>
+                    <Link className="discovery-btn" to={sectionLink}>
                         Tất cả <i className="icon ic-go-right"></i>
-                    </a>
+                    </Link>
                 </h3>
                 <div className="osx-carousel-wrapper">
                     <div className="osx-carousel">
@@ -30,7 +31,7 @@ function MV({ props, cardTitle, sectionLink, sectionTitle, MvSection = true, Art
                                               artistData={item}
                                               MvSection={MvSection}
                                               MvData={item}
-                                              ArtistImg={ArtistImg}
+                                              artistImg={artistImg ? artistImg : item.thumbnail}
                                           />
                                       </div>
                                   ))
