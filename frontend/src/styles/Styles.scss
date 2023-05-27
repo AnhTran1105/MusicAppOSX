@@ -1641,9 +1641,14 @@ li {
 .media-item.pre-release .media-left .title,
 .media-item.ww-blocked .album-info,
 .media-item.ww-blocked .media-left .subtitle,
-.media-item.ww-blocked .media-left .title {
+.media-item.ww-blocked .media-left .title,
+.media.is-vip .album-info,
+.media.is-vip .media-left .subtitle,
+.media.is-vip .media-left .title {
     opacity: 0.5;
 }
+
+
 
 .media-item .media-left .title-wrapper {
     max-width: 100%;

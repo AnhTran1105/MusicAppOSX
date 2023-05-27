@@ -240,7 +240,6 @@ export const VolumeOffIcon = ({ width = 20, height = 20 }) => {
             <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
 
             <g id="SVGRepo_iconCarrier">
-                <title>volume-off-solid</title>
                 <g id="Layer_2" dataname="Layer 2">
                     <g id="invisible_box" dataname="invisible box">
                         <rect width={width} height={height} fill="none" />

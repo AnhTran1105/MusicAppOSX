@@ -4,6 +4,7 @@ import { Fragment } from 'react';
 import Tippy from '@tippyjs/react/headless';
 import ToolTip from '@tippyjs/react';
 import usePortal from 'react-cool-portal';
+import formatNumber from '../../utils/formatNumber';
 
 function SongMenu({ props }) {
     const { Portal, show } = usePortal({
@@ -42,7 +43,7 @@ function SongMenu({ props }) {
                                                                 <Link
                                                                     key={i}
                                                                     className="is-ghost"
-                                                                    to={artist.link ? artist.link : ''}
+                                                                    to={artist ? artist.link : ''}
                                                                 >
                                                                     {artist.name}
                                                                 </Link>
@@ -50,7 +51,7 @@ function SongMenu({ props }) {
                                                                 <Fragment key={i}>
                                                                     <Link
                                                                         className="is-ghost"
-                                                                        to={artist.link ? artist.link : ''}
+                                                                        to={artist ? artist.link : ''}
                                                                     >
                                                                         {artist.name}
                                                                     </Link>
@@ -63,7 +64,7 @@ function SongMenu({ props }) {
                                                 <div className="item">
                                                     <h3 className="subtitle">Album</h3>
                                                     <div className="content">
-                                                        <a className="" href={props.album.link}>
+                                                        <a className="" href={props.album ? props.album.link : ''}>
                                                             {props.album.title}
                                                         </a>
                                                     </div>
@@ -76,7 +77,7 @@ function SongMenu({ props }) {
                                                                 <a
                                                                     key={i}
                                                                     className=""
-                                                                    href={genre.link}
+                                                                    href={genre ? genre.link : ''}
                                                                     title={genre.name}
                                                                 >
                                                                     {genre.name}
@@ -85,7 +86,7 @@ function SongMenu({ props }) {
                                                                 <Fragment key={i}>
                                                                     <a
                                                                         className=""
-                                                                        href={genre.link}
+                                                                        href={genre ? genre.link : ''}
                                                                         title={genre.name}
                                                                     >
                                                                         {genre.name}
@@ -131,19 +132,11 @@ function SongMenu({ props }) {
                                                     <div className="song-stats">
                                                         <div className="stat-item">
                                                             <i className="icon ic-like"></i>
-                                                            <span>
-                                                                {props.like > 1000
-                                                                    ? Math.floor(props.like / 1000) + 'K'
-                                                                    : props.like}
-                                                            </span>
+                                                            <span>{formatNumber(props.like)}</span>
                                                         </div>
                                                         <div className="stat-item">
                                                             <i className="icon ic-view"></i>
-                                                            <span>
-                                                                {props.listen > 1000
-                                                                    ? Math.floor(props.listen / 1000) + 'K'
-                                                                    : props.listen}
-                                                            </span>
+                                                            <span>{formatNumber(props.listen)}</span>
                                                         </div>
                                                     </div>
                                                 </div>

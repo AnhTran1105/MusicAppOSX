@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { FormatTime } from '../../utils/FormatTime';
 import usePortal from 'react-cool-portal';
 import Tippy from '@tippyjs/react/headless';
+import formatNumber from '../../utils/formatNumber';
 
 function Card({
     imgSize,
@@ -39,12 +40,7 @@ function Card({
                     </a>
                 </div>
                 <div className="subtitle">
-                    <span className="followers">
-                        {artistData.totalFollow > 1000
-                            ? Math.floor(artistData.totalFollow / 1000) + 'K'
-                            : artistData.totalFollow}{' '}
-                        quan tâm
-                    </span>
+                    <span className="followers">{formatNumber(artistData.totalFollow)} quan tâm</span>
                 </div>
             </>
         );

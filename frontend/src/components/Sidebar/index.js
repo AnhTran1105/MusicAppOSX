@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { AddIcon, AlbumIcon, ArtistIcon, PlaylistIcon, RecentIcon, SongIcon, StarIcon, UploadIcon } from '../../icons';
 import ToolTip from '@tippyjs/react';
 function Sidebar() {
@@ -8,9 +9,9 @@ function Sidebar() {
                     <div className="osx-navbar-brand">
                         <div className="osx-navbar-item">
                             <button className="osx-btn button">
-                                <a href="/">
+                                <Link to="/">
                                     <div className="osx-logo"></div>
-                                </a>
+                                </Link>
                             </button>
                         </div>
                     </div>

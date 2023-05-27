@@ -1,4 +1,5 @@
-import { KaraokeIcon, VolumeDownIcon } from '../../icons';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import { KaraokeIcon, VolumeDownIcon, VolumeOffIcon } from '../../icons';
 import { useState, useEffect, useRef } from 'react';
 import ToolTip from '@tippyjs/react';
 import SongController from '../SongController';
@@ -9,6 +10,7 @@ import { Fragment } from 'react';
 import Lyrics from './Lyrics';
 import Tippy from '@tippyjs/react/headless';
 import { Link } from 'react-router-dom';
+import formatNumber from '../../utils/formatNumber';
 
 let audio;
 function NowPlayingBar() {
@@ -16,6 +18,7 @@ function NowPlayingBar() {
     const [currentTime, setCurrentTime] = useState(0);
     const nowplayingbarRef = useRef();
     const playerControlsRef = useRef();
+    const progressBarRef = useRef(null);
     const [songData, setSongData] = useState(null);
     const [songSrc, setSongSrc] = useState(null);
     const [isBusy, setBusy] = useState(true);
@@ -23,6 +26,9 @@ function NowPlayingBar() {
     const [lyrics, setLyrics] = useState(null);
     const [infoMenuVisible, setInfoMenuVisible] = useState('hidden');
     const [subMenuVisible, setSubMenuVisible] = useState('hidden');
+    const [volume, setVolume] = useState(1);
+    const [prevVolume, setPrevVolume] = useState(1);
+    const [isDragging, setIsDragging] = useState(false);
 
     const [state, dispatch] = useStore();
     const songId = state.songId;
@@ -101,6 +107,33 @@ function NowPlayingBar() {
         setIsPlaying(!isPlaying);
     };
 
+    const handleDragStart = () => {
+        setIsDragging(true);
+    };
+
+    const handleDragEnd = () => {
+        setIsDragging(false);
+    };
+
+    const handleSeek = (event) => {
+        const seekPositionX = event.clientX;
+
+        const progressBarX = event.target.getBoundingClientRect().left;
+
+        const newVolume = (seekPositionX - progressBarX) / event.target.offsetWidth;
+
+        setVolume(newVolume);
+
+        audio.volume = newVolume;
+    };
+
+    // const handleVolumeChange = (e) => {
+    //     const sliderWidth = e.target.offsetWidth;
+    //     const offsetX = e.nativeEvent.offsetX;
+    //     const newVolume = Math.round((offsetX / sliderWidth) * 100);
+    //     setVolume(newVolume);
+    // };
+
     // Xử lý sự kiện khi nhấn nút Next
     const handleNext = () => {
         // Thực hiện logic chuyển bài hát kế tiếp
@@ -112,10 +145,6 @@ function NowPlayingBar() {
     };
 
     // Xử lý sự kiện khi tua bài hát
-    const handleSeek = (seekTime) => {
-        setCurrentTime(seekTime);
-        // Thực hiện logic tua bài hát tới thời gian seekTime
-    };
 
     const changeLyricsShowing = () => {
         setLyricsShowing(false);
@@ -197,7 +226,10 @@ function NowPlayingBar() {
                                                     className="osx-btn osx-tooltip-btn osx-disable-transition active is-hover-circle button"
                                                     tabIndex="0"
                                                 >
-                                                    <i className="icon ic-like"></i>
+                                                    <i
+                                                        className="icon ic-like"
+                                                        style={{ color: 'rgb(153, 153, 153)' }}
+                                                    ></i>
                                                 </button>
                                             </ToolTip>
                                         </div>
@@ -271,9 +303,16 @@ function NowPlayingBar() {
                                                                                     <div className="content">
                                                                                         <a
                                                                                             className=""
-                                                                                            href={songData.album.link}
+                                                                                            href={
+                                                                                                songData.album
+                                                                                                    ? songData.album
+                                                                                                          .link
+                                                                                                    : ''
+                                                                                            }
                                                                                         >
-                                                                                            {songData.album.title}
+                                                                                            {songData.album
+                                                                                                ? songData.album.title
+                                                                                                : ''}
                                                                                         </a>
                                                                                     </div>
                                                                                 </div>
@@ -366,23 +405,17 @@ function NowPlayingBar() {
                                                                                         <div className="stat-item">
                                                                                             <i className="icon ic-like"></i>
                                                                                             <span>
-                                                                                                {songData.like > 1000
-                                                                                                    ? Math.floor(
-                                                                                                          songData.like /
-                                                                                                              1000,
-                                                                                                      ) + 'K'
-                                                                                                    : songData.like}
+                                                                                                {formatNumber(
+                                                                                                    songData.like,
+                                                                                                )}
                                                                                             </span>
                                                                                         </div>
                                                                                         <div className="stat-item">
                                                                                             <i className="icon ic-view"></i>
                                                                                             <span>
-                                                                                                {songData.listen > 1000
-                                                                                                    ? Math.floor(
-                                                                                                          songData.listen /
-                                                                                                              1000,
-                                                                                                      ) + 'K'
-                                                                                                    : songData.listen}
+                                                                                                {formatNumber(
+                                                                                                    songData.listen,
+                                                                                                )}
                                                                                             </span>
                                                                                         </div>
                                                                                     </div>
@@ -736,24 +769,42 @@ function NowPlayingBar() {
                             </div>
                             <div className="level-item is-narrow" style={{ padding: '2px' }}>
                                 <div className="osx-player-volume">
-                                    <ToolTip content="Mute">
+                                    <ToolTip content={`${volume !== 0 ? 'Tắt âm' : 'Hủy tắt âm'}`}>
                                         <button
+                                            onClick={() => {
+                                                if (volume !== 0) {
+                                                    audio.volume = 0;
+                                                    setPrevVolume(volume);
+                                                    setVolume(0);
+                                                } else {
+                                                    audio.volume = prevVolume;
+                                                    setVolume(prevVolume);
+                                                }
+                                            }}
                                             className="osx-btn osx-tooltip-btn btn-volume button is-hover-circle"
                                             tabIndex="0"
                                         >
                                             <i className="icon">
-                                                <VolumeDownIcon />
+                                                {volume === 0 ? <VolumeOffIcon /> : <VolumeDownIcon />}
                                             </i>
                                         </button>
                                     </ToolTip>
-                                    <div className="osx-duration-bar">
+                                    <div
+                                        className="osx-duration-bar"
+                                        onClick={handleSeek}
+                                        onMouseDown={(e) => e.preventDefault()}
+                                    >
                                         <div
                                             className="osx-slider-bar"
                                             style={{
-                                                background:
-                                                    'linear-gradient(to right, var(--volume-active-bg) 0%, var(--volume-active-bg) 28.0354%, var(--progressbar-player-bg) 28.0354%, var(--progressbar-player-bg) 100%)',
+                                                background: `linear-gradient(to right, var(--progressbar-active-bg) 0%, var(--progressbar-active-bg) ${
+                                                    volume * 100
+                                                }%, var(--progressbar-player-bg) ${
+                                                    volume * 100
+                                                }%, var(--progressbar-player-bg) 100%)`,
                                                 alignSelf: 'center',
                                             }}
+                                            ref={progressBarRef}
                                         >
                                             <div
                                                 tabIndex="0"
@@ -763,11 +814,12 @@ function NowPlayingBar() {
                                                 draggable="false"
                                                 role="slider"
                                                 className="osx-slider-handle"
+                                                onMouseDown={handleDragStart}
+                                                onMouseUp={handleDragEnd}
                                                 style={{
                                                     borderRadius: '50%',
-                                                    backgroundColor: '#fff',
-                                                    transform: 'translate(22px, -3.5px)',
-                                                    boxShadow: '0px 0px 3px rgba(0, 0, 0, 0.5)',
+                                                    backgroundColor: 'var(--progressbar-active-bg)',
+                                                    transform: `translate(${volume * 90 - 5}px, -3.5px)`,
                                                 }}
                                             ></div>
                                         </div>

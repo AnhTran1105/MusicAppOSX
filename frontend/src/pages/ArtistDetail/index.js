@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 import axios from '../../utils/axios';
 import { useState, useEffect, useRef } from 'react';
-import FormatNumber from '../../utils/FormatNumber';
 import SongItem from '../../components/SongItem/SongItem';
 import { Link } from 'react-router-dom';
 import Playlist from '../../sections/Playlist';
@@ -9,6 +8,7 @@ import ToolTip from '@tippyjs/react';
 import Artist from '../../sections/Artist';
 import { parse } from 'node-html-parser';
 import MV from '../../sections/MV';
+import numberWithComma from '../../utils/numberWithComma';
 
 function ArtistDetail() {
     const [data, setData] = useState(null);
@@ -126,7 +126,7 @@ function ArtistDetail() {
                                                 </div>
                                                 <div className="bottom">
                                                     <span className="follow">
-                                                        {FormatNumber(data.totalFollow)} người quan tâm
+                                                        {numberWithComma(data.totalFollow)} người quan tâm
                                                     </span>
                                                     <button
                                                         className="osx-btn is-outlined active is-medium follow-btn is-upper button"
@@ -197,7 +197,7 @@ function ArtistDetail() {
                                                 </div>
                                                 <div className="bottom">
                                                     <span className="follow">
-                                                        {FormatNumber(data.totalFollow)} người quan tâm
+                                                        {numberWithComma(data.totalFollow)} người quan tâm
                                                     </span>
                                                     <button
                                                         className="osx-btn is-outlined active is-medium follow-btn is-upper button"
@@ -420,7 +420,7 @@ function ArtistDetail() {
                                                 </div>
                                                 <div className="statistic">
                                                     <div className="numb-follow">
-                                                        <h3 className="title">{FormatNumber(data.totalFollow)}</h3>
+                                                        <h3 className="title">{numberWithComma(data.totalFollow)}</h3>
                                                         <h3 className="subtitle">Người quan tâm</h3>
                                                     </div>
                                                     {data.spotlight === true ? (

@@ -213,18 +213,36 @@
         display: flex;
         justify-content: center;
         width: 90px;
-        height: 4px;
+        height: 15px;
         cursor: pointer;
+
+        &:hover {
+            .osx-slider-bar {
+                height: 5px;
+
+                .osx-slider-handle {
+                    visibility: visible;
+                    width: 12px;
+                    height: 12px;
+                }
+            }
+        }
 
         .osx-slider-bar {
             border-radius: 4px;
             width: 100%;
-            height: 4px;
+            height: 3px;
 
             .osx-slider-handle {
-                width: 12px;
-                height: 12px;
-                visibility: visible;
+                width: 10px;
+                height: 10px;
+                visibility: hidden;
+
+                &:hover {
+                    visibility: visible;
+                    width: 12px;
+                    height: 12px;
+                }
             }
         }
     }
