@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from .forms import RegistrationForm, LoginForm
 from .models import Song, Playlist
 from django.contrib.auth.decorators import login_required
+from .forms import CommentForm
+from .models import Comment
 
 def register(request):
     if request.method == 'POST':
@@ -37,3 +39,16 @@ def create_playlist(request):
 def playlist_detail(request, playlist_id):
     playlist = Playlist.objects.get(id=playlist_id)
     return render(request, 'playlist_detail.html', {'playlist': playlist})
+
+def add_comment(request):
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.save()
+            return render(request, 'backend/success.html') 
+    else:
+        form = CommentForm()
+    return render(request, 'backend/add_comment.html', {'form': form})
+

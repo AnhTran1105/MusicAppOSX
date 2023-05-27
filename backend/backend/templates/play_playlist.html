@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Play Playlist</title>
+</head>
+<body>
+    <h1>Playlist</h1>
+    <ul>
+    {% for song in songs %}
+        <li>{{ song.title }} - {{ song.artist }}</li>
+    {% endfor %}
+    </ul>
+    <button onclick="pauseSong()">Pause</button>
+    <button onclick="resumeSong()">Resume</button>
+    <button onclick="skipSong()">Skip</button>
+    <button onclick="seekForward(10)">Seek Forward</button>
+    <button onclick="seekBackward(10)">Seek Backward</button>
+
+    <script>
+    function pauseSong() {
+        fetch("{% url 'pause_song' %}")
+            .then(response => response.text())
+            .then(data => {
+                // Xử lý kết quả nếu cần
+            });
+    }
+
+    function resumeSong() {
+        fetch("{% url 'resume_song' %}")
+            .then(response => response.text())
+            .then(data => {
+                // Xử lý kết quả nếu cần
+            });
+    }
+
+    function skipSong() {
+        fetch("{% url 'skip_song' %}")
+            .then(response => response.text())
+            .then(data => {
+                // Xử lý kết quả nếu cần
+            });
+    }
+
+    function seekForward(seconds) {
+        fetch(`{% url 'seek_forward' 10 %}`)
+            .then(response => response.text())
+            .then(data => {
+                // Xử lý kết quả nếu cần
+            });
+    }
+
+    function seekBackward(seconds) {
+        fetch(`{% url 'seek_backward' 10 %}`)
+            .then(response => response.text())
+            .then(data => {
+                // Xử lý kết quả nếu cần
+            });
+    }
+    </script>
+</body>
+</html>
