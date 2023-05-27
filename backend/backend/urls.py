@@ -9,6 +9,7 @@
 from django.urls import path
 from core import views
 from song.views import register, login
+from song.views import create_playlist, playlist_detail
 
 urlpatterns = [
     path('get-song/', views.get_song),
@@ -27,4 +28,6 @@ urlpatterns = [
     path('get-video/', views.get_video),
     path('register/', register, name='register'),
     path('login/', login, name='login'),
+    path('playlist/create/', create_playlist, name='create_playlist'),
+    path('playlist/<int:playlist_id>/', playlist_detail, name='playlist_detail'),
 ]

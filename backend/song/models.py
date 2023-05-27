@@ -21,3 +21,8 @@ class User(models.Model):
 
     def __str__(self):
         return self.username
+    
+class Playlist(models.Model):
+    title = models.CharField(max_length=100)
+    songs = models.ManyToManyField(Song)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
