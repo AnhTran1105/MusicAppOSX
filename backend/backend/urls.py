@@ -8,6 +8,7 @@
 
 from django.urls import path
 from core import views
+from song.views import register, login
 
 urlpatterns = [
     path('get-song/', views.get_song),
@@ -24,4 +25,6 @@ urlpatterns = [
     path('get-list-mv/', views.get_list_mv),
     path('get-category-mv/', views.get_category_mv),
     path('get-video/', views.get_video),
+    path('register/', register, name='register'),
+    path('login/', login, name='login'),
 ]
