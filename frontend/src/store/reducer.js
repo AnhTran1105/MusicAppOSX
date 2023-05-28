@@ -1,9 +1,10 @@
-import { SET_SONG_ID, SET_SONG_SOURCE, SET_SONG_STATUS } from './constants';
+import { SET_SONG_ID, SET_SONG_SOURCE, SET_SONG_STATUS, SET_SONG_LIST } from './constants';
 
 const initState = {
     songId: '',
     songSrc: '',
     songStatus: 'pause',
+    songList: [],
 };
 
 function reducer(state, action) {
@@ -23,6 +24,11 @@ function reducer(state, action) {
             return {
                 ...state,
                 songStatus: action.payload,
+            };
+        case SET_SONG_LIST:
+            return {
+                ...state,
+                songList: action.payload,
             };
 
         default:

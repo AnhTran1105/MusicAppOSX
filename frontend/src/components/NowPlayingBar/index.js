@@ -11,10 +11,13 @@ import Lyrics from './Lyrics';
 import Tippy from '@tippyjs/react/headless';
 import { Link } from 'react-router-dom';
 import formatNumber from '../../utils/formatNumber';
+import { setSongId } from '../../store/actions';
 
 let audio;
 function NowPlayingBar() {
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isRepeating, setRepeating] = useState(false);
+    const [isShuffling, setShuffling] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
     const nowplayingbarRef = useRef();
     const playerControlsRef = useRef();
@@ -29,14 +32,18 @@ function NowPlayingBar() {
     const [volume, setVolume] = useState(1);
     const [prevVolume, setPrevVolume] = useState(1);
     const [isDragging, setIsDragging] = useState(false);
+    const [songId, setSongId] = useState(null);
+    const [songStore, setSongStore] = useState([]);
 
     const [state, dispatch] = useStore();
-    const songId = state.songId;
+
+    const songList = state.songList;
 
     useEffect(() => {
         if (songId) {
             (async () => {
                 try {
+                    console.log(songId);
                     audio = document.querySelector('.--z--player audio');
                     const data = await getInfoSong(songId);
                     const src = await getSong(songId);
@@ -54,6 +61,15 @@ function NowPlayingBar() {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [songId]);
+
+    useEffect(() => {
+        setSongId(state.songId);
+    }, [state.songId]);
+
+    useEffect(() => {
+        setSongStore(songList.slice(0, songList.indexOf(state.songId)));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [songList]);
 
     const getSong = async (songId) => {
         try {
@@ -96,6 +112,7 @@ function NowPlayingBar() {
                 setCurrentTime(audio.currentTime);
             };
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isBusy]);
 
     const handlePlayPause = () => {
@@ -127,21 +144,52 @@ function NowPlayingBar() {
         audio.volume = newVolume;
     };
 
-    // const handleVolumeChange = (e) => {
-    //     const sliderWidth = e.target.offsetWidth;
-    //     const offsetX = e.nativeEvent.offsetX;
-    //     const newVolume = Math.round((offsetX / sliderWidth) * 100);
-    //     setVolume(newVolume);
-    // };
-
-    // Xử lý sự kiện khi nhấn nút Next
     const handleNext = () => {
-        // Thực hiện logic chuyển bài hát kế tiếp
+        const index = songList.indexOf(songId);
+        if (!isShuffling) {
+            if (index < songList.length - 1) {
+                setSongId(songList[index + 1]);
+            } else {
+                setSongId(songList[0]);
+            }
+        } else {
+            setSongId(getRandomElement(songList, songList[index]));
+        }
+        songStore.push(songId);
     };
 
-    // Xử lý sự kiện khi nhấn nút Previous
     const handlePrevious = () => {
-        // Thực hiện logic chuyển bài hát trước đó
+        setSongId(songStore[songStore.length - 1]);
+        songStore.pop();
+        if (songStore.length === 0) {
+            const previousBtn = document.querySelector('.player-controls__player-bar.level-center .btn-pre');
+            previousBtn.classList.add('disabled');
+        }
+    };
+
+    const loadNextSong = () => {
+        if (!isRepeating) {
+            const index = songList.indexOf(songId);
+            if (!isShuffling) {
+                setSongId(songList[index + 1]);
+            } else {
+                setSongId(getRandomElement(songList, songList[index]));
+            }
+        } else {
+            audio.currentTime = 0;
+            audio.play();
+        }
+        songStore.push(songId);
+    };
+
+    const getRandomElement = (array, currentElement) => {
+        let randomElement = null;
+
+        while (!randomElement || randomElement === currentElement) {
+            randomElement = array[Math.floor(Math.random() * array.length)];
+        }
+
+        return randomElement;
     };
 
     // Xử lý sự kiện khi tua bài hát
@@ -154,6 +202,10 @@ function NowPlayingBar() {
         return null;
     } else {
         document.querySelector('.osx-layout').classList.add('has-player');
+
+        audio.onended = () => {
+            loadNextSong();
+        };
 
         return (
             <div className="now-playing-bar" ref={nowplayingbarRef}>
@@ -736,6 +788,10 @@ function NowPlayingBar() {
                             onSeek={handleSeek}
                             currentTime={currentTime}
                             duration={songData.duration}
+                            isRepeating={isRepeating}
+                            isShuffling={isShuffling}
+                            setRepeating={setRepeating}
+                            setShuffling={setShuffling}
                         />
                         <div className="player-controls-right level-right">
                             <div className="level-item is-narrow">

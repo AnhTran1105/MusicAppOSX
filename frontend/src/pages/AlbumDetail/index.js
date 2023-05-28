@@ -7,11 +7,14 @@ import { Link } from 'react-router-dom';
 import SelectItem from './SelectItem';
 import { Fragment } from 'react';
 import PlaylistMenu from '../../components/PlaylistMenu';
+import { useStore, actions } from '../../store';
 
 function AlbumDetail() {
     const [data, setData] = useState(null);
     const { albumId } = useParams();
     const [isBusy, setBusy] = useState(true);
+
+    const [state, dispatch] = useStore();
 
     useEffect(() => {
         if (albumId) {
@@ -33,6 +36,10 @@ function AlbumDetail() {
         } catch (error) {
             console.error(error);
         }
+    };
+
+    const loadSongList = () => {
+        dispatch(actions.setSongList(data.song.items.map((item) => item.encodeId)));
     };
 
     useEffect(() => {}, [isBusy]);
@@ -64,7 +71,7 @@ function AlbumDetail() {
                                             <div className="osx-card-image">
                                                 <div className="z-thumb">
                                                     <figure className="image is-48x48">
-                                                        <img src={data.thumbnailM} alt="" />
+                                                        <img src={data.thumbnailM.replace('w320', 'w600')} alt="" />
                                                     </figure>
                                                     <div className="opacity"></div>
                                                 </div>
@@ -198,7 +205,11 @@ function AlbumDetail() {
                                         </div>
                                         <div>
                                             {data.song.items.map((item) => (
-                                                <SelectItem key={item.encodeId} props={item} />
+                                                <SelectItem
+                                                    loadSongList={loadSongList}
+                                                    key={item.encodeId}
+                                                    props={item}
+                                                />
                                             ))}
                                         </div>
                                     </div>

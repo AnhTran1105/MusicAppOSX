@@ -4,12 +4,21 @@ import { FormatTime } from '../../utils/FormatTime';
 import { useEffect, useRef, useState } from 'react';
 
 let audio;
-function SongController({ isPlaying, onPlayPause, onNext, onPrevious, onSeek, currentTime, onShuffle, duration }) {
+function SongController({
+    isPlaying,
+    onPlayPause,
+    onNext,
+    onPrevious,
+    currentTime,
+    duration,
+    isRepeating,
+    setRepeating,
+    isShuffling,
+    setShuffling,
+}) {
     const [progress, setProgress] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
     const progressBarRef = useRef(null);
-    const [isRepeating, setRepeating] = useState(false);
-    const [isShuffling, setShuffling] = useState(false);
 
     const handleDragStart = () => {
         setIsDragging(true);
@@ -42,18 +51,6 @@ function SongController({ isPlaying, onPlayPause, onNext, onPrevious, onSeek, cu
     useEffect(() => {
         setProgress((currentTime / duration) * 100);
     }, [currentTime, duration]);
-
-    useEffect(() => {
-        if (audio) {
-            audio.onended = () => {
-                if (isRepeating) {
-                    audio.currentTime = 0;
-                    audio.play();
-                }
-            };
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isRepeating, isShuffling]);
 
     return (
         <div className="player-controls__player-bar level-center">

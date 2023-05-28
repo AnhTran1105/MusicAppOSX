@@ -1,7 +1,7 @@
 import SongItem from '../../components/SongItem/SongItem';
 import usePortal from 'react-cool-portal';
 
-function SelectItem({ props }) {
+function SelectItem({ props, loadSongList }) {
     const { Portal, show } = usePortal({
         defaultShow: false,
     });
@@ -13,7 +13,7 @@ function SelectItem({ props }) {
                 </label>
             </div>
             <div className="list-item bor-b-1 media-item hide-right">
-                <SongItem isSongPrefix={true} props={props} isContent={true} />
+                <SongItem loadSongList={loadSongList} isSongPrefix={true} props={props} isContent={true} />
             </div>
         </div>
     );

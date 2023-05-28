@@ -8,7 +8,7 @@ import { useStore, actions } from '../../store';
 import SongMenu from '../SongMenu';
 import usePortal from 'react-cool-portal';
 
-function SongItem({ props, isSongPrefix = false, isContent = false }) {
+function SongItem({ props, isSongPrefix = false, isContent = false, loadSongList }) {
     const [songInfo, setSongInfo] = useState(null);
     const [songSrc, setSongSrc] = useState(null);
     const [isBusy, setBusy] = useState(true);
@@ -66,6 +66,7 @@ function SongItem({ props, isSongPrefix = false, isContent = false }) {
                     )}
                     <div
                         onClick={() => {
+                            loadSongList();
                             if (songSrc) {
                                 dispatch(actions.setSongId(id));
                             } else {
