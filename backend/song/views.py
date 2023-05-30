@@ -53,10 +53,3 @@ def add_comment(request):
         form = CommentForm()
     return render(request, 'backend/add_comment.html', {'form': form})
 
-def search_suggestions(request):
-    query = request.GET.get('query')  # Lấy từ khóa tìm kiếm từ gợi ý từ request
-
-    # Tìm kiếm bài hát dựa trên từ khóa và gợi ý
-    songs = Song.objects.filter(Q(title__icontains=query) | Q(artist__icontains=query))
-
-    return render(request, 'search_results.html', {'songs': songs})

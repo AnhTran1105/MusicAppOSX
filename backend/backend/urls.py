@@ -12,7 +12,6 @@ from song.views import register, login
 from song.views import create_playlist, playlist_detail
 from song.views import play_playlist, pause_song, resume_song, skip_song, seek_forward, seek_backward
 from song.views import add_comment
-from song.views import search_suggestions
 urlpatterns = [
     path('get-song/', views.get_song),
     path('get-detail-playlist/', views.get_detail_playlist),
@@ -33,5 +32,4 @@ urlpatterns = [
     path('playlist/create/', create_playlist, name='create_playlist'),
     path('playlist/<int:playlist_id>/', playlist_detail, name='playlist_detail'),
     path('comment/add/', add_comment, name='add_comment'),
-    path('search/', search_suggestions, name='search_suggestions'),
 ]
