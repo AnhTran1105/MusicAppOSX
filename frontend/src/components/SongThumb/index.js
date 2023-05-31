@@ -5,7 +5,7 @@ import { useStore, actions } from '../../store';
 import usePortal from 'react-cool-portal';
 import ToolTip from '@tippyjs/react';
 
-function SongThumb({ imgSize, src, alt, songId, isVip }) {
+function SongThumb({ imgSize, src, alt, songId, isVip, loadSongList }) {
     // eslint-disable-next-line no-unused-vars
     const [state, dispatch] = useStore();
 
@@ -19,6 +19,7 @@ function SongThumb({ imgSize, src, alt, songId, isVip }) {
                 onClick={() => {
                     if (!isVip) {
                         dispatch(actions.setSongId(songId));
+                        loadSongList();
                     } else {
                         show();
                     }

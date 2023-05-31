@@ -12,6 +12,7 @@
 @import '../sections/MV/MV.scss';
 @import '../pages/ArtistSong/ArtistSong.scss';
 @import '../pages/Search/Search.scss';
+@import '../pages/Library/Library.scss';
 
 * {
     text-rendering: optimizeLegibility;
@@ -1429,6 +1430,11 @@ li {
     object-fit: contain;
 }
 
+.bottom-section {
+    margin-top: 48px;
+    margin-bottom: 80px;
+}
+
 .osx-section-title.title {
     margin-bottom: 20px;
     display: flex;
@@ -1647,8 +1653,6 @@ li {
 .media.is-vip .media-left .title {
     opacity: 0.5;
 }
-
-
 
 .media-item .media-left .title-wrapper {
     max-width: 100%;

@@ -7,12 +7,13 @@ import { useState, useEffect } from 'react';
 import { useStore, actions } from '../../store';
 import SongMenu from '../SongMenu';
 import usePortal from 'react-cool-portal';
+import FavouriteButton from '../FavouriteButton';
 
-function SongItem({ props, isSongPrefix = false, isContent = false, loadSongList }) {
+function SongItem({ props, isSongPrefix = false, isContent = false, loadSongList, songId }) {
     const [songInfo, setSongInfo] = useState(null);
     const [songSrc, setSongSrc] = useState(null);
     const [isBusy, setBusy] = useState(true);
-    const id = props.encodeId;
+    const id = props ? props.encodeId : songId;
     const [state, dispatch] = useStore();
 
     const { Portal, show, hide } = usePortal({
@@ -24,6 +25,7 @@ function SongItem({ props, isSongPrefix = false, isContent = false, loadSongList
             try {
                 setSongInfo(await getSongInfo(id));
                 setSongSrc(await getSongSrc(id));
+
                 setBusy(false);
             } catch (error) {
                 console.error('Error fetching song info and song source:', error);
@@ -75,8 +77,8 @@ function SongItem({ props, isSongPrefix = false, isContent = false, loadSongList
                         }}
                         className="song-thumb"
                     >
-                        <figure className="image is-40x40" title={props.title}>
-                            <img src={props.thumbnail} alt="" />
+                        <figure className="image is-40x40" title={songInfo.title}>
+                            <img src={songInfo.thumbnail} alt="" />
                         </figure>
                         <div className="opacity "></div>
                         <div className="osx-actions-container">
@@ -105,7 +107,7 @@ function SongItem({ props, isSongPrefix = false, isContent = false, loadSongList
                             <span className="item-title title">
                                 <span>
                                     <span>
-                                        <span>{props.title}</span>
+                                        <span>{songInfo.title}</span>
                                     </span>
                                     <span style={{ position: 'fixed', visibility: 'hidden', top: '0px', left: '0px' }}>
                                         …
@@ -115,8 +117,8 @@ function SongItem({ props, isSongPrefix = false, isContent = false, loadSongList
                             </span>
                         </div>
                         <h3 className="is-one-line is-truncate subtitle">
-                            {props.artists.map((artist, i) =>
-                                i === props.artists.length - 1 ? (
+                            {songInfo.artists.map((artist, i) =>
+                                i === songInfo.artists.length - 1 ? (
                                     <Link key={i} className="is-ghost" to={artist.link}>
                                         {artist.name}
                                     </Link>
@@ -137,8 +139,8 @@ function SongItem({ props, isSongPrefix = false, isContent = false, loadSongList
                         <div className="album-info">
                             <span>
                                 <span>
-                                    <Link to={props.album ? props.album.link : ''}>
-                                        {props.album ? props.album.title : ''}
+                                    <Link to={songInfo.album ? songInfo.album.link : ''}>
+                                        {songInfo.album ? songInfo.album.title : ''}
                                     </Link>
                                 </span>
                                 <span style={{ position: 'fixed', visibility: 'hidden', top: '0px', left: '0px' }}>
@@ -154,7 +156,17 @@ function SongItem({ props, isSongPrefix = false, isContent = false, loadSongList
                 <div className="media-right">
                     <div className="hover-items">
                         <div className="level">
-                            <div className="level-item"></div>
+                            <div className="level-item">
+                                {songInfo.mvlink ? (
+                                    <ToolTip content="Xem MV">
+                                        <button className="osx-btn osx-tooltip-btn is-hover-circle button" tabIndex="0">
+                                            <i className="icon ic-mv"></i>
+                                        </button>
+                                    </ToolTip>
+                                ) : (
+                                    ''
+                                )}
+                            </div>
                             <div className="level-item">
                                 <ToolTip content="Phát cùng lời bài hát">
                                     <button className="osx-btn osx-tooltip-btn is-hover-circle button" tabIndex="0">
@@ -163,15 +175,7 @@ function SongItem({ props, isSongPrefix = false, isContent = false, loadSongList
                                 </ToolTip>
                             </div>
                             <div className="level-item">
-                                <ToolTip content="Thêm vào thư viện">
-                                    <button
-                                        className="osx-btn osx-tooltip-btn animation-like undefined active is-hover-circle button"
-                                        tabIndex="0"
-                                    >
-                                        <i className="icon ic-like"></i>
-                                        <i className="icon ic-like-full"></i>
-                                    </button>
-                                </ToolTip>
+                                <FavouriteButton songId={id} />
                             </div>
                             <div className="level-item">
                                 <SongMenu props={songInfo} />
@@ -189,7 +193,7 @@ function SongItem({ props, isSongPrefix = false, isContent = false, loadSongList
                                     <i className="icon ic-like-full"></i>
                                 </button>
                             </div>
-                            <div className="level-item duration">{FormatTime(props.duration)}</div>
+                            <div className="level-item duration">{FormatTime(songInfo.duration)}</div>
                         </div>
                     </div>
                 </div>

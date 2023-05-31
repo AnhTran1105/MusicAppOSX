@@ -1,11 +1,27 @@
 from django.db import models
 
-# Create your models here.
 
-
-class Notes(models.Model):
-    title = models.CharField(max_length=60)
-    content = models.CharField(max_length=120)
+class Song(models.Model):
+    song_id = models.CharField(max_length=10)
 
     def __str__(self):
-        return self.title
+        return self.song_id
+
+
+class Playlist(models.Model):
+    playlist_id = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.playlist_id
+
+
+class Artist(models.Model):
+    artist_id = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.artist_id
+
+
+class RecentPlay(models.Model):
+    song_id = models.CharField(max_length=10)
+    playlist_id = models.CharField(max_length=10)

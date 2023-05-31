@@ -1,0 +1,19 @@
+/env
+
+
+# Git ignore Django cache files
+*.pyc
+__pycache__/
+
+# Git ignore Django migration files
+**/migrations/*.py
+**/migrations/*.pyc
+*.cpython-310.pyc
+*.mo
+*.po
+.DS_Store
+db.sqlite3
+
+
+
+

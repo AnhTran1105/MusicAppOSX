@@ -39,8 +39,6 @@ function Search() {
 
     if (isBusy) return null;
 
-    if (type === 'tat-ca') console.log('tat-ca');
-
     return (
         <div className="osx-box osx-mainpage">
             <div style={{ position: 'relative', overflow: 'hidden', width: '100%', height: '100%' }}>

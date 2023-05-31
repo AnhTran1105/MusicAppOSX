@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { AddIcon, AlbumIcon, ArtistIcon, PlaylistIcon, RecentIcon, SongIcon, StarIcon, UploadIcon } from '../../icons';
 import ToolTip from '@tippyjs/react';
+import { NavLink } from 'react-router-dom';
+
 function Sidebar() {
     return (
         <aside className="osx-sidebar">
@@ -20,30 +22,51 @@ function Sidebar() {
                     <ul className="osx-navbar-menu">
                         <li className="osx-navbar-item">
                             <div className="osx-navbar-item-wrapper">
-                                <a className="osx-navbar-link" href="/">
+                                <NavLink
+                                    className={(navData) =>
+                                        navData.isActive ? 'is-active osx-navbar-link' : 'osx-navbar-link'
+                                    }
+                                    to="/mymusic"
+                                >
                                     Library
-                                </a>
+                                </NavLink>
                             </div>
                         </li>
                         <li className="osx-navbar-item ">
                             <div className="osx-navbar-item-wrapper">
-                                <a className="osx-navbar-link is-active" href="/">
+                                <NavLink
+                                    className={(navData) =>
+                                        navData.isActive ? 'is-active osx-navbar-link' : 'osx-navbar-link'
+                                    }
+                                    exact="true"
+                                    to="/"
+                                >
                                     Discovery
-                                </a>
+                                </NavLink>
                             </div>
                         </li>
                         <li className="osx-navbar-item">
                             <div className="osx-navbar-item-wrapper">
-                                <a className="osx-navbar-link" href="/">
+                                <NavLink
+                                    className={(navData) =>
+                                        navData.isActive ? 'is-active osx-navbar-link' : 'osx-navbar-link'
+                                    }
+                                    to="/radio"
+                                >
                                     Radio
-                                </a>
+                                </NavLink>
                             </div>
                         </li>
                         <li className="osx-navbar-item">
                             <div className="osx-navbar-item-wrapper">
-                                <a className="osx-navbar-link" href="/">
+                                <NavLink
+                                    className={(navData) =>
+                                        navData.isActive ? 'is-active osx-navbar-link' : 'osx-navbar-link'
+                                    }
+                                    to="/store"
+                                >
                                     Store
-                                </a>
+                                </NavLink>
                             </div>
                         </li>
                     </ul>

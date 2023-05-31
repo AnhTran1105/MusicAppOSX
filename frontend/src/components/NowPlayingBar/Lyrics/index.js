@@ -203,7 +203,7 @@ function Lyrics({ lyrics, title, artists, thumbnail, nowplayingbarRef, playerCon
                                 <div className="song-item">
                                     <div className="cover">
                                         <figure className="image is-48x48">
-                                            <img src={thumbnail} alt="" />
+                                            <img src={thumbnail.replace('w240', 'w600')} alt="" />
                                         </figure>
                                     </div>
                                 </div>

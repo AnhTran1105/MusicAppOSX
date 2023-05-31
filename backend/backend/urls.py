@@ -1,13 +1,6 @@
-# from django.urls import path
-# from core import views
-
-# urlpatterns = [
-#     path('track/', views.getTrack, name='track'),
-#     path('playlist_tracks/', views.getPlaylistTracks, name='playlist_tracks'),
-# ]
-
 from django.urls import path
 from core import views
+
 
 urlpatterns = [
     path('get-song/', views.get_song),
@@ -24,4 +17,6 @@ urlpatterns = [
     path('get-list-mv/', views.get_list_mv),
     path('get-category-mv/', views.get_category_mv),
     path('get-video/', views.get_video),
+    path('api/load-song-ids', views.load_song_ids),
+    path('api/toggle-favorite', views.toggle_favorite)
 ]

@@ -8,6 +8,7 @@ import Tippy from '@tippyjs/react/headless';
 import SongThumb from '../../components/SongThumb';
 import { Moment } from '../../utils/Moment';
 import { Link } from 'react-router-dom';
+import { useStore, actions } from '../../store';
 
 function NewRelease({ songData, songSrc, typeLength }) {
     const { Portal, show } = usePortal({
@@ -18,6 +19,8 @@ function NewRelease({ songData, songSrc, typeLength }) {
     const [dataType, setDataType] = useState();
     const [srcType, setSrcType] = useState();
 
+    const [state, dispatch] = useStore();
+
     useEffect(() => {
         if (songData) {
             setDataType(songData.slice(0, typeLength[0]));
@@ -25,6 +28,10 @@ function NewRelease({ songData, songSrc, typeLength }) {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [songData]);
+
+    const loadSongList = () => {
+        dispatch(actions.setSongList(songData.map((item) => item.encodeId)));
+    };
 
     const handleClickGenre = (e) => {
         const genreBtns = document.querySelectorAll('.genre-select button');
@@ -97,6 +104,7 @@ function NewRelease({ songData, songSrc, typeLength }) {
                                                           src={item.thumbnail}
                                                           songId={item.encodeId}
                                                           isVip={srcType[i * 3 + colIndex] ? false : true}
+                                                          loadSongList={loadSongList}
                                                       />
                                                       <div className="card-info">
                                                           <div className="title-wrapper">

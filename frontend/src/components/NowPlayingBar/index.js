@@ -11,7 +11,7 @@ import Lyrics from './Lyrics';
 import Tippy from '@tippyjs/react/headless';
 import { Link } from 'react-router-dom';
 import formatNumber from '../../utils/formatNumber';
-import { setSongId } from '../../store/actions';
+import FavouriteButton from '../FavouriteButton';
 
 let audio;
 function NowPlayingBar() {
@@ -43,12 +43,15 @@ function NowPlayingBar() {
         if (songId) {
             (async () => {
                 try {
-                    console.log(songId);
                     audio = document.querySelector('.--z--player audio');
                     const data = await getInfoSong(songId);
                     const src = await getSong(songId);
                     setLyrics(await getLyrics(songId));
-                    audio.setAttribute('src', src[128]);
+                    if (src) {
+                        audio.setAttribute('src', src[128]);
+                    } else {
+                        loadNextSong();
+                    }
                     setIsPlaying(true);
                     audio.play();
                     setSongData(data);
@@ -179,7 +182,6 @@ function NowPlayingBar() {
             audio.currentTime = 0;
             audio.play();
         }
-        songStore.push(songId);
     };
 
     const getRandomElement = (array, currentElement) => {
@@ -205,6 +207,7 @@ function NowPlayingBar() {
 
         audio.onended = () => {
             loadNextSong();
+            songStore.push(songId);
         };
 
         return (
@@ -273,17 +276,7 @@ function NowPlayingBar() {
                                 <div className="media-right">
                                     <div className="level">
                                         <div className="level-item">
-                                            <ToolTip content="Thêm vào thư viện">
-                                                <button
-                                                    className="osx-btn osx-tooltip-btn osx-disable-transition active is-hover-circle button"
-                                                    tabIndex="0"
-                                                >
-                                                    <i
-                                                        className="icon ic-like"
-                                                        style={{ color: 'rgb(153, 153, 153)' }}
-                                                    ></i>
-                                                </button>
-                                            </ToolTip>
+                                            <FavouriteButton songId={songId} />
                                         </div>
                                         <div>
                                             <Tippy

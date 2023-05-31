@@ -86,15 +86,17 @@ function SongController({
                     >
                         <i className="icon">{isPlaying ? <PauseIcon /> : <PlayIcon />}</i>
                     </button>
-                    <button
-                        className="osx-btn osx-tooltip-btn btn-next is-hover-circle button"
-                        onClick={onNext}
-                        tabIndex="0"
-                    >
-                        <i className="icon">
-                            <NextIcon />
-                        </i>
-                    </button>
+                    <ToolTip content="Bài kế tiếp">
+                        <button
+                            className="osx-btn osx-tooltip-btn btn-next is-hover-circle button"
+                            onClick={onNext}
+                            tabIndex="0"
+                        >
+                            <i className="icon">
+                                <NextIcon />
+                            </i>
+                        </button>
+                    </ToolTip>
                     <ToolTip content={isRepeating ? 'Tắt phát lại tất cả' : 'Bật phát lại tất cả'}>
                         <button
                             className="osx-btn osx-tooltip-btn btn-repeat is-hover-circle button"

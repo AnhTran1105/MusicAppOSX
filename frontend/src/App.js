@@ -8,6 +8,7 @@ import AlbumDetail from './pages/AlbumDetail';
 import ArtistDetail from './pages/ArtistDetail';
 import ArtistSong from './pages/ArtistSong';
 import Search from './pages/Search';
+import Library from './pages/Library';
 
 function App() {
     return (
@@ -97,6 +98,14 @@ function App() {
                         element={
                             <DefaultLayout>
                                 <Search />
+                            </DefaultLayout>
+                        }
+                    />
+                    <Route
+                        path="/mymusic"
+                        element={
+                            <DefaultLayout>
+                                <Library />
                             </DefaultLayout>
                         }
                     />

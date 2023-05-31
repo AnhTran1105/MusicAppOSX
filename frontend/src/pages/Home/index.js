@@ -16,6 +16,7 @@ const Home = () => {
 
     useEffect(() => {
         fetchHomeData();
+        loadSongIds();
     }, []);
 
     useEffect(() => {
@@ -60,6 +61,16 @@ const Home = () => {
             // Xử lý dữ liệu nhận được từ server ở đây
         } catch (error) {
             // Xử lý lỗi nếu có
+            console.error(error);
+        }
+    };
+
+    const loadSongIds = async () => {
+        try {
+            const response = await axios.get('api/load-song-ids');
+            localStorage.setItem('songIds', response.songIds);
+            return response;
+        } catch (error) {
             console.error(error);
         }
     };
