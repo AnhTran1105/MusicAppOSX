@@ -19,7 +19,7 @@ function Sidebar() {
                     </div>
                 </nav>
                 <nav className="osx-navbar osx-navbar-main">
-                    <ul className="osx-navbar-menu">
+                    <ul className="osx-navbar-menu hover">
                         <li className="osx-navbar-item">
                             <div className="osx-navbar-item-wrapper">
                                 <NavLink
@@ -143,66 +143,15 @@ function Sidebar() {
                             <div className="osx-navbar-item-wrapper">
                                 <a className="osx-navbar-type" href="/">
                                     <i className="icon">
-                                        <StarIcon />
-                                    </i>
-                                    <span>Starred</span>
-                                </a>
-                            </div>
-                        </li>
-                        <li className="osx-navbar-item ">
-                            <div className="osx-navbar-item-wrapper">
-                                <a className="osx-navbar-type" href="/">
-                                    <i className="icon">
-                                        <PlaylistIcon />
-                                    </i>
-                                    <span>Discover</span>
-                                </a>
-                            </div>
-                        </li>
-                        <li className="osx-navbar-item">
-                            <div className="osx-navbar-item-wrapper">
-                                <a className="osx-navbar-type" href="/">
-                                    <i className="icon">
                                         <PlaylistIcon />
                                     </i>
                                     <span>Favourites</span>
                                 </a>
                             </div>
                         </li>
-                        <li className="osx-navbar-item">
-                            <div className="osx-navbar-item-wrapper">
-                                <a className="osx-navbar-type" href="/">
-                                    <i className="icon">
-                                        <PlaylistIcon />
-                                    </i>
-                                    <span>Top Charts</span>
-                                </a>
-                            </div>
-                        </li>
-                        <li className="osx-navbar-item">
-                            <div className="osx-navbar-item-wrapper">
-                                <a className="osx-navbar-type" href="/">
-                                    <i className="icon">
-                                        <PlaylistIcon />
-                                    </i>
-                                    <span>Station</span>
-                                </a>
-                            </div>
-                        </li>
-                        <li className="osx-navbar-item">
-                            <div className="osx-navbar-item-wrapper">
-                                <a className="osx-navbar-type" href="/">
-                                    <i className="icon">
-                                        <PlaylistIcon />
-                                    </i>
-                                    <span>Genres</span>
-                                </a>
-                            </div>
-                        </li>
                     </ul>
                     <ul className="osx-navbar-playlists">
-                        <li className="playlist-item">Playlist 1</li>
-                        <li className="playlist-item">Playlist 2</li>
+                        <li className="playlist-item">Untitled</li>
                     </ul>
                 </nav>
             </div>

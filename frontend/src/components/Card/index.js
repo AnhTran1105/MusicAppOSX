@@ -62,20 +62,22 @@ function Card({
                 <h3 className="mt-10 subtitle">
                     <span>
                         <span>
-                            {artists.map((artist, i) =>
-                                i === artists.length - 1 ? (
-                                    <Link key={i} className="is-ghost" to={artist.link}>
-                                        {artist.name}
-                                    </Link>
-                                ) : (
-                                    <Fragment key={i}>
-                                        <Link className="is-ghost" to={artist.link}>
-                                            {artist.name}
-                                        </Link>
-                                        ,{' '}
-                                    </Fragment>
-                                ),
-                            )}
+                            {artists
+                                ? artists.map((artist, i) =>
+                                      i === artists.length - 1 ? (
+                                          <Link key={i} className="is-ghost" to={artist.link}>
+                                              {artist.name}
+                                          </Link>
+                                      ) : (
+                                          <Fragment key={i}>
+                                              <Link className="is-ghost" to={artist.link}>
+                                                  {artist.name}
+                                              </Link>
+                                              ,{' '}
+                                          </Fragment>
+                                      ),
+                                  )
+                                : ''}
                         </span>
                         <span style={{ position: 'fixed', visibility: 'hidden', top: '0px', left: '0px' }}></span>
                     </span>

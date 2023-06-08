@@ -29,6 +29,17 @@ function AlbumDetail() {
         }
     }, [albumId]);
 
+    useEffect(() => {
+        (async () => {
+            try {
+                setData(await getAlbumDetail(albumId));
+                setBusy(false);
+            } catch (error) {
+                console.error('Error fetching song info and song source:', error);
+            }
+        })();
+    }, []);
+
     const getAlbumDetail = async (albumId) => {
         try {
             const response = await axios.get(`get-detail-playlist/?id=${albumId}`);

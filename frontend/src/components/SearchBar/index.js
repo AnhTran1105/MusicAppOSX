@@ -1,5 +1,5 @@
 import Tippy from '@tippyjs/react/headless';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function SearchBar() {
@@ -9,8 +9,11 @@ function SearchBar() {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        // Điều hướng đến đường dẫn `/tim-kiem/tat-ca?q={searchQuery}`
         navigate(`/tim-kiem/tat-ca?q=${searchQuery}`);
+    };
+
+    const handleSearchSuggestions = (e) => {
+        setSearchQuery(e.target.textContent);
     };
 
     return (
@@ -24,7 +27,7 @@ function SearchBar() {
                         <div className="suggest__list--content">
                             <div className="search__title">Đề xuất cho bạn</div>
                             <div>
-                                <li className="suggest__item">
+                                <li className="suggest__item" onClick={handleSearchSuggestions}>
                                     <i className="icon ic-trend"></i>
                                     <div className="is-oneline">cô ấy của anh ấy</div>
                                 </li>
@@ -75,6 +78,7 @@ function SearchBar() {
                     >
                         <input
                             type="text"
+                            id="search"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="form-control z-input-placeholder"

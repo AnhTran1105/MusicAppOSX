@@ -112,6 +112,16 @@
     }
 }
 
+.osx-navbar-menu.hover {
+    .osx-navbar-item {
+        &:hover {
+            a {
+                color: var(--link-text-hover);
+            }
+        }
+    }
+}
+
 .sidebar-divide {
     position: relative;
     height: 1px;
