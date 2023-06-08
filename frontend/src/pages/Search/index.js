@@ -6,14 +6,17 @@ import SongItem from '../../components/SongItem/SongItem';
 import Playlist from '../../sections/Playlist';
 import Artist from '../../sections/Artist';
 import MV from '../../sections/MV';
+import { useStore, actions } from '../../store';
 
 function Search() {
     const location = useLocation();
     const [isBusy, setBusy] = useState(true);
     const [data, setData] = useState();
     const searchParams = new URLSearchParams(location.search);
-    const type = window.location.pathname.slice(window.location.pathname.lastIndexOf('/') + 1);
+    // const type = window.location.pathname.slice(window.location.pathname.lastIndexOf('/') + 1);
     const keyword = searchParams.get('q');
+
+    const [state, dispatch] = useStore();
 
     useEffect(() => {
         if (keyword) {
@@ -35,6 +38,10 @@ function Search() {
         } catch (error) {
             console.error(error);
         }
+    };
+
+    const loadSongList = () => {
+        dispatch(actions.setSongList(data.songs.map((song) => song.encodeId)));
     };
 
     if (isBusy) return null;
@@ -266,7 +273,7 @@ function Search() {
                                                             key={i}
                                                             className="list-item media-item hide-right full-left"
                                                         >
-                                                            <SongItem props={item} />
+                                                            <SongItem props={item} loadSongList={loadSongList} />
                                                         </div>
                                                     ))}
                                             </div>

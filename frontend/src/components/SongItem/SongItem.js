@@ -33,7 +33,6 @@ function SongItem({ props, isSongPrefix = false, isContent = false, loadSongList
         })();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
-    // if (!props) return null;
 
     const getSongInfo = async (id) => {
         try {
@@ -117,20 +116,22 @@ function SongItem({ props, isSongPrefix = false, isContent = false, loadSongList
                             </span>
                         </div>
                         <h3 className="is-one-line is-truncate subtitle">
-                            {songInfo.artists.map((artist, i) =>
-                                i === songInfo.artists.length - 1 ? (
-                                    <Link key={i} className="is-ghost" to={artist.link}>
-                                        {artist.name}
-                                    </Link>
-                                ) : (
-                                    <Fragment key={i}>
-                                        <Link className="is-ghost" to={artist.link}>
-                                            {artist.name}
-                                        </Link>
-                                        ,{' '}
-                                    </Fragment>
-                                ),
-                            )}
+                            {songInfo.artists
+                                ? songInfo.artists.map((artist, i) =>
+                                      i === songInfo.artists.length - 1 ? (
+                                          <Link key={i} className="is-ghost" to={artist.link}>
+                                              {artist.name}
+                                          </Link>
+                                      ) : (
+                                          <Fragment key={i}>
+                                              <Link className="is-ghost" to={artist.link}>
+                                                  {artist.name}
+                                              </Link>
+                                              ,{' '}
+                                          </Fragment>
+                                      ),
+                                  )
+                                : ''}
                         </h3>
                     </div>
                 </div>

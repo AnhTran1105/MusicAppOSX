@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { AddIcon, AlbumIcon, ArtistIcon, PlaylistIcon, RecentIcon, SongIcon, StarIcon, UploadIcon } from '../../icons';
+import { AddIcon, AlbumIcon, ArtistIcon, PlaylistIcon, RecentIcon, SongIcon, UploadIcon } from '../../icons';
 import ToolTip from '@tippyjs/react';
 import { NavLink } from 'react-router-dom';
 
@@ -51,9 +51,9 @@ function Sidebar() {
                                     className={(navData) =>
                                         navData.isActive ? 'is-active osx-navbar-link' : 'osx-navbar-link'
                                     }
-                                    to="/radio"
+                                    to="/top100"
                                 >
-                                    Radio
+                                    Top 100
                                 </NavLink>
                             </div>
                         </li>
@@ -63,9 +63,9 @@ function Sidebar() {
                                     className={(navData) =>
                                         navData.isActive ? 'is-active osx-navbar-link' : 'osx-navbar-link'
                                     }
-                                    to="/store"
+                                    to="/moi-phat-hanh"
                                 >
-                                    Store
+                                    New Release
                                 </NavLink>
                             </div>
                         </li>

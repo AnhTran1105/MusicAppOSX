@@ -10,10 +10,14 @@ function SearchBar() {
     const handleSearch = (e) => {
         e.preventDefault();
         navigate(`/tim-kiem/tat-ca?q=${searchQuery}`);
+        setVisible(false);
     };
 
     const handleSearchSuggestions = (e) => {
-        setSearchQuery(e.target.textContent);
+        const suggestion = e.target.textContent;
+        setSearchQuery(suggestion);
+        navigate(`/tim-kiem/tat-ca?q=${encodeURIComponent(suggestion)}`);
+        setVisible(false);
     };
 
     return (
@@ -33,31 +37,31 @@ function SearchBar() {
                                 </li>
                             </div>
                             <div>
-                                <li className="suggest__item">
+                                <li className="suggest__item" onClick={handleSearchSuggestions}>
                                     <i className="icon ic-trend"></i>
                                     <div className="is-oneline">mưa tháng sáu</div>
                                 </li>
                             </div>
                             <div>
-                                <li className="suggest__item">
+                                <li className="suggest__item" onClick={handleSearchSuggestions}>
                                     <i className="icon ic-trend"></i>
                                     <div className="is-oneline">ngày mai người ta lấy chồng</div>
                                 </li>
                             </div>
                             <div>
-                                <li className="suggest__item">
+                                <li className="suggest__item" onClick={handleSearchSuggestions}>
                                     <i className="icon ic-trend"></i>
                                     <div className="is-oneline">mật ngọt</div>
                                 </li>
                             </div>
                             <div>
-                                <li className="suggest__item">
+                                <li className="suggest__item" onClick={handleSearchSuggestions}>
                                     <i className="icon ic-trend"></i>
                                     <div className="is-oneline">một ngày chẳng nắng</div>
                                 </li>
                             </div>
                             <div>
-                                <li className="suggest__item">
+                                <li className="suggest__item" onClick={handleSearchSuggestions}>
                                     <i className="icon ic-trend"></i>
                                     <div className="is-oneline">đưa em về nhà</div>
                                 </li>
@@ -83,6 +87,7 @@ function SearchBar() {
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="form-control z-input-placeholder"
                             placeholder="What do you want to listen?"
+                            autoComplete="off"
                         />
                     </div>
                 </div>

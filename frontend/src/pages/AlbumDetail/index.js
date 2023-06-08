@@ -167,7 +167,7 @@ function AlbumDetail() {
                                     <div className="description">
                                         <span>
                                             <span>
-                                                <span>{data.sortDescription}</span>
+                                                <span>{data.sortDescription.replace('Zing MP3', '')}</span>
                                             </span>
                                             <span
                                                 style={{

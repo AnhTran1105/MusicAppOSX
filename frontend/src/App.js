@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { publicRoutes } from './routes';
 import { DefaultLayout } from './layouts';
 import { Fragment } from 'react';
@@ -9,12 +9,18 @@ import ArtistDetail from './pages/ArtistDetail';
 import ArtistSong from './pages/ArtistSong';
 import Search from './pages/Search';
 import Library from './pages/Library';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import { useStore } from './store';
+import Top100 from './pages/Top100';
 
 function App() {
+    const [state, dispatch] = useStore();
     return (
         <Router>
             <div className="App">
                 <Routes>
+                    {!state.loggedIn ? <Route path="/" element={<Navigate to="/login" />} /> : ''}
                     {publicRoutes.map((route, index) => {
                         const Page = route.component;
                         let Layout = DefaultLayout;
@@ -37,6 +43,8 @@ function App() {
                             />
                         );
                     })}
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<SignUp />} />
                     <Route
                         path="/album/:albumName/:albumId.html"
                         element={
@@ -106,6 +114,14 @@ function App() {
                         element={
                             <DefaultLayout>
                                 <Library />
+                            </DefaultLayout>
+                        }
+                    />
+                    <Route
+                        path="/top100"
+                        element={
+                            <DefaultLayout>
+                                <Top100 />
                             </DefaultLayout>
                         }
                     />

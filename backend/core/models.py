@@ -8,6 +8,14 @@ class Song(models.Model):
         return self.song_id
 
 
+class User(models.Model):
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.email
+
+
 class Playlist(models.Model):
     playlist_id = models.CharField(max_length=10)
 

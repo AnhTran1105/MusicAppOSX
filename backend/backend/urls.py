@@ -18,5 +18,7 @@ urlpatterns = [
     path('get-category-mv/', views.get_category_mv),
     path('get-video/', views.get_video),
     path('api/load-song-ids', views.load_song_ids),
-    path('api/toggle-favorite', views.toggle_favorite)
+    path('api/toggle-favorite', views.toggle_favorite),
+    path('api/register', views.register),
+    path('api/login', views.login),
 ]

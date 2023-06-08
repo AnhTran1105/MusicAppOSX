@@ -1,6 +1,7 @@
 from api.controller import zing_controller
 from django.http import JsonResponse
 from .models import Song
+from .models import User
 import json
 from django.views.decorators.csrf import csrf_exempt
 
@@ -85,13 +86,10 @@ def toggle_favorite(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         song_id = data.get('song_id')
-        # Kiểm tra xem bài hát đã tồn tại trong cơ sở dữ liệu hay chưa
         if Song.objects.filter(song_id=song_id):
             Song.objects.filter(song_id=song_id).delete()
-            # Nếu tồn tại, xóa bài hát khỏi cơ sở dữ liệu
             return JsonResponse({'success': True, 'message': 'Removed from favorites'})
         else:
-            # Nếu không tồn tại, thêm bài hát vào cơ sở dữ liệu
             Song.objects.create(song_id=song_id)
             return JsonResponse({'success': True, 'message': 'Added to favorites'})
     return JsonResponse({'success': False, 'message': 'Invalid request'})
@@ -103,3 +101,32 @@ def load_song_ids(request):
         return JsonResponse({'data': {'songIds': list(song_ids)}})
     else:
         return JsonResponse({'error': 'Invalid request method'})
+
+
+@csrf_exempt
+def register(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        email = data.get('email')
+        password = data.get('password')
+
+        if User.objects.filter(email=email):
+            return JsonResponse({'data': {'success': False, 'message': 'Email already exists.'}})
+        else:
+            User.objects.create(email=email, password=password)
+            return JsonResponse({'data': {'success': True, 'message': 'Register successfully!'}})
+    return JsonResponse({'data': {'success': False, 'message': 'Invalid request'}})
+
+
+@csrf_exempt
+def login(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        email = data.get('email')
+        password = data.get('password')
+
+        if User.objects.filter(email=email, password=password):
+            return JsonResponse({'data': {'success': True, 'message': 'Login successfully!'}})
+        else:
+            return JsonResponse({'data': {'success': False, 'message': 'Incorrect email or password.'}})
+    return JsonResponse({'data': {'success': False, 'message': 'Invalid request'}})

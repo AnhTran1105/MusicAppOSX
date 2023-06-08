@@ -1,10 +1,11 @@
-import { SET_SONG_ID, SET_SONG_SOURCE, SET_SONG_STATUS, SET_SONG_LIST } from './constants';
+import { SET_SONG_ID, SET_SONG_SOURCE, SET_SONG_STATUS, SET_SONG_LIST, SET_LOGGED_IN } from './constants';
 
 const initState = {
     songId: '',
     songSrc: '',
     songStatus: 'pause',
     songList: [],
+    loggedIn: false,
 };
 
 function reducer(state, action) {
@@ -29,6 +30,11 @@ function reducer(state, action) {
             return {
                 ...state,
                 songList: action.payload,
+            };
+        case SET_LOGGED_IN:
+            return {
+                ...state,
+                loggedIn: action.payload,
             };
 
         default:
