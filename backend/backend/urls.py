@@ -21,4 +21,5 @@ urlpatterns = [
     path('api/toggle-favorite', views.toggle_favorite),
     path('api/register', views.register),
     path('api/login', views.login),
+    path('api/create-playlist', views.create_playlist),
 ]

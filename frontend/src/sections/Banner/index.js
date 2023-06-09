@@ -69,7 +69,7 @@ function Banner({ props }) {
 
     useEffect(() => {
         let interval;
-        interval = setInterval(() => setTime(Date.now()), 8000);
+        interval = setInterval(() => setTime(Date.now()), 6000);
         if (isAuto) {
             transformArr = handleLeftTransformArr();
         }

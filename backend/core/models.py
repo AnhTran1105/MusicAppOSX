@@ -17,10 +17,10 @@ class User(models.Model):
 
 
 class Playlist(models.Model):
-    playlist_id = models.CharField(max_length=10)
+    title = models.CharField(max_length=128)
 
     def __str__(self):
-        return self.playlist_id
+        return self.title
 
 
 class Artist(models.Model):

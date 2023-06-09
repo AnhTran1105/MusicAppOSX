@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import usePortal from 'react-cool-portal';
 
 function Library() {
-    const { Portal, show } = usePortal({
+    const { Portal, show, hide } = usePortal({
         defaultShow: false,
     });
 
@@ -51,7 +51,7 @@ function Library() {
         axios
             .post(
                 '/api/create-playlist',
-                { playlistTitle: playlistTitle },
+                { title: playlistTitle },
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -59,6 +59,7 @@ function Library() {
                 },
             )
             .then((response) => {
+                alert(response.message);
                 // if (response.success) {
                 //     dispatch(actions.setLoggedIn(true));
                 //     navigate('/');
@@ -166,11 +167,7 @@ function Library() {
                                                     <div className="osx-carousel-item is-fullhd-20 is-widescreen-20 is-desktop-3 is-touch-3 is-tablet-3">
                                                         <div className="library-playlist-item">
                                                             <div className="osx-card">
-                                                                <a
-                                                                    className=""
-                                                                    title="Untitled"
-                                                                    href="/playlist/MP/S0CABDE6.html"
-                                                                >
+                                                                <Link className="" title="Untitled" to="/mymusic">
                                                                     <div className="osx-card-image">
                                                                         <div className="osx-actions-container">
                                                                             <div className="osx-box osx-actions playlist-actions">
@@ -206,15 +203,11 @@ function Library() {
                                                                         </figure>
                                                                         <div className="opacity "></div>
                                                                     </div>
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                             <div className="osx-card-content">
                                                                 <h4 className="title is-6">
-                                                                    <a
-                                                                        className=""
-                                                                        title="Untitled"
-                                                                        href="/playlist/MP/S0CABDE6.html"
-                                                                    >
+                                                                    <Link className="" title="Untitled" to="/mymusic">
                                                                         <span>
                                                                             <span>
                                                                                 <span>Untitled</span>
@@ -230,7 +223,7 @@ function Library() {
                                                                                 …
                                                                             </span>
                                                                         </span>
-                                                                    </a>
+                                                                    </Link>
                                                                 </h4>
                                                                 <h3 className="mt-10 subtitle">Anh Trần</h3>
                                                             </div>
@@ -259,7 +252,7 @@ function Library() {
                                             <ul className="osx-navbar-menu">
                                                 <li className="osx-navbar-item is-active">
                                                     <div className="navbar-link">
-                                                        <Link className="" to="/mymusic/song">
+                                                        <Link className="" to="/mymusic">
                                                             BÀI HÁT
                                                         </Link>
                                                     </div>
@@ -372,26 +365,34 @@ function Library() {
                     <div className="modal is-active">
                         <div role="presentation" className="modal-background">
                             <div className="modal-content">
-                                <div className="auth-form-body">
-                                    <form acceptCharset="UTF-8" method="post" onSubmit={handleCreate}>
-                                        <label htmlFor="create-playlist">Playlist title</label>
+                                <div className="form-playlist-content">
+                                    <ToolTip content="Đóng">
+                                        <button
+                                            onClick={hide}
+                                            className="osx-btn osx-tooltip-btn close-btn is-hover-circle button"
+                                            tabIndex="0"
+                                        >
+                                            <i className="icon ic-close"></i>
+                                        </button>
+                                    </ToolTip>
+                                    <h3 className="title">Tạo playlist mới</h3>
+                                    <form>
                                         <input
-                                            type="text"
-                                            name="create-playlist"
-                                            id="create-playlist"
-                                            className="form-control form-control input-block js-password-field"
-                                            autoCapitalize="off"
-                                            autoCorrect="off"
-                                            autoComplete="off"
-                                            autoFocus="autofocus"
+                                            className="input"
+                                            placeholder="Nhập tên playlist"
                                             value={playlistTitle}
                                             onChange={(e) => setPlaylistTitle(e.target.value)}
                                         />
-                                        <div>
-                                            <button className="btn btn-primary btn-block sign-in-btn" type="submit">
-                                                Sign in
+                                        <p>
+                                            <button
+                                                className="osx-btn mar-t-20 is-outlined active is-fullwidth is-upper button"
+                                                tabIndex="-1"
+                                                disabled=""
+                                            >
+                                                <i className="icon"></i>
+                                                <span>Tạo mới</span>
                                             </button>
-                                        </div>
+                                        </p>
                                     </form>
                                 </div>
                             </div>

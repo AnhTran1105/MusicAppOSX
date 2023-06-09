@@ -130,18 +130,18 @@ function Sidebar() {
                 <nav className="osx-navbar osx-navbar-main">
                     <div className="osx-navbar-title">
                         <span>Playlists</span>
-                        <ToolTip content="Tạo playlist mới">
+                        {/* <ToolTip content="Tạo playlist mới">
                             <button className="osx-btn is-hover-circle">
                                 <i className="icon">
                                     <AddIcon />
                                 </i>
                             </button>
-                        </ToolTip>
+                        </ToolTip> */}
                     </div>
                     <ul className="osx-navbar-menu">
                         <li className="osx-navbar-item">
                             <div className="osx-navbar-item-wrapper">
-                                <Link className="osx-navbar-type" href="/">
+                                <Link className="osx-navbar-type" href="/mymusic">
                                     <i className="icon">
                                         <PlaylistIcon />
                                     </i>

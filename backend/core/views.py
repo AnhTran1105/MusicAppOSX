@@ -2,6 +2,7 @@ from api.controller import zing_controller
 from django.http import JsonResponse
 from .models import Song
 from .models import User
+from .models import Playlist
 import json
 from django.views.decorators.csrf import csrf_exempt
 
@@ -129,4 +130,14 @@ def login(request):
             return JsonResponse({'data': {'success': True, 'message': 'Login successfully!'}})
         else:
             return JsonResponse({'data': {'success': False, 'message': 'Incorrect email or password.'}})
+    return JsonResponse({'data': {'success': False, 'message': 'Invalid request'}})
+
+
+@csrf_exempt
+def create_playlist(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        title = data.get('title')
+        Playlist.objects.create(title=title)
+        return JsonResponse({'data': {'success': True, 'message': 'Create successfully!'}})
     return JsonResponse({'data': {'success': False, 'message': 'Invalid request'}})

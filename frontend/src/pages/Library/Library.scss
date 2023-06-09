@@ -53,3 +53,30 @@
         margin-left: 16px;
     }
 }
+
+.form-playlist-content {
+    width: 290px;
+    text-align: center;
+
+    .close-btn {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    .title {
+        text-transform: none;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .input {
+        height: 40px;
+        width: 100%;
+        border-radius: 999px;
+        border: 1px solid var(--border-primary);
+        background-color: var(--alpha-bg);
+        padding: 0 15px;
+        font-size: 14px;
+    }
+}

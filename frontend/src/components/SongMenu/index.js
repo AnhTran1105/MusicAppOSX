@@ -223,25 +223,7 @@ function SongMenu({ props }) {
                                                                     <li>
                                                                         <button className="osx-btn button" tabIndex="0">
                                                                             <i className="icon ic-list-music"></i>
-                                                                            <span>MP</span>
-                                                                        </button>
-                                                                    </li>
-                                                                    <li>
-                                                                        <button className="osx-btn button" tabIndex="0">
-                                                                            <i className="icon ic-list-music"></i>
-                                                                            <span>noname</span>
-                                                                        </button>
-                                                                    </li>
-                                                                    <li>
-                                                                        <button className="osx-btn button" tabIndex="0">
-                                                                            <i className="icon ic-list-music"></i>
-                                                                            <span>My love music</span>
-                                                                        </button>
-                                                                    </li>
-                                                                    <li>
-                                                                        <button className="osx-btn button" tabIndex="0">
-                                                                            <i className="icon ic-list-music"></i>
-                                                                            <span>Binz, Khói,...</span>
+                                                                            <span>Untitled</span>
                                                                         </button>
                                                                     </li>
                                                                 </ul>
