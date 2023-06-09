@@ -13,6 +13,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import { useStore } from './store';
 import Top100 from './pages/Top100';
+import NewReleaseChart from './pages/NewReleaseChart';
 
 function App() {
     const [state, dispatch] = useStore();
@@ -122,6 +123,14 @@ function App() {
                         element={
                             <DefaultLayout>
                                 <Top100 />
+                            </DefaultLayout>
+                        }
+                    />
+                    <Route
+                        path="/moi-phat-hanh"
+                        element={
+                            <DefaultLayout>
+                                <NewReleaseChart />
                             </DefaultLayout>
                         }
                     />

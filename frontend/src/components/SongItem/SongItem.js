@@ -9,7 +9,7 @@ import SongMenu from '../SongMenu';
 import usePortal from 'react-cool-portal';
 import FavouriteButton from '../FavouriteButton';
 
-function SongItem({ props, isSongPrefix = false, isContent = false, loadSongList, songId }) {
+function SongItem({ props, isSongPrefix = false, isContent = false, loadSongList, songId, ranking = null }) {
     const [songInfo, setSongInfo] = useState(null);
     const [songSrc, setSongSrc] = useState(null);
     const [isBusy, setBusy] = useState(true);
@@ -58,6 +58,29 @@ function SongItem({ props, isSongPrefix = false, isContent = false, loadSongList
         <>
             <div className={`media ${songSrc ? '' : 'is-vip'}`}>
                 <div className="media-left">
+                    {ranking ? (
+                        <div className="song-prefix mar-r-15">
+                            <span className={`number is-top-${ranking} is-center mar-r-5`}>{ranking}</span>
+                            <div className="sort">
+                                <i
+                                    className={`icon is-18x18 is-center ${
+                                        props.rakingStatus === 0
+                                            ? 'grey ic-balance'
+                                            : props.rakingStatus > 0
+                                            ? 'green ic-up'
+                                            : 'red ic-down'
+                                    } `}
+                                ></i>
+                                {props.rakingStatus !== 0 ? (
+                                    <span className="sort-num is-18x18 is-center">{Math.abs(props.rakingStatus)}</span>
+                                ) : (
+                                    ''
+                                )}
+                            </div>
+                        </div>
+                    ) : (
+                        ''
+                    )}
                     {isSongPrefix ? (
                         <div className="song-prefix mar-r-10">
                             <i className="icon ic-song"></i>

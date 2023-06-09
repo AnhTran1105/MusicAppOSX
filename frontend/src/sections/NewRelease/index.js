@@ -61,12 +61,7 @@ function NewRelease({ songData, songSrc, typeLength }) {
 
     return (
         <div className="osx-section osx-new-release-section channel-section pad-0">
-            <h3 className="osx-section-title title is-2">
-                Mới phát hành
-                <a className="discovery-btn" href="/new-release/song?filter=all">
-                    Tất cả <i className="icon ic-go-right"></i>
-                </a>
-            </h3>
+            <h3 className="osx-section-title title is-2">Mới phát hành</h3>
             <div className="genre-select">
                 <button value="all" className="osx-btn active button" onClick={handleClickGenre} tabIndex="0">
                     Tất cả

@@ -77,52 +77,52 @@ function Sidebar() {
                     <ul className="osx-navbar-menu">
                         <li className="osx-navbar-item">
                             <div className="osx-navbar-item-wrapper">
-                                <a className="osx-navbar-type" href="/">
+                                <Link className="osx-navbar-type" href="/">
                                     <i className="icon">
                                         <SongIcon />
                                     </i>
                                     <span>Songs</span>
-                                </a>
+                                </Link>
                             </div>
                         </li>
                         <li className="osx-navbar-item ">
                             <div className="osx-navbar-item-wrapper">
-                                <a className="osx-navbar-type" href="/">
+                                <Link className="osx-navbar-type" href="/">
                                     <i className="icon">
                                         <RecentIcon />
                                     </i>
                                     <span>Recent</span>
-                                </a>
+                                </Link>
                             </div>
                         </li>
                         <li className="osx-navbar-item">
                             <div className="osx-navbar-item-wrapper">
-                                <a className="osx-navbar-type" href="/">
+                                <Link className="osx-navbar-type" href="/">
                                     <i className="icon">
                                         <UploadIcon />
                                     </i>
                                     <span>Local</span>
-                                </a>
+                                </Link>
                             </div>
                         </li>
                         <li className="osx-navbar-item">
                             <div className="osx-navbar-item-wrapper">
-                                <a className="osx-navbar-type" href="/">
+                                <Link className="osx-navbar-type" href="/">
                                     <i className="icon">
                                         <AlbumIcon />
                                     </i>
                                     <span>Albums</span>
-                                </a>
+                                </Link>
                             </div>
                         </li>
                         <li className="osx-navbar-item">
                             <div className="osx-navbar-item-wrapper">
-                                <a className="osx-navbar-type" href="/">
+                                <Link className="osx-navbar-type" href="/">
                                     <i className="icon">
                                         <ArtistIcon />
                                     </i>
                                     <span>Artists</span>
-                                </a>
+                                </Link>
                             </div>
                         </li>
                     </ul>
@@ -141,12 +141,12 @@ function Sidebar() {
                     <ul className="osx-navbar-menu">
                         <li className="osx-navbar-item">
                             <div className="osx-navbar-item-wrapper">
-                                <a className="osx-navbar-type" href="/">
+                                <Link className="osx-navbar-type" href="/">
                                     <i className="icon">
                                         <PlaylistIcon />
                                     </i>
                                     <span>Favourites</span>
-                                </a>
+                                </Link>
                             </div>
                         </li>
                     </ul>

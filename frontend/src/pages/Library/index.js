@@ -4,8 +4,15 @@ import SelectItem from '../AlbumDetail/SelectItem';
 import axios from '../../utils/axios';
 import { useStore, actions } from '../../store';
 import { useState, useEffect } from 'react';
+import usePortal from 'react-cool-portal';
 
 function Library() {
+    const { Portal, show } = usePortal({
+        defaultShow: false,
+    });
+
+    const [playlistTitle, setPlaylistTitle] = useState('');
+
     const [data, setData] = useState(null);
     const [isBusy, setBusy] = useState(true);
 
@@ -33,6 +40,33 @@ function Library() {
 
     const loadSongList = () => {
         dispatch(actions.setSongList(data.songIds.map((id) => id)));
+    };
+
+    const handleCreate = (e) => {
+        e.preventDefault();
+        create(playlistTitle);
+    };
+
+    const create = () => {
+        axios
+            .post(
+                '/api/create-playlist',
+                { playlistTitle: playlistTitle },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                },
+            )
+            .then((response) => {
+                // if (response.success) {
+                //     dispatch(actions.setLoggedIn(true));
+                //     navigate('/');
+                // } else setError(response.message);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     };
 
     if (isBusy) return null;
@@ -116,14 +150,12 @@ function Library() {
                                                 <button
                                                     className="osx-btn osx-tooltip-btn is-hover-circle button"
                                                     tabIndex="0"
+                                                    onClick={show}
                                                     style={{ backgroundColor: 'var(--alpha-bg)' }}
                                                 >
                                                     <i className="icon ic-add"></i>
                                                 </button>
                                             </div>
-                                            <Link className="discovery-btn" to="/mymusic/library/playlist">
-                                                Tất cả <i className="icon ic-go-right"></i>
-                                            </Link>
                                         </h3>
                                         <div className="osx-carousel-wrapper">
                                             <div className="osx-carousel">
@@ -234,21 +266,33 @@ function Library() {
                                                 </li>
                                                 <li className="osx-navbar-item">
                                                     <div className="navbar-link">
-                                                        <Link className="" to="/mymusic/podcast">
+                                                        <Link
+                                                            style={{ pointerEvents: 'none' }}
+                                                            className=""
+                                                            to="/mymusic/podcast"
+                                                        >
                                                             PODCAST
                                                         </Link>
                                                     </div>
                                                 </li>
                                                 <li className="osx-navbar-item">
                                                     <div className="navbar-link">
-                                                        <Link className="" to="/mymusic/album">
+                                                        <Link
+                                                            style={{ pointerEvents: 'none' }}
+                                                            className=""
+                                                            to="/mymusic/album"
+                                                        >
                                                             ALBUM
                                                         </Link>
                                                     </div>
                                                 </li>
                                                 <li className="osx-navbar-item">
                                                     <div className="navbar-link">
-                                                        <Link className="" to="/mymusic/mv">
+                                                        <Link
+                                                            style={{ pointerEvents: 'none' }}
+                                                            className=""
+                                                            to="/mymusic/mv"
+                                                        >
                                                             MV
                                                         </Link>
                                                     </div>
@@ -258,10 +302,18 @@ function Library() {
                                     </nav>
                                     <div>
                                         <div className="osx-nav-buttons mar-b-20">
-                                            <Link className="item active" to="/mymusic/song/favorite">
+                                            <Link
+                                                style={{ pointerEvents: 'none' }}
+                                                className="item active"
+                                                to="/mymusic/song/favorite"
+                                            >
                                                 Yêu thích
                                             </Link>
-                                            <Link className="item" to="/mymusic/song/upload">
+                                            <Link
+                                                style={{ pointerEvents: 'none' }}
+                                                className="item"
+                                                to="/mymusic/song/upload"
+                                            >
                                                 Đã tải lên
                                             </Link>
                                         </div>
@@ -315,6 +367,38 @@ function Library() {
                     </div>
                 </main>
             </div>
+            <Portal>
+                <div className="osx-portal-modal">
+                    <div className="modal is-active">
+                        <div role="presentation" className="modal-background">
+                            <div className="modal-content">
+                                <div className="auth-form-body">
+                                    <form acceptCharset="UTF-8" method="post" onSubmit={handleCreate}>
+                                        <label htmlFor="create-playlist">Playlist title</label>
+                                        <input
+                                            type="text"
+                                            name="create-playlist"
+                                            id="create-playlist"
+                                            className="form-control form-control input-block js-password-field"
+                                            autoCapitalize="off"
+                                            autoCorrect="off"
+                                            autoComplete="off"
+                                            autoFocus="autofocus"
+                                            value={playlistTitle}
+                                            onChange={(e) => setPlaylistTitle(e.target.value)}
+                                        />
+                                        <div>
+                                            <button className="btn btn-primary btn-block sign-in-btn" type="submit">
+                                                Sign in
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Portal>
         </div>
     );
 }

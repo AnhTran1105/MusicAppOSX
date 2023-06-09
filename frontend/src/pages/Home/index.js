@@ -43,9 +43,7 @@ const Home = () => {
         try {
             const response = await axios.get(`get-song/?id=${songId}`);
             return response;
-            // Xử lý dữ liệu nhận được từ server ở đây
         } catch (error) {
-            // Xử lý lỗi nếu có
             console.error(error);
         }
     };
@@ -58,9 +56,7 @@ const Home = () => {
                 },
             });
             return response;
-            // Xử lý dữ liệu nhận được từ server ở đây
         } catch (error) {
-            // Xử lý lỗi nếu có
             console.error(error);
         }
     };
@@ -112,7 +108,7 @@ const Home = () => {
                         <Banner props={isBusy ? undefined : bannerData} />
                         <Playlist
                             props={isBusy || !playlistData?.[0]?.items ? null : playlistData[0].items}
-                            sectionLink={isBusy || !playlistData?.[0]?.link ? null : playlistData[0].link}
+                            // sectionLink={isBusy || !playlistData?.[0]?.link ? null : playlistData[0].link}
                             sectionTitle={isBusy || !playlistData?.[0]?.title ? null : playlistData[0].title}
                             cardTitle={isBusy || !playlistData?.[0]?.itemType ? true : false}
                         />
@@ -133,8 +129,7 @@ const Home = () => {
                             sectionTitle={isBusy || !playlistData?.[2]?.title ? null : playlistData[2].title}
                             cardTitle={isBusy || !playlistData?.[2]?.itemType ? true : false}
                         />
-                        {/* <NewReleaseChart props={isBusy ? undefined : newReleaseChartData} sectionTitle="BXH Nhạc Mới" />
-                        <WeekChart props={isBusy ? undefined : weekChartData} /> */}
+
                         <Playlist
                             props={isBusy || !playlistData?.[3]?.items ? null : playlistData[3].items}
                             sectionLink={isBusy || !playlistData?.[3]?.link ? null : playlistData[3].link}
@@ -147,16 +142,6 @@ const Home = () => {
                             sectionTitle={isBusy || !playlistData?.[4]?.title ? null : playlistData[4].title}
                             cardTitle={isBusy || !playlistData?.[4]?.itemType ? true : false}
                         />
-
-                        {/* {data ? (
-                            <ul>
-                                {data.tracks.map((track) => (
-                                    <li key={track.id}>{track.name}</li>
-                                ))}
-                            </ul>
-                        ) : (
-                            <p>Loading...</p>
-                        )} */}
                     </div>
                     <div id="osx_Player_Overlay" className="mar-b-30" style={{ bottom: '90px' }}></div>
                 </main>

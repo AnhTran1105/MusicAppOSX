@@ -1,0 +1,118 @@
+.new-release-chart-container {
+    padding: 40px 0 50px;
+
+    .song-prefix {
+        .number {
+            opacity: 0.7;
+        }
+
+        .number.is-top-1,
+        .number.is-top-2,
+        .number.is-top-3 {
+            opacity: 1;
+        }
+    }
+
+    .new-release-chart-header {
+        margin-bottom: 32px;
+        padding: 0;
+
+        .title {
+            text-transform: capitalize;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: normal;
+            flex-direction: row;
+            display: flex;
+            align-items: center;
+        }
+
+        .osx-btn {
+            margin-left: 12px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+        }
+    }
+}
+
+.top-new-relesase-container {
+    .chart-song-item {
+        .number {
+            min-width: 60px;
+        }
+    }
+}
+
+.chart-song-item {
+    overflow: hidden;
+    border-radius: 4px;
+
+    .number.is-top-1 {
+        -webkit-text-stroke: 1px #4a90e2;
+        opacity: 1;
+    }
+
+    .number.is-top-2 {
+        -webkit-text-stroke: 1px #50e3c2;
+    }
+
+    .number.is-top-3 {
+        -webkit-text-stroke: 1px #e35050;
+        opacity: 1;
+    }
+
+    .list-item {
+        .media {
+            border-radius: 4px;
+            background-color: transparent;
+        }
+    }
+}
+
+.chart-song-item {
+    .number {
+        min-width: 38px;
+        -webkit-text-stroke: 1.5px var(--text-primary);
+        opacity: 0.7;
+        font-size: 32px;
+        font-weight: 900;
+        line-height: 1;
+        text-align: center;
+        color: rgba(74, 144, 226, 0);
+        font-family: 'Roboto', sans-serif;
+        white-space: nowrap;
+    }
+}
+
+.chart-song-item {
+    .number.is-top-1,
+    .number.is-top-2,
+    .number.is-top-3 {
+        color: rgba(74, 144, 226, 0);
+        opacity: 1;
+    }
+}
+
+.song-prefix {
+    .red {
+        color: #e35050;
+    }
+
+    .green {
+        color: #1dc186;
+    }
+
+    .sort {
+        width: 18px;
+        height: 36px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: var(--text-primary);
+    }
+}
