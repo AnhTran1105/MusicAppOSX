@@ -32,4 +32,4 @@ class Artist(models.Model):
 
 class RecentPlay(models.Model):
     song_id = models.CharField(max_length=10)
-    playlist_id = models.CharField(max_length=10)
+    # playlist_id = models.CharField(max_length=10)

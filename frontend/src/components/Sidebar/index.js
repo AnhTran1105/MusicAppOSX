@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import { AddIcon, AlbumIcon, ArtistIcon, PlaylistIcon, RecentIcon, SongIcon, UploadIcon } from '../../icons';
-import ToolTip from '@tippyjs/react';
+import { AlbumIcon, ArtistIcon, RecentIcon, SongIcon } from '../../icons';
 import { NavLink } from 'react-router-dom';
 import axios from '../../utils/axios';
 import { useEffect, useState } from 'react';
@@ -110,7 +109,7 @@ function Sidebar() {
                     <ul className="osx-navbar-menu">
                         <li className="osx-navbar-item">
                             <div className="osx-navbar-item-wrapper">
-                                <Link className="osx-navbar-type" href="/">
+                                <Link className="osx-navbar-type" to="/mymusic">
                                     <i className="icon">
                                         <SongIcon />
                                     </i>
@@ -120,7 +119,7 @@ function Sidebar() {
                         </li>
                         <li className="osx-navbar-item ">
                             <div className="osx-navbar-item-wrapper">
-                                <Link className="osx-navbar-type" href="/">
+                                <Link className="osx-navbar-type" to="/mymusic/history/song">
                                     <i className="icon">
                                         <RecentIcon />
                                     </i>
@@ -130,7 +129,7 @@ function Sidebar() {
                         </li>
                         <li className="osx-navbar-item">
                             <div className="osx-navbar-item-wrapper">
-                                <Link className="osx-navbar-type" href="/">
+                                <Link className="osx-navbar-type" to="/mymusic">
                                     <i className="icon">
                                         <AlbumIcon />
                                     </i>
@@ -140,7 +139,7 @@ function Sidebar() {
                         </li>
                         <li className="osx-navbar-item">
                             <div className="osx-navbar-item-wrapper">
-                                <Link className="osx-navbar-type" href="/">
+                                <Link className="osx-navbar-type" to="/mymusic">
                                     <i className="icon">
                                         <ArtistIcon />
                                     </i>

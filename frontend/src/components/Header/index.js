@@ -23,10 +23,7 @@ function Header() {
                         <div className="osx-avatar-frame">
                             <button className="osx-btn button" tabIndex="0">
                                 <figure className="image is-38x38 is-rounded">
-                                    <img
-                                        src="http://s120.avatar.talk.zdn.vn/a/e/b/9/4/120/a918ad27399712feb7e3a5eba112c53a.jpg"
-                                        alt=""
-                                    />
+                                    <img src={require('../../images/user.png')} alt="" />
                                 </figure>
                                 <i className="icon z-ic-svg"></i>
                             </button>

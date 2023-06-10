@@ -1787,7 +1787,7 @@ h3.title {
     background-color: var(--layout-header-bg);
     -webkit-backdrop-filter: blur(50px);
     backdrop-filter: blur(50px);
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.08);
+    // box-shadow: 0 3px 5px rgba(0, 0, 0, 0.08);
     z-index: 98;
 }
 
@@ -2351,6 +2351,10 @@ h3.title {
 
 .mar-t-50 {
     margin-top: 50px !important;
+}
+
+.mar-t-86 {
+    margin-top: 86px !important;
 }
 
 .mar-l-0 {

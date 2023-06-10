@@ -122,6 +122,14 @@
     }
 }
 
+.osx-navbar-menu:not(.hover) {
+    .osx-navbar-item {
+        &:hover {
+            background-color: #dedede;
+        }
+    }
+}
+
 .sidebar-divide {
     position: relative;
     height: 1px;

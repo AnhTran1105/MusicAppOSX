@@ -22,15 +22,18 @@ function Lyrics({ lyrics, title, artists, thumbnail, nowplayingbarRef, playerCon
         let startTime = null;
 
         const animation = (currentTime) => {
-            if (!startTime) {
-                startTime = currentTime;
-            }
-            const elapsedTime = currentTime - startTime;
-            const run = linear(elapsedTime, startPosition, distance, duration);
-            lyricsListRef.current.scrollTop = run;
+            if (lyricsListRef.current) {
+                if (!startTime) {
+                    startTime = currentTime;
+                }
+                const elapsedTime = currentTime - startTime;
+                const run = linear(elapsedTime, startPosition, distance, duration);
 
-            if (elapsedTime < duration) {
-                requestAnimationFrame(animation);
+                lyricsListRef.current.scrollTop = run;
+
+                if (elapsedTime < duration) {
+                    requestAnimationFrame(animation);
+                }
             }
         };
         const linear = (time, from, distance, duration) => {
@@ -210,25 +213,27 @@ function Lyrics({ lyrics, title, artists, thumbnail, nowplayingbarRef, playerCon
                             </div>
                             <div className="is-size-M column is-fullhd-7 is-tablet-12">
                                 <ul ref={lyricsListRef} className="scroll-content">
-                                    {sentences.map((sentence, i) => (
-                                        <li
-                                            key={i}
-                                            className={`item ${
-                                                audio.currentTime >= sentence.words[0].startTime / 1000 &&
-                                                audio.currentTime <=
-                                                    sentence.words[sentence.words.length - 1].endTime / 1000
-                                                    ? 'is-active'
-                                                    : ''
-                                            } ${
-                                                audio.currentTime >
-                                                sentence.words[sentence.words.length - 1].endTime / 1000
-                                                    ? 'is-over'
-                                                    : ''
-                                            }`}
-                                        >
-                                            {sentence.words.map((word) => word.data).join(' ')}
-                                        </li>
-                                    ))}
+                                    {sentences
+                                        ? sentences.map((sentence, i) => (
+                                              <li
+                                                  key={i}
+                                                  className={`item ${
+                                                      audio.currentTime >= sentence.words[0].startTime / 1000 &&
+                                                      audio.currentTime <=
+                                                          sentence.words[sentence.words.length - 1].endTime / 1000
+                                                          ? 'is-active'
+                                                          : ''
+                                                  } ${
+                                                      audio.currentTime >
+                                                      sentence.words[sentence.words.length - 1].endTime / 1000
+                                                          ? 'is-over'
+                                                          : ''
+                                                  }`}
+                                              >
+                                                  {sentence.words.map((word) => word.data).join(' ')}
+                                              </li>
+                                          ))
+                                        : ''}
                                 </ul>
                             </div>
                         </div>

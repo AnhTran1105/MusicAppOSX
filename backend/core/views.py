@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from .models import Song
 from .models import User
 from .models import Playlist
+from .models import RecentPlay
 import json
 from django.views.decorators.csrf import csrf_exempt
 
@@ -149,3 +150,24 @@ def get_all_playlists(request):
         return JsonResponse({'data': {'titles': list(titles)}})
     else:
         return JsonResponse({'error': 'Invalid request method'})
+
+
+def recent_play(request):
+    if request.method == 'GET':
+        songIds = RecentPlay.objects.values_list('song_id', flat=True)
+        return JsonResponse({'data': {'songIds': list(songIds)}})
+    else:
+        return JsonResponse({'error': 'Invalid request method'})
+
+
+@csrf_exempt
+def save_recent_song(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        song_id = data.get('song_id')
+        if RecentPlay.objects.filter(song_id=song_id):
+            return JsonResponse({'data': {'success': False, 'message': 'Song already exists'}})
+        else:
+            RecentPlay.objects.create(song_id=song_id)
+        return JsonResponse({'data': {'success': True, 'message': 'Add successfully!'}})
+    return JsonResponse({'data': {'success': False, 'message': 'Invalid request'}})

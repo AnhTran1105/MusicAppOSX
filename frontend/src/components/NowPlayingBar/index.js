@@ -56,6 +56,7 @@ function NowPlayingBar() {
                     audio.play();
                     setSongData(data);
                     setSongSrc(src);
+                    saveRecentSong(songId);
                     setBusy(false);
                 } catch (error) {
                     console.error('Error fetching song info and song source:', error);
@@ -117,6 +118,15 @@ function NowPlayingBar() {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isBusy]);
+
+    const saveRecentSong = async (songId) => {
+        await axios
+            .post('/api/save-recent-song', { song_id: songId })
+            .then((response) => {})
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
     const handlePlayPause = () => {
         if (isPlaying) {
@@ -547,42 +557,7 @@ function NowPlayingBar() {
                                                                                                         >
                                                                                                             <i className="icon ic-list-music"></i>
                                                                                                             <span>
-                                                                                                                MP
-                                                                                                            </span>
-                                                                                                        </button>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <button
-                                                                                                            className="osx-btn button"
-                                                                                                            tabIndex="0"
-                                                                                                        >
-                                                                                                            <i className="icon ic-list-music"></i>
-                                                                                                            <span>
-                                                                                                                noname
-                                                                                                            </span>
-                                                                                                        </button>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <button
-                                                                                                            className="osx-btn button"
-                                                                                                            tabIndex="0"
-                                                                                                        >
-                                                                                                            <i className="icon ic-list-music"></i>
-                                                                                                            <span>
-                                                                                                                My love
-                                                                                                                music
-                                                                                                            </span>
-                                                                                                        </button>
-                                                                                                    </li>
-                                                                                                    <li>
-                                                                                                        <button
-                                                                                                            className="osx-btn button"
-                                                                                                            tabIndex="0"
-                                                                                                        >
-                                                                                                            <i className="icon ic-list-music"></i>
-                                                                                                            <span>
-                                                                                                                Binz,
-                                                                                                                Khói,...
+                                                                                                                Untitled
                                                                                                             </span>
                                                                                                         </button>
                                                                                                     </li>

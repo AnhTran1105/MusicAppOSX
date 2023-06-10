@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { publicRoutes } from './routes';
 import { DefaultLayout } from './layouts';
 import { Fragment } from 'react';
@@ -14,14 +15,25 @@ import SignUp from './pages/SignUp';
 import { useStore } from './store';
 import Top100 from './pages/Top100';
 import NewReleaseChart from './pages/NewReleaseChart';
+import RecentPlay from './pages/RecentPlay';
 
 function App() {
     const [state, dispatch] = useStore();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [firstLoad, setFirstLoad] = useState(true);
+
+    useEffect(() => {
+        if (state.loggedIn) {
+            setIsLoggedIn(true);
+            setFirstLoad(false);
+        }
+    }, [state.loggedIn]);
+
     return (
         <Router>
             <div className="App">
                 <Routes>
-                    {!state.loggedIn ? <Route path="/" element={<Navigate to="/login" />} /> : ''}
+                    {firstLoad && !isLoggedIn ? <Route path="/" element={<Login />} /> : ''}
                     {publicRoutes.map((route, index) => {
                         const Page = route.component;
                         let Layout = DefaultLayout;
@@ -131,6 +143,14 @@ function App() {
                         element={
                             <DefaultLayout>
                                 <NewReleaseChart />
+                            </DefaultLayout>
+                        }
+                    />
+                    <Route
+                        path="/mymusic/history/song"
+                        element={
+                            <DefaultLayout>
+                                <RecentPlay />
                             </DefaultLayout>
                         }
                     />

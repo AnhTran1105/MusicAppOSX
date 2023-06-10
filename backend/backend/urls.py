@@ -23,4 +23,6 @@ urlpatterns = [
     path('api/login', views.login),
     path('api/create-playlist', views.create_playlist),
     path('api/get-all-playlists', views.get_all_playlists),
+    path('api/recent-play', views.recent_play),
+    path('api/save-recent-song', views.save_recent_song),
 ]

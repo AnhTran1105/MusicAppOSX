@@ -78,7 +78,7 @@ function ArtistSong() {
                         marginBottom: '0px',
                     }}
                 >
-                    <div className="container mar-b-30">
+                    <div className="container mar-b-30 mar-t-86">
                         <div className="artist-song">
                             <div className={`container artist-tab-title mar-b-5 is-sticky`}>
                                 <div className="is-center">
