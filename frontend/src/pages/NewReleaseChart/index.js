@@ -37,8 +37,6 @@ function NewReleaseChart() {
         return null;
     }
 
-    console.log(data);
-
     return (
         <div className="osx-box osx-mainpage">
             <div style={{ position: 'relative', overflow: 'hidden', width: '100%', height: '100%' }}>

@@ -70,7 +70,7 @@ function SignUp() {
             .then((response) => {
                 if (response.success) {
                     dispatch(actions.setLoggedIn(true));
-                    navigate('/login');
+                    navigate('/');
                 } else setMessage(response.message);
             })
             .catch((error) => {

@@ -308,15 +308,15 @@ function ArtistDetail() {
                                     <div className="container">
                                         <h3 className="osx-section-title title is-2">
                                             {data.sections.filter((section) => section.sectionType === 'song')[0].title}
-                                            <a
+                                            <Link
                                                 className="discovery-btn"
-                                                href={
+                                                to={
                                                     data.sections.filter((section) => section.sectionType === 'song')[0]
                                                         .link
                                                 }
                                             >
                                                 Tất cả <i className="icon ic-go-right"></i>
-                                            </a>
+                                            </Link>
                                         </h3>
                                         <div className="columns is-multiline">
                                             {[...Array(2)].map((_, colIndex) => (

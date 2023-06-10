@@ -22,4 +22,5 @@ urlpatterns = [
     path('api/register', views.register),
     path('api/login', views.login),
     path('api/create-playlist', views.create_playlist),
+    path('api/get-all-playlists', views.get_all_playlists),
 ]

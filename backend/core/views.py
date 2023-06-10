@@ -141,3 +141,11 @@ def create_playlist(request):
         Playlist.objects.create(title=title)
         return JsonResponse({'data': {'success': True, 'message': 'Create successfully!'}})
     return JsonResponse({'data': {'success': False, 'message': 'Invalid request'}})
+
+
+def get_all_playlists(request):
+    if request.method == 'GET':
+        titles = Playlist.objects.values_list('title', flat=True)
+        return JsonResponse({'data': {'titles': list(titles)}})
+    else:
+        return JsonResponse({'error': 'Invalid request method'})

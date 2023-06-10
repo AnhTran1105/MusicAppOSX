@@ -2,8 +2,33 @@ import { Link } from 'react-router-dom';
 import { AddIcon, AlbumIcon, ArtistIcon, PlaylistIcon, RecentIcon, SongIcon, UploadIcon } from '../../icons';
 import ToolTip from '@tippyjs/react';
 import { NavLink } from 'react-router-dom';
+import axios from '../../utils/axios';
+import { useEffect, useState } from 'react';
 
 function Sidebar() {
+    const [data, setData] = useState();
+    const [isBusy, setBusy] = useState(true);
+
+    useEffect(() => {
+        getAllPlaylists();
+    }, []);
+
+    const getAllPlaylists = async () => {
+        await axios
+            .get('/api/get-all-playlists')
+            .then((response) => {
+                setData(response.titles);
+                setBusy(false);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+
+    if (isBusy) {
+        return null;
+    }
+
     return (
         <aside className="osx-sidebar">
             <div className="sidebar-wrapper">
@@ -24,7 +49,9 @@ function Sidebar() {
                             <div className="osx-navbar-item-wrapper">
                                 <NavLink
                                     className={(navData) =>
-                                        navData.isActive ? 'is-active osx-navbar-link' : 'osx-navbar-link'
+                                        navData.isActive
+                                            ? 'is-active osx-navbar-link pad-tb-12'
+                                            : 'osx-navbar-link pad-tb-12'
                                     }
                                     to="/mymusic"
                                 >
@@ -36,7 +63,9 @@ function Sidebar() {
                             <div className="osx-navbar-item-wrapper">
                                 <NavLink
                                     className={(navData) =>
-                                        navData.isActive ? 'is-active osx-navbar-link' : 'osx-navbar-link'
+                                        navData.isActive
+                                            ? 'is-active osx-navbar-link pad-tb-12'
+                                            : 'osx-navbar-link pad-tb-12'
                                     }
                                     exact="true"
                                     to="/"
@@ -49,7 +78,9 @@ function Sidebar() {
                             <div className="osx-navbar-item-wrapper">
                                 <NavLink
                                     className={(navData) =>
-                                        navData.isActive ? 'is-active osx-navbar-link' : 'osx-navbar-link'
+                                        navData.isActive
+                                            ? 'is-active osx-navbar-link pad-tb-12'
+                                            : 'osx-navbar-link pad-tb-12'
                                     }
                                     to="/top100"
                                 >
@@ -61,7 +92,9 @@ function Sidebar() {
                             <div className="osx-navbar-item-wrapper">
                                 <NavLink
                                     className={(navData) =>
-                                        navData.isActive ? 'is-active osx-navbar-link' : 'osx-navbar-link'
+                                        navData.isActive
+                                            ? 'is-active osx-navbar-link pad-tb-12'
+                                            : 'osx-navbar-link pad-tb-12'
                                     }
                                     to="/moi-phat-hanh"
                                 >
@@ -99,16 +132,6 @@ function Sidebar() {
                             <div className="osx-navbar-item-wrapper">
                                 <Link className="osx-navbar-type" href="/">
                                     <i className="icon">
-                                        <UploadIcon />
-                                    </i>
-                                    <span>Local</span>
-                                </Link>
-                            </div>
-                        </li>
-                        <li className="osx-navbar-item">
-                            <div className="osx-navbar-item-wrapper">
-                                <Link className="osx-navbar-type" href="/">
-                                    <i className="icon">
                                         <AlbumIcon />
                                     </i>
                                     <span>Albums</span>
@@ -138,20 +161,12 @@ function Sidebar() {
                             </button>
                         </ToolTip> */}
                     </div>
-                    <ul className="osx-navbar-menu">
-                        <li className="osx-navbar-item">
-                            <div className="osx-navbar-item-wrapper">
-                                <Link className="osx-navbar-type" href="/mymusic">
-                                    <i className="icon">
-                                        <PlaylistIcon />
-                                    </i>
-                                    <span>Favourites</span>
-                                </Link>
-                            </div>
-                        </li>
-                    </ul>
                     <ul className="osx-navbar-playlists">
-                        <li className="playlist-item">Untitled</li>
+                        {data.map((item) => (
+                            <li key={item} className="playlist-item">
+                                {item}
+                            </li>
+                        ))}
                     </ul>
                 </nav>
             </div>

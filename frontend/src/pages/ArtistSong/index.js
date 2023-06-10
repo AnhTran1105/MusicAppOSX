@@ -2,12 +2,14 @@ import SongItem from '../../components/SongItem/SongItem';
 import { useEffect, useState } from 'react';
 import axios from '../../utils/axios';
 import { useParams } from 'react-router-dom';
+import { useStore, actions } from '../../store';
 
 function ArtistSong() {
     const [data, setData] = useState();
     const [artist, setArtist] = useState();
     const [isBusy, setBusy] = useState(true);
     const { alias } = useParams();
+    const [state, dispatch] = useStore();
 
     useEffect(() => {
         let requestCount = 0;
@@ -49,6 +51,10 @@ function ArtistSong() {
         } catch (error) {
             console.error(error);
         }
+    };
+
+    const loadSongList = () => {
+        dispatch(actions.setSongList(data.items.map((item) => item.encodeId)));
     };
 
     if (isBusy) {
@@ -103,7 +109,7 @@ function ArtistSong() {
                             <div className="list list-border">
                                 {data.items.map((item, i) => (
                                     <div key={i} className="list-item media-item hide-right">
-                                        <SongItem props={item} isContent={true} />
+                                        <SongItem props={item} isContent={true} loadSongList={loadSongList} />
                                     </div>
                                 ))}
                             </div>

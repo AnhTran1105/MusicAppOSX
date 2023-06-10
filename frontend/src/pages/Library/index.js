@@ -376,7 +376,7 @@ function Library() {
                                         </button>
                                     </ToolTip>
                                     <h3 className="title">Tạo playlist mới</h3>
-                                    <form>
+                                    <form onSubmit={handleCreate}>
                                         <input
                                             className="input"
                                             placeholder="Nhập tên playlist"
@@ -388,6 +388,7 @@ function Library() {
                                                 className="osx-btn mar-t-20 is-outlined active is-fullwidth is-upper button"
                                                 tabIndex="-1"
                                                 disabled=""
+                                                type="submit"
                                             >
                                                 <i className="icon"></i>
                                                 <span>Tạo mới</span>
