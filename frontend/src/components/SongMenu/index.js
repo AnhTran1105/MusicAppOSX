@@ -19,7 +19,7 @@ function SongMenu({ props }) {
                 </button>
             </ToolTip>
             <Portal>
-                <div className="osx-portal" style={{ left: '1160px', top: '180px' }}>
+                <div className="osx-portal" style={{ left: '700px', top: '180px' }}>
                     <div className="osx-contextmenu song-menu">
                         <div className="menu">
                             <div>

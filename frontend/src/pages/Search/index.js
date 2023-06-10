@@ -60,7 +60,7 @@ function Search() {
                         marginBottom: '0px',
                     }}
                 >
-                    <div className="container">
+                    <div className="container mar-t-86">
                         <nav className="osx-navbar osx-search-narbar osx-navbar-wrap">
                             <div className="osx-navbar-container">
                                 <h3 className="title">Kết Quả Tìm Kiếm</h3>

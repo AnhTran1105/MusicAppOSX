@@ -127,7 +127,9 @@ function SongController({
                             onMouseDown={handleDragStart}
                             onMouseUp={handleDragEnd}
                             style={{
-                                transform: `translate(${(progress * 483.5) / 100 - 1}px, -3.5px)`,
+                                transform: `translate(${
+                                    (progress * progressBarRef.current.offsetWidth) / 100 - 1
+                                }px, -3.5px)`,
                                 borderRadius: '50%',
                                 backgroundColor: 'var(--progressbar-active-bg)',
                             }}
