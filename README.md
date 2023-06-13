@@ -1,28 +1,36 @@
 # Chú ý: Yêu cầu máy đã cài đặt NodeJS, Python, Pip và MongoDB:
 
-## Để mở server:
+## I. Để mở server:
 
   ### 1. Nếu chưa kích hoạt môi trường ảo env, ở thư mục gốc của dự án chạy lệnh:
     .\env\Scripts\activate
   ### 2. Nếu terminal báo lỗi ở bước trên thì chạy lệnh sau ở powershell của máy với quyền administrator:
     set-executionpolicy remotesigned
-  #### Nhấn Y và nhấn Enter.
-  #### Sau đó chạy lại bước 1.
+    
+  - Nhấn Y và nhấn Enter.
+  - Sau đó chạy lại bước 1.
   
   ### 3. Ở thư mục gốc của của dự án chạy các lệnh sau để cài các package cần thiết:
     cd backend
     pip install -r requirements.txt
   ### 4. Kết nối với MongoDB:
-   #### Khởi động MongoDB, chú ý connect ở localhost:27017.
-   #### Tạo 1 database có tên là "MusicAppOSX", collection với tên tùy ý.
-   #### Trong terminal tại folder backend chạy các lệnh:
+  - Khởi động MongoDB, chú ý connect ở localhost:27017.
+  - Tạo 1 database có tên là "MusicAppOSX", collection với tên tùy ý.
+  - Trong terminal tại folder backend chạy các lệnh:
+    
+    ```python
     python manage.py makemigrations
     python manage.py migrate
-  #### Sau khi kết nối thành công, chạy lệnh sau để start server:
+    ```
+  - Sau khi kết nối thành công, chạy lệnh sau để start server:
+    
+    ```python
     python manage.py runserver
-  #### Server sẽ chạy ở localhost:8000.
+    ```
+    
+  - Server sẽ chạy ở localhost:8000.
 
-## Để mở frontend:
+## II. Để mở frontend:
 
   ### 1. Ở thư mục gốc của dự án chạy các lệnh:
     cd frontend
